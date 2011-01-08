@@ -1,0 +1,8 @@
+variables:
+  lower: "a ruby lower case project name (ex: noe)"
+  upper: "a ruby upper case project name (ex: Noe)"
+  author: "the project author (ex: Bernard Lambeau)"
+  email: "the author's email: (ex: blambeau@gmail.com)"
+  homepage: "the project's home page (http://github.com/blambeau/noe)"
+  description: "A not so short project description"
+
