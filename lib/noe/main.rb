@@ -17,6 +17,15 @@ module Noe
   # See '#{program_name} help COMMAND' for more information on a specific command.
   #
   class Main < Quickl::Delegate(__FILE__, __LINE__)
+    
+    # Configuration instance
+    attr_reader :config
+    
+    # Creates a command instance
+    def initialize(*args)
+      super
+      @config = Noe::Config.find
+    end
 
     # Install options
     options do |opt|

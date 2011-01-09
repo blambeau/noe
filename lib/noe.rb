@@ -1,7 +1,9 @@
 module Noe
   
+  # Noe's version
   VERSION = "1.0.0".freeze
   
+  # Requires some gem
   def self.require(gem_name, version = nil, retried = false)
     begin
       Kernel.require gem_name
@@ -16,12 +18,16 @@ module Noe
       end
     end
   end
+  
+  class Error < StandardError; end
 
-end
+end # module Noe
+
 Noe.require('quickl')
 Noe.require('wlang', ">= 0.9")
 require 'yaml'
 require 'fileutils'
+require 'noe/config'
 require 'noe/template'
 require 'noe/main'
 require 'noe/help'

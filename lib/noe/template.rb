@@ -21,10 +21,10 @@ module Noe
     # Loads the template from its folder
     def __load
       specfile = File.join(folder, "noespec.yaml")
-      if File.file?(specfile)
+      if File.file?(specfile) and File.readable?(specfile)
         @spec = YAML::load(File.read(specfile))
       else
-        raise IOError, "Unable to find Noe spec: #{specfile}"
+        raise Noe::Error, "Unable to find template: #{specfile}"
       end
     end
     
