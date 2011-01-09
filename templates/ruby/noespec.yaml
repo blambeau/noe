@@ -1,3 +1,9 @@
+description: 
+  Noe spec for small ruby projects
+version: 
+  1.0.0
+author: 
+  Bernard Lambeau <blambeau@gmail.com>
 variables:
   lower: "a ruby lower case project name (ex: noe)"
   upper: "a ruby upper case project name (ex: Noe)"
@@ -5,4 +11,3 @@ variables:
   email: "the author's email: (ex: blambeau@gmail.com)"
   homepage: "the project's home page (http://github.com/blambeau/noe)"
   description: "A not so short project description"
-
