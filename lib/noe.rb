@@ -22,6 +22,7 @@ Noe.require('quickl')
 Noe.require('wlang', ">= 0.9")
 require 'yaml'
 require 'fileutils'
+require 'noe/template'
 require 'noe/main'
 require 'noe/help'
 require 'noe/create'

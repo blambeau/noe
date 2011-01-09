@@ -29,6 +29,11 @@ module Noe
           File.expand_path('../../../templates', __FILE__)
         end
       end
+      
+      def find_template(name)
+        dir = File.join(find_templates_dir, name)
+        Template.new(dir)
+      end
 
       # Install options
       options do |opt|
@@ -54,6 +59,7 @@ module Noe
 
       # Instantiates a file
       def instantiate(file, user_info, where)
+        return if ['.', '..'].include?(File.basename(file))
         newname = newname(file, user_info)
         newfile  = File.join(where, newname)
         if File.directory?(file)
@@ -62,8 +68,8 @@ module Noe
           else
             FileUtils.mkdir(newfile)
           end
-          Dir[File.join(file, '*')].each do |child|
-            instantiate(child, user_info, newfile)
+          Dir.foreach(file) do |child|
+            instantiate(File.join(file, child), user_info, newfile)
           end
         elsif File.file?(file)
           if dry_run
@@ -82,10 +88,10 @@ module Noe
       def execute(args)
         raise Quickl::Help unless args.size == 2
         template_name, info_file = args
-        template_info = YAML::load(File.read(File.join(templates_dir, "#{template_name}.yaml")))
+        template = find_template(template_name)
         user_info = YAML::load(File.read(info_file))
-        Dir[File.join(templates_dir, template_name, '*')].each do |root|
-          instantiate(root, user_info, '.')
+        Dir.foreach(template.src_folder) do |root|
+          instantiate(File.join(template.src_folder, root), user_info, '.')
         end
       end
 
