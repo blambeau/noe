@@ -17,7 +17,7 @@ Other reasons:
 * Noe is agnostic: it does not make any assumption about project semantics
 * Noe does not restrict itself to generation of ruby projects
 * Noe is not required at runtime: once your project is generated you're done
-* I prefer being DRY through generation and documentation, not ill-documented magic
+* I don't like magic
 
 ## Getting started
 
