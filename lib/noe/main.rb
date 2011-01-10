@@ -21,6 +21,9 @@ module Noe
     # Configuration instance
     attr_reader :config_file
     
+    # Show backtrace on error?
+    attr_reader :backtrace
+    
     # Returns Noe's configuration, loading it if required
     def config
       @config_file ||= find_config_file
@@ -40,6 +43,10 @@ module Noe
              'Sets a particular config file (defaults to ~/.noerc)') do |f|
         @config_file = valid_read_file!(f)
       end
+      # Show backtrace on error
+      opt.on_tail("--backtrace", "Show backtrace on error") do
+        @backtrace = true
+      end
       # Show the help and exit
       opt.on_tail("--help", "Show help") do
         raise Quickl::Help
@@ -48,6 +55,20 @@ module Noe
       opt.on_tail("--version", "Show version") do
         raise Quickl::Exit, "#{program_name} #{Noe::VERSION} (c) 2011, Bernard Lambeau"
       end
+    end
+    
+    # Runs the command
+    def run(argv, requester = nil)
+      super
+    rescue Quickl::Error
+      raise
+    rescue Noe::Error => ex
+      puts "#{ex.class}: #{ex.message}"
+      puts ex.backtrace.join("\n") if backtrace
+    rescue StandardError => ex
+      puts "Oups, Noe encountered a serious problem! Please report if a bug."
+      puts "#{ex.class}: #{ex.message}"
+      puts ex.backtrace.join("\n")
     end
 
   end # class Main

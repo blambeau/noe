@@ -64,7 +64,7 @@ module Noe
             return todo
           else
             raise Noe::Error, "Noe aborted: file #{relocated} already exists.\n"\
-                              " Use --force to override."
+                              "Use --force to override."
           end
         end
         
