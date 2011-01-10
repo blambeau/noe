@@ -1,9 +1,12 @@
-description: 
-  Noe spec for small ruby projects
-version: 
-  1.0.0
-author: 
-  Bernard Lambeau <blambeau@gmail.com>
+template-info:
+  name:
+    !{template_name}
+  description: 
+    Noe spec for small ruby projects
+  version: 
+    1.0.0
+  author: 
+    Bernard Lambeau <blambeau@gmail.com>
 variables:
   lower: "a ruby lower case project name (ex: noe)"
   upper: "a ruby upper case project name (ex: Noe)"

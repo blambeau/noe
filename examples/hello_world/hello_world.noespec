@@ -1,7 +1,0 @@
-variables:
-  lower: hello_world
-  upper: HelloWorld
-  author: Bernard Lambeau
-  email: blambeau@gmail.com
-  homepage: http://github.com/blambeau/hello_world
-  description: Hello World !

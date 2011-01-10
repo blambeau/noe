@@ -15,12 +15,16 @@ module Noe
   
     # Loads the template from its folder
     def __load
-      specfile = File.join(folder, "noespec.yaml")
-      if File.file?(specfile) and File.readable?(specfile)
-        @spec = YAML::load(File.read(specfile))
+      if File.file?(spec_file) and File.readable?(spec_file)
+        @spec = YAML::load(File.read(spec_file))
       else
-        raise Noe::Error, "Unable to find template: #{specfile}"
+        raise Noe::Error, "Unable to find template: #{spec_file}"
       end
+    end
+    
+    # Returns path to the spec file
+    def spec_file
+      File.join(folder, "noespec.yaml")
     end
     
     # Returns template name  
@@ -30,12 +34,12 @@ module Noe
     
     # Returns template description
     def description
-      spec['description']
+      spec['template-info']['description']
     end
     
     # Returns template version
     def version
-      spec['version']
+      spec['template-info']['version']
     end
     
     # Returns path to the sources folder

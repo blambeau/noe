@@ -38,15 +38,9 @@ module Noe
         FileUtils.mkdir(pname)
         
         # instantiate the configuration
-        config = {
-          'template'          => {'name'    => tpl.name, 
-                                  'version' => tpl.version},
-          'variables'         => tpl.spec['variables']
-        }
-        
-        # create .noespec file
         File.open(File.join(pname, "#{pname}.noespec"), 'w') do |out|
-          out << YAML::dump(config)
+          context = {'template_name' => tpl.name}
+          out << WLang::file_instantiate(tpl.spec_file, context, "wlang/active-string")
         end 
         
         # what's next

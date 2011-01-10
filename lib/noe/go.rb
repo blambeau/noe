@@ -63,7 +63,7 @@ module Noe
         
         # Load spec now
         spec = YAML::load(File.read(spec_file))
-        template = template(spec['template']['name'])
+        template = template(spec['template-info']['name'])
         variables = spec['variables']
 
         # instantiate the template now
