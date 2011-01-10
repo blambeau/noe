@@ -11,7 +11,8 @@ spec = Gem::Specification.new do |s|
   s.summary = %q{Probably the simplest project generator from templates}
 
   s.require_paths = ["lib"]
-  s.executables = []
+  s.bindir = "bin"
+  s.executables = ["noe"]
 
   s.extra_rdoc_files = ["README.md", "CHANGELOG.md"]
 
