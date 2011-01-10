@@ -28,17 +28,25 @@ module Noe
       # Force mode ?
       attr_reader :force
 
+      # Only make additions ?
+      attr_reader :adds_only
+
       # Install options
       options do |opt|
         @dry_run = false
-        opt.on('--dry-run',
+        opt.on('--dry-run', '-d',
                "Say what would be done but don't do it"){ 
           @dry_run = true
         }
         @force = false
-        opt.on('--force',
+        opt.on('--force', '-f',
                "Force overriding on all existing files"){ 
           @force = true
+        }
+        @adds_only = false
+        opt.on('--add-only', '-a',
+               "Only make additions, do not override any existing file"){ 
+          @adds_only = true
         }
       end
       
@@ -52,6 +60,8 @@ module Noe
             unless entry.directory? and File.directory?(relocated)
               todo << Rm.new(entry, variables)
             end
+          elsif adds_only
+            return todo
           else
             raise Noe::Error, "Noe aborted: file #{relocated} already exists.\n"\
                               " Use --force to override."
