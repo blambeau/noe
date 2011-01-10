@@ -12,7 +12,8 @@ module Noe
   # #{summarized_subcommands}
   #
   # DESCRIPTION
-  #   Noe helps development via support for well-designed templates.
+  #   Noe helps development via support for well-designed templates. See
+  #   https://github.com/blambeau/noe for more information.
   #
   # See '#{program_name} help COMMAND' for more information on a specific command.
   #

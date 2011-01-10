@@ -1,5 +1,4 @@
-# Following entries are maintained by Noe itself. Please touch
-# with care.
+# Following entries are maintained by Noe itself. Do not touch if not sure!
 template-info:
   name:
     !{template_name}
