@@ -20,15 +20,15 @@ specific needs.
 
 To create a fresh new project:
 
-  # Given a template xxx under ~/.noe/xxx
-  noe create --template=xxx foo
-  cd foo
+    # Given a template xxx under ~/.noe/xxx
+    noe create --template=xxx foo
+    cd foo
   
-  # Edit the template configuration foo/foo.noespec
-  edit foo/foo.noespec
+    # Edit the template configuration foo/foo.noespec
+    edit foo/foo.noespec
   
-  # Launch template instantiation
-  noe go
+    # Launch template instantiation
+    noe go
   
 That's it! But also have a look at 'noe help create' and 'not help go' for additional
 options.
@@ -37,12 +37,12 @@ options.
 
 Under ~/.noe, a valid template folder (say xxx) has the following structure
 
-xxx                         # Template name
-  README(.md|.txt|...)      #   Information about the template and it's usage
-  CHANGELOG(.md|.txt|...)   #   Change information
-  noespec.yaml              #   Template specification
-  src                       #   Source folder, contains files to be instantiated
-    ...                     #     [everything that will be instantiated]
+    xxx                         # Template name
+      README(.md|.txt|...)      #   Information about the template and it's usage
+      CHANGELOG(.md|.txt|...)   #   Change information
+      noespec.yaml              #   Template specification
+      src                       #   Source folder, contains files to be instantiated
+        ...                     #     [everything that will be instantiated]
 
 ### noespec.yaml
 
