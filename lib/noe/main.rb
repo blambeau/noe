@@ -40,19 +40,22 @@ module Noe
     options do |opt|
       # Set a specific configuration file to use
       opt.on('--config=FILE',
-             'Sets a particular config file (defaults to ~/.noerc)') do |f|
+             'Use a specific config file (defaults to ~/.noerc)') do |f|
         @config_file = valid_read_file!(f)
       end
       # Show backtrace on error
-      opt.on_tail("--backtrace", "Show backtrace on error") do
+      opt.on_tail("--backtrace", 
+                  "Show backtrace on error") do
         @backtrace = true
       end
       # Show the help and exit
-      opt.on_tail("--help", "Show help") do
+      opt.on_tail("--help", 
+                  "Show help") do
         raise Quickl::Help
       end
       # Show version and exit
-      opt.on_tail("--version", "Show version") do
+      opt.on_tail("--version", 
+                  "Show version") do
         raise Quickl::Exit, "#{program_name} #{Noe::VERSION} (c) 2011, Bernard Lambeau"
       end
     end

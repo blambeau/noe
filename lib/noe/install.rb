@@ -5,12 +5,18 @@ module Noe
     # Install default configuration and template.
     #
     # SYNOPSIS
-    #   #{program_name} #{command_name} [FOLDER]
+    #   #{program_name} #{command_name} [--force] [FOLDER]
+    #
+    # OPTIONS
+    # #{summarized_options}
     #
     # DESCRIPTION
     #   This command will install Noe's default configuration under 
     #   FOLDER/.noerc and a default ruby template under FOLDER/.noe.
     #   Unless stated otherwise, FOLDER is user's home.
+    #
+    #   If FOLDER/.noerc already exists, the comand safely fails. 
+    #   Use --force to override existing configuration. 
     #
     class Install < Quickl::Command(__FILE__, __LINE__)
       include Noe::Commons
