@@ -12,6 +12,21 @@ module Noe
       @folder = folder
       __load
     end
+  
+    # Returns template name  
+    def name
+      File.basename(folder)
+    end
+    
+    # Returns template description
+    def description
+      spec['description']
+    end
+    
+    # Returns template version
+    def version
+      spec['version']
+    end
     
     # Returns path to the sources folder
     def src_folder

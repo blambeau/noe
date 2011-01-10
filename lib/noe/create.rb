@@ -4,7 +4,7 @@ module Noe
     # Instantiate a project template
     #
     # SYNOPSIS
-    #   #{command_name} [options] TEMPLATE INFO
+    #   #{program_name} #{command_name} [options] TEMPLATE INFO
     #
     # OPTIONS
     # #{summarized_options}
@@ -14,26 +14,10 @@ module Noe
     #   argument using the .yaml info file given as second argument
     #
     class Create < Quickl::Command(__FILE__, __LINE__)
+      include Noe::Commons
 
       # Dry-run mode?
       attr_accessor :dry_run
-
-      def templates_dir
-        @templates_dir ||= find_templates_dir
-      end
-
-      def find_templates_dir
-        if File.directory?(File.join(ENV['HOME'], '.noe')) 
-          File.join(ENV['HOME'], '.noe')
-        else
-          File.expand_path('../../../templates', __FILE__)
-        end
-      end
-      
-      def find_template(name)
-        dir = File.join(find_templates_dir, name)
-        Template.new(dir)
-      end
 
       # Install options
       options do |opt|
@@ -88,7 +72,7 @@ module Noe
       def execute(args)
         raise Quickl::Help unless args.size == 2
         template_name, info_file = args
-        template = find_template(template_name)
+        template = template(template_name)
         user_info = YAML::load(File.read(info_file))
         Dir.foreach(template.src_folder) do |root|
           instantiate(File.join(template.src_folder, root), user_info, '.')

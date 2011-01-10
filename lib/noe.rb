@@ -23,13 +23,15 @@ module Noe
 
 end # module Noe
 
-Noe.require('quickl')
+Noe.require('quickl', ">= 0.2.0")
 Noe.require('wlang', ">= 0.9")
 require 'yaml'
 require 'fileutils'
 require 'noe/config'
 require 'noe/template'
 require 'noe/main'
+require 'noe/commons'
 require 'noe/help'
+require 'noe/list'
 require 'noe/create'
 

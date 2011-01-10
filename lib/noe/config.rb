@@ -2,7 +2,10 @@ module Noe
   class Config
     
     # Default configuration hash
-    DEFAULT_CONFIG = {}
+    DEFAULT_CONFIG = {
+      'version'       => Noe::VERSION,
+      'templates-dir' => File.expand_path('../../../templates', __FILE__)
+    }
     
     # Path to the configuration file
     attr_reader :file
@@ -17,22 +20,27 @@ module Noe
       __load unless file.nil?
     end
     
-    # Finds the configuration file and loads automatically
-    def self.find
-      in_home = File.join(ENV['HOME'], '.noerc')
-      if File.file?(in_home)
-        Config.new(in_home)
-      else
-        Config.new(nil)
-      end
-    end
-    
     # Loads configuration from YAML file
     def __load
       if File.file?(file) and File.readable?(file)
-        @config.merge YAML::load(File.read(file))
+        loaded = YAML::load(File.read(file))
+        if loaded.is_a?(Hash)
+          @config.merge(loaded)
+        else
+          raise Noe::Error, "Corrupted or invalid config file: #{file}"
+        end
       else
         raise Noe::Error, "Not a file or not readable: #{file}"
+      end
+    end
+    
+    # Returns folder where templates are located
+    def templates_dir
+      dir = config['templates-dir']
+      if File.directory?(dir) and File.readable?(dir)
+        dir
+      else
+        raise Noe::Error, "Invalid noe config, not a directory or unreadable: #{dir}"
       end
     end
      

@@ -19,16 +19,27 @@ module Noe
   class Main < Quickl::Delegate(__FILE__, __LINE__)
     
     # Configuration instance
-    attr_reader :config
+    attr_reader :config_file
     
-    # Creates a command instance
-    def initialize(*args)
-      super
-      @config = Noe::Config.find
+    # Returns Noe's configuration, loading it if required
+    def config
+      @config_file ||= find_config_file
+      Config.new(@config_file)
     end
 
+    # Finds the configuration file and loads automatically
+    def find_config_file
+      in_home = File.join(ENV['HOME'], '.noerc')
+      File.file?(in_home) ? in_home : nil
+    end
+    
     # Install options
     options do |opt|
+      # Set a specific configuration file to use
+      opt.on('--config=FILE',
+             'Sets a particular config file (defaults to ~/.noerc)') do |f|
+        @config_file = valid_read_file!(f)
+      end
       # Show the help and exit
       opt.on_tail("--help", "Show help") do
         raise Quickl::Help
