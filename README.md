@@ -6,13 +6,15 @@ Noe helps development by providing support for project templates and instantiati
 
 I'm pretty sure I have seen announcements for similar projects on ruby-lang in the past, 
 but I could not find them anymore... so I started mine. Please let me know alternatives
-and I'll add it below:
+and I'll add them below:
 
-    See also: 
+See also: 
+
+* ...
     
 Other reasons:
 
-* Noe is project agnostic and does not make assumption about project semantics
+* Noe is agnostic: it does not make any assumption about project semantics
 * Noe does not restrict itself to generation of ruby projects
 * Noe is not required at runtime: once your project is generated you're done
 * I prefer being DRY through generation and documentation, not ill-documented magic
@@ -92,12 +94,12 @@ The instantiation process is really simple. Given the variables described in the
 file (for which values are specified in your .noespec file) templates can use the following
 meta-constructions:
 
-* Template files and directories containing __variable__ in their name are automatically 
-  renamed (__variable__ is replaced by the corresponding value).
+* Template files and directories containing `__variable__` in their name are automatically 
+  renamed (`__variable__` is replaced by the corresponding value).
 * All template files are instantiated by [wlang](https://github.com/blambeau/wlang). You don't
-  have to know wlang in depth. You simply have to know that !{ruby_expression} in a file is 
+  have to know wlang in depth. You simply have to know that `!{ruby_expression}` in a file is 
   replaced by the expression evaluation. Variables are automatically in scope of such expressions,
-  so that !{variable} is replaced by its value.
+  so that `!{variable}` is replaced by its value.
 
 ## Contributing
 
