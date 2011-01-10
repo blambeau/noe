@@ -8,7 +8,7 @@ spec = Gem::Specification.new do |s|
   s.email = %q{blambeau@gmail.com}
 
   s.description = %q{A simple and extensible project generator}
-  s.summary = %q{A simple and extensible project generator}
+  s.summary = %q{Noe helps development by providing support for project templates and instantiation.}
 
   s.require_paths = ["lib"]
   s.bindir = "bin"
