@@ -42,57 +42,32 @@ module Noe
         }
       end
       
-      def do_check!(entry, variables)
+      def build_one(entry, variables)
         relocated = entry.relocate(variables)
-        if File.exists?(relocated) and not(force)
-          raise Noe::Error, "Noe aborted: file #{relocated} already exists.\n"\
-                            " Use --force to override."
-        end
-      end
-      
-      def do_dry!(entry, variables)
-        relocated = entry.relocate(variables)
-        if entry.file?
-          # remove any existing file
-          if File.exists?(relocated)
-            puts "rm -rf #{relocated}"
-          end
-          # instantiate it now
-          puts "wlang #{entry.path} > #{relocated}"
-        elsif entry.directory?
-          if File.exists?(relocated) 
-            if File.file?(relocated)
-              puts "rm -rf #{relocated}"
-              puts "mkdir #{relocated}"
+        todo = []
+        
+        # The file already exists, we should maybe do something
+        if File.exists?(relocated)
+          if force
+            unless entry.directory? and File.directory?(relocated)
+              todo << Rm.new(entry, variables)
             end
           else
-            puts "mkdir #{relocated}"
+            raise Noe::Error, "Noe aborted: file #{relocated} already exists.\n"\
+                              " Use --force to override."
           end
         end
-      end
-      
-      def do_real!(entry, variables)
-        relocated = entry.relocate(variables)
-        if entry.file?
-          # remove any existing file
-          if File.exists?(relocated)
-            FileUtils.rm_rf(relocated)
-          end
-          # instantiate it now
-          File.open(relocated, 'w') do |out|
-            dialect = "wlang/active-string"
-            out << WLang::file_instantiate(entry.realpath, variables, dialect)
-          end
-        elsif entry.directory? 
-          if File.exists?(relocated) 
-            if File.file?(relocated)
-              FileUtils.rm_rf(relocated)
-              FileUtils.mkdir(relocated)
-            end
-          else
-            FileUtils.mkdir(relocated)
-          end
+        
+        # Create directories
+        if entry.directory? and not(File.exists?(relocated))
+          todo << MkDir.new(entry, variables)
+          
+        # Create files  
+        elsif entry.file?
+          todo << FileInstantiate.new(entry, variables)
+
         end
+        todo
       end
       
       def execute(args)
@@ -114,24 +89,72 @@ module Noe
         template = template(spec['template-info']['name'])
         variables = spec['variables']
         
-        # Check that everything is ok
-        template.visit do |entry|
-          do_check!(entry, variables)
+        # Build what has to be done
+        commands = template.collect{|entry|
+          build_one(entry, variables)
+        }.flatten
+        
+        # let's go now
+        if dry_run
+          commands.each{|c| puts c}
+        else
+          commands.each{|c| c.run}
         end
         
-        # Dry-run process
-        if self.dry_run
-          template.visit do |entry|
-            do_dry!(entry, variables)
+      end
+      
+      class DoSomething
+
+        attr_reader :entry
+        attr_reader :variables
+
+        def initialize(entry, variables)
+          @entry, @variables = entry, variables
+        end
+        
+        def relocated
+          entry.relocate(variables)
+        end
+
+      end
+        
+      class MkDir < DoSomething
+
+        def run
+          FileUtils.mkdir relocated
+        end
+        
+        def to_s
+          "mkdir #{relocated}"
+        end
+        
+      end # class MkDir
+      
+      class Rm < DoSomething
+
+        def run
+          FileUtils.rm_rf relocated
+        end
+        
+        def to_s
+          "rm -rf #{relocated}"
+        end
+        
+      end # class Rm
+      
+      class FileInstantiate < DoSomething
+        
+        def run
+          File.open(relocated, 'w') do |out|
+            dialect = "wlang/active-string"
+            out << WLang::file_instantiate(entry.realpath, variables, dialect)
           end
         end
         
-        # Instantiate the template now
-        unless self.dry_run
-          template.visit do |entry|
-            do_real!(entry, variables)
-          end
+        def to_s
+          "wlang #{entry.path} > #{relocated}"
         end
+        
       end
 
     end # class Go
