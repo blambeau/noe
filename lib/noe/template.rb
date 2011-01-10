@@ -1,5 +1,6 @@
 module Noe
   class Template
+    include Enumerable
     
     # Main folder of the template
     attr_reader :folder
@@ -73,6 +74,7 @@ module Noe
         end
       end
     end
+    alias :each :visit
     
     private :__load
     
