@@ -26,7 +26,7 @@ module Noe
       if File.file?(file) and File.readable?(file)
         loaded = YAML::load(File.read(file))
         if loaded.is_a?(Hash)
-          @config.merge(loaded)
+          @config.merge!(loaded)
         else
           raise Noe::Error, "Corrupted or invalid config file: #{file}"
         end

@@ -1,3 +1,5 @@
+# Following entries are maintained by Noe itself. Please touch
+# with care.
 template-info:
   name:
     !{template_name}
@@ -7,10 +9,25 @@ template-info:
     1.0.0
   author: 
     Bernard Lambeau <blambeau@gmail.com>
+  
+# The following entries are template-related variables. Update
+# to match your own configuration.
 variables:
-  lower: "a ruby lower case project name (ex: noe)"
-  upper: "a ruby upper case project name (ex: Noe)"
-  author: "the project author (ex: Bernard Lambeau)"
-  email: "the author's email: (ex: blambeau@gmail.com)"
-  homepage: "the project's home page (http://github.com/blambeau/noe)"
-  description: "A not so short project description"
+  # A ruby lower case project name
+  lower: 
+    hello_world
+  # A ruby upper case project name
+  upper:
+    HelloWorld
+  # Author of the project
+  author: 
+    Bernard Lambeau
+  # Email of the author
+  email: 
+    blambeau@gmail.com
+  # Project's homepage
+  homepage:
+    http://github.com/blambeau/noe
+  # Project description
+  description: 
+    HelloWorld - A simple example for Noe project generator
