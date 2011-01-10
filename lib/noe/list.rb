@@ -7,8 +7,11 @@ module Noe
     #   #{program_name} #{command_name} 
     #
     # DESCRIPTION
-    #   This command list project templates found in the templates 
-    #   folder. The later is checked as a side effect.
+    #   This command list project templates found in the templates folder. 
+    #   The later is checked as a side effect. 
+    #
+    # TIP
+    #   Run this command to know where templates are located!
     #
     class List < Quickl::Command(__FILE__, __LINE__)
       include Noe::Commons

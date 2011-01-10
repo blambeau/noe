@@ -17,7 +17,29 @@ module Noe
     #   This command is generally used immediately after invoking 'create',
     #   on an almost empty directory. By default it safely fails if any file
     #   or directory would be overriden by the instantiation process. This
-    #   safe behavior can be bypassed through the --force option.
+    #   safe behavior can be bypassed through the --force and --add-only 
+    #   options.
+    #
+    # TYPICAL USAGE
+    #
+    #   When a fresh new project is created, this command is typically used
+    #   with the following scenario
+    #
+    #     noe create --ruby hello_world
+    #     cd hello_world
+    #     edit hello_world.noespec
+    #     noe go
+    #
+    #   If you modify your .noespec file and want to force overriding of all 
+    #   files:
+    #     
+    #     noe go --force
+    #
+    #   If you want to regenerate some files only (README and gemspec, for 
+    #   example):
+    #
+    #     rm README.md hello_world.gemspec
+    #     noe go --add-only
     #
     class Go < Quickl::Command(__FILE__, __LINE__)
       include Noe::Commons

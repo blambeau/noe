@@ -1,6 +1,6 @@
 module Noe
   #
-  # Noe - Probably the simplest project generator from templates
+  # Noe - A simple and extensible project generator
   #
   # SYNOPSIS
   #   #{program_name} [--version] [--help] COMMAND [cmd opts] ARGS...
@@ -12,7 +12,7 @@ module Noe
   # #{summarized_subcommands}
   #
   # DESCRIPTION
-  #   Noe is a project generator from templates.
+  #   Noe helps development via support for well-designed templates.
   #
   # See '#{program_name} help COMMAND' for more information on a specific command.
   #

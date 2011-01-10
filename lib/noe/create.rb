@@ -5,13 +5,31 @@ module Noe
     # Create a fresh new project
     #
     # SYNOPSIS
-    #   #{program_name} #{command_name} [options] pname
+    #   #{program_name} #{command_name} [options] PROJECT_NAME
     #
     # OPTIONS
     # #{summarized_options}
     #
     # DESCRIPTION
-    #   This command guides you with the creation of a new project.
+    #   This command guides you with the creation of a new project whose
+    #   name is given as first argument. A new folder is created and a .noespec
+    #   file is generated in it. The template specified in ~/.noerc under :default 
+    #   is used by default. Use --template to override this. 
+    #
+    #   After creation, you'll have to edit the generated .noespec file then run
+    #   'noe go' in the new directory.
+    #
+    # TYPICAL USAGE
+    #
+    #   # start creation of a ruby project
+    #   noe create --ruby hello_world
+    #   cd hello_world
+    #  
+    #   # edit the configuration
+    #   edit hello_world.noespec
+    #
+    #   # launch template generation
+    #   noe go
     #
     class Create < Quickl::Command(__FILE__, __LINE__)
       include Noe::Commons
