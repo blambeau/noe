@@ -17,8 +17,10 @@ spec = Gem::Specification.new do |s|
   s.extra_rdoc_files = ["README.md", "CHANGELOG.md"]
 
   s.files = 
+    Dir['bin/**/*'] +
     Dir['lib/**/*'] +
     Dir['spec/**/*'] +
+    Dir['templates/**/*'] +
     %w{ noe.gemspec Rakefile README.md CHANGELOG.md LICENCE.txt}
     
   s.add_dependency('wlang',  '>= 0.9.2')
