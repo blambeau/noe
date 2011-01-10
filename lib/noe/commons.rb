@@ -10,7 +10,7 @@ module Noe
       config.templates_dir
     end
     
-    def template(name)
+    def template(name = config.default)
       Template.new(File.join(templates_dir, name))
     end
 

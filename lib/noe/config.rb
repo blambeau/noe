@@ -4,7 +4,8 @@ module Noe
     # Default configuration hash
     DEFAULT_CONFIG = {
       'version'       => Noe::VERSION,
-      'templates-dir' => File.expand_path('../../../templates', __FILE__)
+      'templates-dir' => File.expand_path('../../../templates', __FILE__),
+      'default'       => 'ruby'
     }
     
     # Path to the configuration file
@@ -42,6 +43,16 @@ module Noe
       else
         raise Noe::Error, "Invalid noe config, not a directory or unreadable: #{dir}"
       end
+    end
+    
+    # Returns the name of the default template to use
+    def default
+      config['default']
+    end
+    
+    # Sets the name of the default template to use
+    def default=(name)
+      config['default'] = name
     end
      
     private :__load

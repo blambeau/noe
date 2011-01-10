@@ -4,14 +4,13 @@ module Noe
     # Instantiate a project template
     #
     # SYNOPSIS
-    #   #{program_name} #{command_name} [options] TEMPLATE INFO
+    #   #{program_name} #{command_name} [options] [SPEC_FILE]
     #
     # OPTIONS
     # #{summarized_options}
     #
     # DESCRIPTION
-    #   This command instantiates a template whose folder is given as first
-    #   argument using the .yaml info file given as second argument
+    #   Instantiate the template from a .noespec file
     #
     class Go < Quickl::Command(__FILE__, __LINE__)
       include Noe::Commons
@@ -49,14 +48,24 @@ module Noe
       end
       
       def execute(args)
-        raise Quickl::Help unless args.size == 2
-        template_name, info_file = args
-
-        # load template and user infos
-        template = template(template_name)
-        user_info = YAML::load(File.read(info_file))
-        variables = user_info['variables']
+        raise Quickl::Help if args.size > 1
         
+        # Find spec file
+        spec_file = if args.size == 1
+          valid_read_file!(args.first)
+        else
+          spec_files = Dir['*.noespec']
+          if spec_files.size > 1
+            raise Noe::Error, "Ambiguous request, multiple specs: #{spec_files.join(', ')}"
+          end
+          spec_files.first
+        end
+        
+        # Load spec now
+        spec = YAML::load(File.read(spec_file))
+        template = template(spec['template']['name'])
+        variables = spec['variables']
+
         # instantiate the template now
         template.visit do |entry|
           if dry_run
