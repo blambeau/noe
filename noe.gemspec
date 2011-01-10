@@ -7,8 +7,8 @@ spec = Gem::Specification.new do |s|
   s.author = %q{Bernard Lambeau}
   s.email = %q{blambeau@gmail.com}
 
-  s.description = %q{Probably the simplest project generator from templates}
-  s.summary = %q{Probably the simplest project generator from templates}
+  s.description = %q{A simple and extensible project generator}
+  s.summary = %q{A simple and extensible project generator}
 
   s.require_paths = ["lib"]
   s.bindir = "bin"

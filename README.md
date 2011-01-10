@@ -1,3 +1,1 @@
-# Noe
-
-Probably the simplest project generator from templates
+# Noe - A simple and extensible project generator
