@@ -34,5 +34,5 @@ require 'noe/commons'
 require 'noe/help'
 require 'noe/list'
 require 'noe/visit'
-require 'noe/create'
+require 'noe/go'
 

@@ -13,7 +13,7 @@ module Noe
     #   This command instantiates a template whose folder is given as first
     #   argument using the .yaml info file given as second argument
     #
-    class Create < Quickl::Command(__FILE__, __LINE__)
+    class Go < Quickl::Command(__FILE__, __LINE__)
       include Noe::Commons
 
       # Dry-run mode?
@@ -67,6 +67,6 @@ module Noe
         end
       end
 
-    end # class Create
+    end # class Go
   end # class Main
 end # module Noe
