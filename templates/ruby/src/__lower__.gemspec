@@ -10,8 +10,10 @@ spec = Gem::Specification.new do |s|
   s.description = %q{!{description}}
 
   s.require_paths = ["lib"]
+  s.bindir = 'bin'
   s.executables = []
 
+  s.has_rdoc = true
   s.extra_rdoc_files = ["README.md", "CHANGELOG.md"]
 
   s.files = 

@@ -1,24 +1,42 @@
-require "rake/gempackagetask"
-require "rspec/core/rake_task"
-require "yard"
-
 # We run tests by default
 task :default => :spec
 
-desc "Run all examples"
-RSpec::Core::RakeTask.new(:spec) do |t|
-	t.rspec_opts = %w[--color]
-	t.verbose = false
+### About project tests
+begin
+  require "rspec/core/rake_task"
+
+  desc "Run all examples"
+  RSpec::Core::RakeTask.new(:spec) do |t|
+  	t.rspec_opts = %w[--color]
+  	t.verbose = false
+  end
+rescue LoadError
 end
 
-# About yard documentation
-YARD::Rake::YardocTask.new do |t|
-  t.files   = ['lib/**/*.rb']
-  t.options = ['--output-dir', 'doc/api', '-', "README.md", "CHANGELOG.md"]
+# About project documentation
+begin
+  require "yard"
+  
+  desc "Generate yard documentation"
+  YARD::Rake::YardocTask.new do |t|
+    t.files   = ['lib/**/*.rb']
+    t.options = ['--output-dir', 'doc/api', '-', "README.md", "CHANGELOG.md"]
+  end
+rescue LoadError
 end
 
-desc "Create the .gem package"
-$spec = Kernel.eval(File.read(File.expand_path('../!{lower}.gemspec', __FILE__)))
-Rake::GemPackageTask.new($spec) do |pkg|
-	pkg.need_tar = true
+# About project packaging
+begin
+  require "rake/gempackagetask"
+  
+  # Dynamically load the gem spec
+  spec_file = File.expand_path('../!{lower}.gemspec', __FILE__)
+  spec = Kernel.eval(File.read(spec_file))
+
+  # Everything looks fine, add the gem task
+  desc "Create the .gem package"
+  Rake::GemPackageTask.new(spec) do |pkg|
+  	pkg.need_tar = true
+  end
+rescue LoadError
 end
