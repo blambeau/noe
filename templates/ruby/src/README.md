@@ -1,3 +1,8 @@
 # !{upper}
 
-!{description}
+!{summary}
+
+## Links
+
+!{homepage}
+

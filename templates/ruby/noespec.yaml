@@ -27,6 +27,6 @@ variables:
   # Project's homepage
   homepage:
     http://github.com/blambeau/noe
-  # Project description
-  description: 
-    HelloWorld - A simple example for Noe project generator
+  # Project summary
+  summary: 
+    A simple example for Noe project generator

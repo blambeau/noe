@@ -64,7 +64,10 @@ module Noe
     # Runs the command
     def run(argv, requester = nil)
       super
-    rescue Quickl::Error
+    rescue WLang::Error => ex
+      puts "#{ex.class}: #{ex.message}"
+      puts (ex.wlang_backtrace || ex.backtrace).join("\n")
+    rescue Quickl::Error => ex
       raise
     rescue Noe::Error => ex
       puts "#{ex.class}: #{ex.message}"
