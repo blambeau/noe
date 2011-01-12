@@ -7,7 +7,7 @@ $bundler_gemfile = Bundler.definition
 # We require your library, mainly to have access to the VERSION number. 
 # Feel free to set $version manually.
 require File.expand_path('../lib/!{lower}', __FILE__)
-$version = HelloWorld::VERSION.dup
+$version = !{upper}::VERSION.dup
 
 #
 # This is your Gem specification. Default values are provided so that your library
