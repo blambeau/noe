@@ -35,7 +35,7 @@ options.
 
 ## Philosophy
 
-Noe is designed to follow a certain number of good principles and help you following them 
+Noe is designed to follow a certain number of good principles and helps you following them 
 as well.
 
 ### Separation of concerns
@@ -45,13 +45,14 @@ between a) Noe itself, b) a skeleton and c) an instantiated product. This fact h
 consequences:
 
 * Noe itself **is not dedicated to specific products** (like a ruby library). Even if Noe 
-  comes bundled with a default template for ruby projects, writing skeletons for something
+  comes bundled with a default skeleton for ruby projects, writing skeletons for something
   else should not be a problem. In other words, Noe itself is agnostic: the semantics of 
   generated products is the secret of the skeleton, under the responsibility of it's 
   maintainer. 
 
 * Noe **should not be a runtime dependency** of the product. Good skeletons maintain this 
   separation. As an example the default ruby skeleton is strictly independent of Noe itself.
+  Principles explained below explain why this fact is important.
 
 ### Master the tools YOU use
 
@@ -63,7 +64,11 @@ tools you have to master:
   have to study Noe's API and internals. In contrast, you have to **master the tools and best practices
   of your product's ecosystem**. A good skeleton should help you along this task. As an example, the 
   default ruby skeleton is fully documented to help you gaining understanding of ***rake*, *spec*, 
-  *yard*, *bundler*** and so on but **not noe itself**.
+  *yard*, *bundler*** and so on but **not noe itself**. 
+  
+* This explains why Noe itself is not a runtime dependency. Using a particular skeleton already means 
+  learning a lot, at least in the long run (see the section of Magic below). Noe avoids interfering 
+  with generated products, to avoid making the learning curve even worse.
 
 * Being a skeleton creator/maintainer is another story of course. To write a skeleton you'll also have 
   to learn **Noe's API and internals**. To write a good/reusable one, you'll certainly have to **master 
