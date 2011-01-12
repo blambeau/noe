@@ -5,10 +5,10 @@ templates). Skeletons are designed for building specific products (a ruby librar
 or dynamic web site, ...). Noe instantiates them and helps you maintaining your product 
 via meta-information provided by a .noespec yaml file. 
 
-Noe comes bundled with a skeleton for creating and maintaining a ruby gem. This skeleton is
-written and maintained to follow ruby best practices and may also be tuned for your own needs.
-Read more about it and related projects as well as the underlying philosophy in the sections 
-below.
+Noe comes bundled with a skeleton for creating and maintaining a ruby gem. This skeleton 
+is written and maintained to follow ruby best practices and may also be tuned for your own 
+needs. Read more about it and related projects as well as the underlying philosophy in the 
+sections below.
 
 ## Getting started
 
@@ -17,8 +17,8 @@ below.
     [noe help install]
     noe install 
     
-Have a loot at ~/.noerc and ~/.noe for configuration and a default ruby template. To instantiate
-a ruby project simply execute the following commands in turn:
+Have a loot at ~/.noerc and ~/.noe for configuration and a default ruby template. To 
+instantiate a ruby project simply execute the following commands in turn:
 
     # Given a template ruby under ~/.noe/ruby, install by default
     noe create --template=ruby foo
@@ -35,14 +35,14 @@ options.
 
 ## Philosophy
 
-Noe is designed to follow a certain number of good principles and helps you following them 
-as well.
+Noe is designed to follow a certain number of good principles and helps you following 
+them as well.
 
 ### Separation of concerns
 
 Noe maintains a strong separation of concerns. In particular one has to make the distinction 
-between a) Noe itself, b) a skeleton and c) an instantiated product. This fact has two main 
-consequences:
+between a) Noe itself, b) a skeleton and c) an instantiated product. This fact has two 
+main consequences:
 
 * Noe itself **is not dedicated to specific products** (like a ruby library). Even if Noe 
   comes bundled with a default skeleton for ruby projects, writing skeletons for something
@@ -59,40 +59,44 @@ consequences:
 The separation of concerns described previously also drives what you have to learn and what
 tools you have to master:
 
-* As an ordinary Noe user (vs. skeleton maintainer) and because Noe itself (unlike skeletons) is 
-  project agnostic, you only have to know **basic Noe commands** (see 'noe --help') and should never
-  have to study Noe's API and internals. In contrast, you have to **master the tools and best practices
-  of your product's ecosystem**. A good skeleton should help you along this task. As an example, the 
-  default ruby skeleton is fully documented to help you gaining understanding of ***rake*, *spec*, 
-  *yard*, *bundler*** and so on but **not noe itself**. 
+* As an ordinary Noe user (vs. skeleton maintainer) and because Noe itself (unlike skeletons
+  is project agnostic, you only have to know **basic Noe commands** (see 'noe --help') and 
+  should never have to study Noe's API and internals. In contrast, you have to **master the 
+  tools and best practices of your product's ecosystem**. A good skeleton should help you 
+  along this task. As an example, the default ruby skeleton is fully documented to help you 
+  gaining understanding of ***rake*, *spec*, *yard*, *bundler*** and so on but **not noe 
+  itself**. 
   
-* This explains why Noe itself is not a runtime dependency. Using a particular skeleton already means 
-  learning a lot, at least in the long run (see the section about Magic below). Noe avoids interfering 
-  with generated products to avoid making the learning curve even worse.
+* This explains why Noe itself is not a runtime dependency. Using a particular skeleton 
+  already means learning a lot, at least in the long run (see the section about Magic below). 
+  Noe avoids interfering with generated products to avoid making the learning curve even 
+  worse.
 
-* Being a skeleton creator/maintainer is another story of course. To write a skeleton you'll also have 
-  to learn **Noe's API and internals**. To write a good/reusable one, you'll certainly have to **master 
-  the full ecosystem and best practices of the targetted product**, which is a good opportunity for 
-  learning and sharing it!
+* Being a skeleton creator/maintainer is another story of course. To write a skeleton you'll 
+  also have to learn **Noe's API and internals**. To write a good/reusable one, you'll 
+  certainly have to **master the full ecosystem and best practices of the targetted product**, 
+  which is a good opportunity for learning and sharing it!
 
 ### Magic Only If Flexible
 
-"Don't Repeat Yourself" and "Convention over Configuration" are certainly good principles. However 
-tuning, configuration and options exist, are useful and should certainly not be hidden to the user.
-Instead configuration and options should come with default values, and should be fully documented. 
-Providing magic is great if there is a user-centric way (in contrast to a developer one) of 
-understanding and controlling the magic and underlying assumptions.
+"Don't Repeat Yourself" and "Convention over Configuration" are certainly good principles. 
+However tuning, configuration and options exist, are useful and should certainly not be 
+hidden to the user. Instead configuration and options should come with default values, 
+and should be fully documented. Providing magic is great if there is a user-centric way 
+(in contrast to a developer one) of understanding and controlling the magic and underlying 
+assumptions.
 
-As an example, the default ruby template comes with some magic: you can create a project and immediately
-invoke 'rake test', 'rake yard', ... and not investigating further. You can also have a look at the
-_tasks_ folder to understand and control the rake tasks that your project will use... In fact, you 
-**must** investigate: the generated product is yours, not mine and YOU have to master your build chain!
+As an example, the default ruby template comes with some magic: you can create a project 
+and immediately invoke 'rake test', 'rake yard', ... and not investigating further. You 
+can also have a look at the _tasks_ folder to understand and control the rake tasks that 
+your project will use... In fact, you **must** investigate: the generated product is yours, 
+not mine and YOU have to master your build chain!
   
 ## Ruby skeleton and Related projects
 
-Noe is inspired by existing projects, mostly from the ruby community. In particular, the default
-ruby template has been heavily influenced by the projects below as well as feedback of their 
-authors:
+Noe is inspired by existing projects, mostly from the ruby community. In particular, the 
+default ruby template has been heavily influenced by the projects below as well as feedback 
+of their authors:
 
 * [hoe](http://seattlerb.rubyforge.org/hoe/), Ryan Davis and Eric Hodel 
 * [echoe](https://github.com/fauna/echoe), Evan Weaver 
@@ -103,12 +107,13 @@ in fact). All provide powerful tools that supports you along the different steps
 ruby software lifecycle (creating, testing, releasing, announcing, and so on.). They mostly
 differ in the way you can tune/configure the generated project for specific needs. 
 
-These projects differ from the Ruby skeleton proposed by Noe in that they use a control approach 
-(rake tasks installed in your project via a development/runtime dependency) while Noe uses a 
-generative approach (the generated ruby project and rake tasks do not depend on Noe at all).
+These projects differ from the Ruby skeleton proposed by Noe in that they use a control 
+approach (rake tasks installed in your project via a development/runtime dependency) while 
+Noe uses a generative approach (the generated ruby project and rake tasks do not depend on 
+Noe at all).
 
 You'll find more information about the Noe's ruby skeleton in it's own 
-[README file](https://github.com/blambeau/noe/blob/master/templates/ruby/README.md).
+[README](https://github.com/blambeau/noe/blob/master/templates/ruby/README.md).
 
 ## Short guide for template maintainers
 
@@ -123,10 +128,10 @@ Under ~/.noe, a valid template folder (say xxx) has the following structure
 
 ### noespec.yaml
 
-The noespec.yaml file of a template is used to formally describe the template. When a project 
-(say foo) is created (see 'noe create') using a template (say ruby) the file 
-~/.noe/ruby/noespec.yaml is used to generate foo/foo.noespec. The later is then used by 
-'noe go' to instantiate the project.
+The noespec.yaml file of a template is used to formally describe the template. When a 
+project (say foo) is created (see 'noe create') using a template (say ruby) the file 
+~/.noe/ruby/noespec.yaml is used to generate foo/foo.noespec. The later is then used 
+by 'noe go' to instantiate the project.
 
 The noespec.yaml file should ressemble something like this:
 
@@ -150,16 +155,16 @@ Have a look at ~/.noe/ruby/noespec.yaml and ~/.noe/ruby/src for an example.
 
 ### Instantiation process
 
-The instantiation process is really simple. Given the variables described in the noespec.yaml 
-file (for which values are specified in your .noespec file) templates can use the following
-meta-constructions:
+The instantiation process is really simple. Given the variables described in the 
+noespec.yaml file (for which values are specified in your .noespec file) templates 
+can use the following meta-constructions:
 
-* Template files and directories containing `__variable__` in their name are automatically 
+* Template files and directories containing `__variable__` in their name are automatically
   renamed (`__variable__` is replaced by the corresponding value).
-* All template files are instantiated by [wlang](https://github.com/blambeau/wlang). You don't
-  have to know wlang in depth. You simply have to know that `!{ruby_expression}` in a file is 
-  replaced by the expression evaluation. Variables are automatically in scope of such expressions,
-  so that `!{variable}` is replaced by its value.
+* All template files are instantiated by [wlang](https://github.com/blambeau/wlang). You 
+  don't have to know wlang in depth. You simply have to know that `!{ruby_expression}` in 
+  a file is replaced by the expression evaluation. Variables are automatically in scope 
+  of such expressions, so that `!{variable}` is replaced by its value.
 
 ## Contributing
 
@@ -171,7 +176,7 @@ Fork Noe on github! I'm particularly interested in the following enhancements:
 * Add support for multi-generated files from arrays in .noespec files
 * ...
 
-If you think that your template is worth considering for (ruby, rails, js, latex, or anything 
-else) please let me known and I'll add it to the list below.
+If you think that your template is worth considering for (ruby, rails, js, latex, or 
+anything else) please let me known and I'll add it to the list below.
 
 * ...
