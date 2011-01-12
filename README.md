@@ -87,8 +87,6 @@ As an example, the default ruby template comes with some magic: you can create a
 invoke 'rake test', 'rake yard', ... and not investigating further. You can also have a look at the
 _tasks_ folder to understand and control the rake tasks that your project will use... In fact, you 
 **must** investigate: the generated product is yours, not mine and YOU have to master your build chain!
-At the end, if you don't agree with the skeleton you use, you can simply start yours by updating an 
-existing one!
   
 ## About templates
 
