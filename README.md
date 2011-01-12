@@ -52,7 +52,7 @@ consequences:
 
 * Noe **should not be a runtime dependency** of the product. Good skeletons maintain this 
   separation. As an example the default ruby skeleton is strictly independent of Noe itself.
-  Principles explained below explain why this fact is important.
+  Principles discussed below explain why this is important.
 
 ### Master the tools YOU use
 
@@ -67,8 +67,8 @@ tools you have to master:
   *yard*, *bundler*** and so on but **not noe itself**. 
   
 * This explains why Noe itself is not a runtime dependency. Using a particular skeleton already means 
-  learning a lot, at least in the long run (see the section of Magic below). Noe avoids interfering 
-  with generated products, to avoid making the learning curve even worse.
+  learning a lot, at least in the long run (see the section about Magic below). Noe avoids interfering 
+  with generated products to avoid making the learning curve even worse.
 
 * Being a skeleton creator/maintainer is another story of course. To write a skeleton you'll also have 
   to learn **Noe's API and internals**. To write a good/reusable one, you'll certainly have to **master 
@@ -83,10 +83,12 @@ Instead configuration and options should come with default values, and should be
 Providing magic is great if there is a user-centric way (in contrast to a developer one) of 
 understanding and controlling the magic and underlying assumptions.
 
-As an example, the default ruby template comes with magic: you can create a project and immediately
+As an example, the default ruby template comes with some magic: you can create a project and immediately
 invoke 'rake test', 'rake yard', ... and not investigating further. You can also have a look at the
-_tasks_ folder to understand and control the tasks that your project will use... In fact, you **must** 
-investigate: the generated product is yours, not mine and YOU have to master your build chain!
+_tasks_ folder to understand and control the rake tasks that your project will use... In fact, you 
+**must** investigate: the generated product is yours, not mine and YOU have to master your build chain!
+At the end, if you don't agree with the skeleton you use, you can simply start yours by updating an 
+existing one!
   
 ## About templates
 
