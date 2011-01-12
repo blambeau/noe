@@ -10,7 +10,7 @@ written and maintained to follow ruby best practices and may also be tuned for y
 Read more about it and related projects as well as the underlying philosophy in the sections 
 below.
 
-## Getting started and Usage summary
+## Getting started
 
     [sudo] gem install noe
     [noe --help]
@@ -88,7 +88,29 @@ invoke 'rake test', 'rake yard', ... and not investigating further. You can also
 _tasks_ folder to understand and control the rake tasks that your project will use... In fact, you 
 **must** investigate: the generated product is yours, not mine and YOU have to master your build chain!
   
-## About templates
+## Ruby skeleton and Related projects
+
+Noe is inspired by existing projects, mostly from the ruby community. In particular, the default
+ruby template has been heavily influenced by the projects below as well as feedback of their 
+authors:
+
+* [hoe](http://seattlerb.rubyforge.org/hoe/), Ryan Davis and Eric Hodel 
+* [echoe](https://github.com/fauna/echoe), Evan Weaver 
+* [bones](https://github.com/TwP/bones), Tim Pease
+
+These projects help you generating and maintaining ruby projects (generally gem libraries, 
+in fact). All provide powerful tools that supports you along the different steps of your 
+ruby software lifecycle (creating, testing, releasing, announcing, and so on.). They mostly
+differ in the way you can tune/configure the generated project for specific needs. 
+
+These projects differ from the Ruby skeleton proposed by Noe in that they use a control approach 
+(rake tasks installed in your project via a development/runtime dependency) while Noe uses a 
+generative approach (the generated ruby project and rake tasks do not depend on Noe at all).
+
+You'll find more information about the Noe's ruby skeleton in it's own 
+[README file](https://github.com/blambeau/noe/blob/master/templates/ruby/README.md).
+
+## Short guide for template maintainers
 
 Under ~/.noe, a valid template folder (say xxx) has the following structure
 
@@ -138,20 +160,6 @@ meta-constructions:
   have to know wlang in depth. You simply have to know that `!{ruby_expression}` in a file is 
   replaced by the expression evaluation. Variables are automatically in scope of such expressions,
   so that `!{variable}` is replaced by its value.
-
-## Ruby skeleton and Related projects
-
-Noe is inspired by existing projects, mostly from the ruby community. In particular, the default
-ruby template has been influenced by the projects below as well as feedback of their authors:
-
-* [hoe](http://seattlerb.rubyforge.org/hoe/), Ryan Davis and Eric Hodel 
-* [echoe](https://github.com/fauna/echoe), Evan Weaver 
-* [bones](https://github.com/TwP/bones), Tim Pease
-
-These projects help you generating and maintaining ruby projects (generally gem libraries, 
-in fact). All provide powerful tools that supports you along the different steps of your 
-ruby software lifecycle (creating, testing, releasing, announcing, and so on.). They mostly
-differ in the way you can tune/configure the generated project for specific needs.
 
 ## Contributing
 
