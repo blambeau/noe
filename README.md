@@ -1,44 +1,27 @@
 # Noe - A simple and extensible project generator
 
-Noe helps development by providing support for project templates and instantiation.
+Noe is a tool that generates projects from predefined skeletons (aka project/application 
+templates). Skeletons are designed for building specific products (a ruby library, a static 
+or dynamic web site, ...). Noe instantiates them then helps you maintaining your product 
+thanks to meta-information provided by a yaml file called the project's .noespec file. 
 
-## Why?
+Noe comes bundled with a skeleton for creating and maintaining a ruby gem. This skeleton is
+written and maintained to follow ruby best practices and may also be tuned for your own needs.
+Read more about it and related projects as well as the underlying philosophy in the sections 
+below.
 
-I'm pretty sure I have seen announcements for similar projects on ruby-lang in the past, 
-but I could not find them anymore... so I started mine. Please let me know alternatives
-and I'll add them below:
-
-See also: 
-
-* ...
-    
-Other reasons:
-
-* Noe is agnostic: it does not make any assumption about project semantics
-* Noe does not restrict itself to generation of ruby projects
-* Noe is not required at runtime: once your project is generated you're done
-* I don't like magic
-
-## Getting started
+## Getting started and Usage summary
 
     [sudo] gem install noe
     [noe --help]
     [noe help install]
     noe install 
     
-Have a loot at ~/.noerc and ~/.noe for configuration and a default ruby 
-template.
-  
-## Usage summary
+Have a loot at ~/.noerc and ~/.noe for configuration and a default ruby template. To instantiate
+a ruby project simply execute the following commands in turn:
 
-Maintain your templates under ~/.noe (or what you provided at installation time). Have a 
-look at github to find xxx.noe projects to find well-designed/documented templates for
-specific needs.
-
-To create a fresh new project:
-
-    # Given a template xxx under ~/.noe/xxx
-    noe create --template=xxx foo
+    # Given a template ruby under ~/.noe/ruby, install by default
+    noe create --template=ruby foo
     cd foo
   
     # Edit the template configuration foo/foo.noespec
@@ -50,6 +33,56 @@ To create a fresh new project:
 That's it! But also have a look at 'noe help create' and 'not help go' for additional
 options.
 
+## Philosophy
+
+Noe is designed to follow a certain number of good principles and help you following them 
+as well.
+
+### Separation of concerns
+
+Noe maintains a strong separation of concerns. In particular one has to make the distinction 
+between a) Noe itself, b) a skeleton and c) an instantiated product. This fact has two main 
+consequences:
+
+* Noe itself **is not dedicated to specific products** (like a ruby library). Even if Noe 
+  comes bundled with a default template for ruby projects, writing skeletons for something
+  else should not be a problem. In other words, Noe itself is agnostic: the semantics of 
+  generated products is the secret of the skeleton, under the responsibility of it's 
+  maintainer. 
+
+* Noe **should not be a runtime dependency** of the product. Good skeletons maintain this 
+  separation. As an example the default ruby skeleton is strictly independent of Noe itself.
+
+### Master the tools YOU use
+
+The separation of concerns described previously also drives what you have to learn and what
+tools you have to master:
+
+* As an ordinary Noe user (vs. skeleton maintainer) and because Noe itself (unlike skeletons) is 
+  project agnostic, you only have to know **basic Noe commands** (see 'noe --help') and should never
+  have to study Noe's API and internals. In contrast, you have to **master the tools and best practices
+  of your product's ecosystem**. A good skeleton should help you along this task. As an example, the 
+  default ruby skeleton is fully documented to help you gaining understanding of ***rake*, *spec*, 
+  *yard*, *bundler*** and so on but **not noe itself**.
+
+* Being a skeleton creator/maintainer is another story of course. To write a skeleton you'll also have 
+  to learn **Noe's API and internals**. To write a good/reusable one, you'll certainly have to **master 
+  the full ecosystem and best practices of the targetted product**, which is a good opportunity for 
+  learning and sharing it!
+
+### Magic Only If Flexible
+
+"Don't Repeat Yourself" and "Convention over Configuration" are certainly good principles. However 
+tuning, configuration and options exist, are useful and should certainly not be hidden to the user.
+Instead configuration and options should come with default values, and should be fully documented. 
+Providing magic is great if there is a user-centric way (in contrast to a developer one) of 
+understanding and controlling the magic and underlying assumptions.
+
+As an example, the default ruby template comes with magic: you can create a project and immediately
+invoke 'rake test', 'rake yard', ... and not investigating further. You can also have a look at the
+_tasks_ folder to understand and control the tasks that your project will use... In fact, you **must** 
+investigate: the generated product is yours, not mine and YOU have to master your build chain!
+  
 ## About templates
 
 Under ~/.noe, a valid template folder (say xxx) has the following structure
@@ -100,6 +133,20 @@ meta-constructions:
   have to know wlang in depth. You simply have to know that `!{ruby_expression}` in a file is 
   replaced by the expression evaluation. Variables are automatically in scope of such expressions,
   so that `!{variable}` is replaced by its value.
+
+## Ruby skeleton and Related projects
+
+Noe is inspired by existing projects, mostly from the ruby community. In particular, the default
+ruby template has been influenced by the projects below as well as feedback of their authors:
+
+* [hoe](http://seattlerb.rubyforge.org/hoe/), Ryan Davis and Eric Hodel 
+* [echoe](https://github.com/fauna/echoe), Evan Weaver 
+* [bones](https://github.com/TwP/bones), Tim Pease
+
+These projects help you generating and maintaining ruby projects (generally gem libraries, 
+in fact). All provide powerful tools that supports you along the different steps of your 
+ruby software lifecycle (creating, testing, releasing, announcing, and so on.). They mostly
+differ in the way you can tune/configure the generated project for specific needs.
 
 ## Contributing
 
