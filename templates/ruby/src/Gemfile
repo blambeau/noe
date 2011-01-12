@@ -1,8 +1,9 @@
 source 'http://rubygems.org'
 
+group :default do 
+  !{dependencies.collect{|dep| "gem '#{dep['name']}', '#{dep['version']}'"}.join("\n  ")}
+end
+
 group :development do 
-  gem "bundler",    "~> 1.0.0"
-  gem "rspec",      "~> 2.4.0"
-  gem "yard",       "~> 0.6.4"
-  gem "bluecloth",  "~> 2.0.9"
+  !{devel_dependencies.collect{|dep| "gem '#{dep['name']}', '#{dep['version']}'"}.join("\n  ")}
 end

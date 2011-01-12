@@ -1,7 +1,5 @@
 coverage/*
 *.DS_Store
 pkg
-.bundle
-*.swp
 doc/api
 .yardoc

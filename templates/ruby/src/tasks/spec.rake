@@ -55,4 +55,6 @@ rescue LoadError
   task :spec do
     abort 'rspec is not available. In order to run spec, you must: gem install rspec'
   end
+ensure
+  task :test => [:spec]
 end

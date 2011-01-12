@@ -1,8 +1,18 @@
-# We require your library, mainly to have access to the 
-# VERSION number. Feel free to set $version manually.
-require File.expand_path('../lib/!{lower}', __FILE__)
-$version = !{upper}::VERSION.dup
+# We load Gemfile via Bundler in order to install gem dependencies
+# automatically from information written there.
+gem "bundler", "~> 1.0"
+require "bundler"
+$bundler_gemfile = Bundler.definition
 
+# We require your library, mainly to have access to the VERSION number. 
+# Feel free to set $version manually.
+require File.expand_path('../lib/!{lower}', __FILE__)
+$version = HelloWorld::VERSION.dup
+
+#
+# This is your Gem specification. Default values are provided so that your library
+# should be correctly packaged given what you have described in the .noespec file.
+#
 Gem::Specification.new do |s|
   
   ################################################################### ABOUT YOUR GEM
@@ -25,7 +35,7 @@ Gem::Specification.new do |s|
   s.description = File.read(File.expand_path('../README.md', __FILE__))
   
   # The URL of this gem's home page (optional)
-  s.homepage = %q{!{homepage}}
+  s.homepage = %q{!{links.first}}
 
   # Gem publication date (required but auto)
   #
@@ -50,7 +60,7 @@ Gem::Specification.new do |s|
   # If you are providing multiple authors and multiple emails they should be
   # in the same order.
   # 
-  s.authors = %w{ !{author} }
+  s.authors = [ !{authors.collect{|a| "%q{#{a['name']}}"}.join(' ')} ]
   
   # Contact emails for this gem
   #
@@ -59,7 +69,7 @@ Gem::Specification.new do |s|
   #
   # NOTE: Somewhat strangly this attribute is always singular! 
   #       Don't replace by s.emails = ...
-  s.email  = %w{ !{email} }
+  s.email  = [ !{authors.collect{|a| "%q{#{a['email']}}"}.join(' ')} ]
 
   ################################################################### PATHS, FILES, BINARIES
   
@@ -117,18 +127,27 @@ Gem::Specification.new do |s|
   #
   # One call to add_dependency('gem_name', 'gem version requirement')
   # for each normal dependency. These gems will be installed with your
-  # gem
-  #
-  # s.add_dependency('','~> x.y.z')
-
+  # gem. 
   #
   # One call to add_development_dependency('gem_name', 'gem version requirement')
-  # for each development dependency
+  # for each development dependency.
   #
-  s.add_development_dependency('rspec',     "~> 2.4.0")
-  s.add_development_dependency('yard',      "~> 0.6.4")
-  s.add_development_dependency('bluecloth', "~> 2.0.9")
-  
+  # s.add_dependency('','~> x.y.z')
+  # s.add_development_dependency('','~> x.y.z')
+  #
+  # In order to avoid having to maintain dependencies at two places, we use what has
+  # been written in the Gemfile via the bundler gem.
+  #
+  $bundler_gemfile.dependencies.each do |dep|
+    name, req = dep.name.to_s, dep.requirement.to_s
+    unless dep.groups == [:development]
+      s.add_dependency(name, req)
+    end
+    if dep.groups.include? :development
+      s.add_development_dependency(name, req)
+    end
+  end
+
   # The version of ruby required by this gem
   #
   # Uncomment and set this if your gem requires specific ruby versions.

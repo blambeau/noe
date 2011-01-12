@@ -4,5 +4,5 @@
 
 ## Links
 
-!{homepage}
+!{links.join("\n")}
 
