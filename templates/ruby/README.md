@@ -40,7 +40,7 @@ _tasks_ folder for specific configuration additional information.
 
     % rake -T
     rake clobber_package  # Remove package products
-    rake gem              # Build the gem file hello_world-1.0.0.gem
+    rake gem              # Build the gem file
     rake package          # Build all the packages
     rake repackage        # Force a rebuild of the package files
     rake spec             # Run RSpec code examples
