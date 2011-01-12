@@ -2,8 +2,8 @@
 
 Noe is a tool that generates projects from predefined skeletons (aka project/application 
 templates). Skeletons are designed for building specific products (a ruby library, a static 
-or dynamic web site, ...). Noe instantiates them then helps you maintaining your product 
-thanks to meta-information provided by a yaml file called the project's .noespec file. 
+or dynamic web site, ...). Noe instantiates them and helps you maintaining your product 
+via meta-information provided by a .noespec yaml file. 
 
 Noe comes bundled with a skeleton for creating and maintaining a ruby gem. This skeleton is
 written and maintained to follow ruby best practices and may also be tuned for your own needs.
