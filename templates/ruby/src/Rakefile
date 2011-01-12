@@ -1,5 +1,10 @@
-require "rubygems"
-require "bundler/setup"
+begin
+  require "rubygems"
+  gem "bundler", "~> 1.0"
+  require "bundler/setup"
+rescue LoadError
+  abord "This project requires bundler, try 'gem install bundler'"
+end
 
 # Dynamically load the gem spec
 $gemspec_file = File.expand_path('../!{lower}.gemspec', __FILE__)

@@ -1,9 +1,6 @@
 source 'http://rubygems.org'
 
-group :default do 
-  !{dependencies.collect{|dep| "gem '#{dep['name']}', '#{dep['version']}'"}.join("\n  ")}
-end
-
-group :development do 
-  !{devel_dependencies.collect{|dep| "gem '#{dep['name']}', '#{dep['version']}'"}.join("\n  ")}
-end
+!{dependencies.collect{|dep| <<-EOF.strip
+  gem '#{dep['name']}', '#{dep['version']}', :group => [ :#{dep['groups'].join(', :')} ]
+EOF
+}.join("\n")}

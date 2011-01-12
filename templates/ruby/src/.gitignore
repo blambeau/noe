@@ -3,3 +3,4 @@ coverage/*
 pkg
 doc/api
 .yardoc
+.bundle

@@ -51,7 +51,7 @@ begin
     # See 'rspec --help' about this
     t.rspec_opts = %w{--color --backtrace}
   end
-rescue LoadError
+rescue LoadError => ex
   task :spec do
     abort 'rspec is not available. In order to run spec, you must: gem install rspec'
   end
