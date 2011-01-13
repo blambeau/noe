@@ -1,7 +1,7 @@
 module Noe
   
   # Noe's version
-  VERSION = "1.0.0".freeze
+  VERSION = "1.1.0".freeze
   
   # Requires some gem
   def self.require(gem_name, version = nil, retried = false)

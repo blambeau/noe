@@ -6,7 +6,7 @@ template-info:
   description: 
     Noe spec for small ruby projects
   version: 
-    1.0.0
+    1.0.1
   author: 
     Bernard Lambeau <blambeau@gmail.com>
   main-wlang-dialect: 
