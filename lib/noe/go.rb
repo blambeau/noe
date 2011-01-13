@@ -16,9 +16,9 @@ module Noe
     # 
     #   This command is generally used immediately after invoking 'prepare',
     #   on an almost empty directory. By default it safely fails if any file
-    #   or directory would be overriden by the instantiation process. This
-    #   safe behavior can be bypassed through the --force and --add-only 
-    #   options.
+    #   would be overriden by the instantiation process. This safe behavior 
+    #   can be bypassed through the --force, --add-only, --interactive and
+    #   --safe-override options.
     #
     # TYPICAL USAGE
     #
@@ -46,19 +46,24 @@ module Noe
     #
     #     noe go --interactive
     #
+    #   If you want to regenerate some files according to the template 
+    #   manifest:
+    #
+    #     noe go --safe-override
+    #
     class Go < Quickl::Command(__FILE__, __LINE__)
       include Noe::Commons
 
-      # Dry-run mode ?
       attr_reader :dry_run
       
-      # Force mode ?
       attr_reader :force
       alias :force? :force
 
-      # Only make additions ?
       attr_reader :adds_only
       alias :adds_only? :adds_only
+
+      attr_reader :safe_override
+      alias :safe_override? :safe_override
 
       # Install options
       options do |opt|
@@ -75,11 +80,6 @@ module Noe
         @interactive = false
         opt.on('--interactive', '-i',
                "Request the user to take a decision on existing files"){ 
-          begin
-            require "highline"
-          rescue LoadError
-            raise Noe::Error, "Interactive mode requires highline, try 'gem install highline'"
-          end
           @interactive = true
           @highline = HighLine.new
         }
@@ -87,6 +87,11 @@ module Noe
         opt.on('--add-only', '-a',
                "Only make additions, do not override any existing file"){ 
           @adds_only = true
+        }
+        @safe_override = false
+        opt.on('--safe-override', '-s',
+               "Follow safe-override information provided by the template manifest for resolving conflicts."){ 
+          @safe_override = true
         }
       end
       
@@ -183,12 +188,19 @@ module Noe
           elsif interactive?
             say("File #{relocated} already exists", :red)
             choose do |menu|
-              menu.prompt = "What do we do?"
+              would = entry.safe_override? ? :override : :skip
+              menu.prompt = "What do we do? (safe-override would #{would})"
               menu.index = :letter
               menu.choice(:abord)   { raise Quickl::Exit.new(1), "Noe aborted!" }
               menu.choice(:override){ todo << Rm.new(entry, variables)          }
               menu.choice(:skip)    { skipped = true                            }
-            end 
+            end
+          elsif safe_override?
+            if entry.safe_override?
+              todo << Rm.new(entry, variables)
+            else
+              skipped = true
+            end
           elsif force?
             todo << Rm.new(entry, variables)
           else
@@ -289,7 +301,7 @@ module Noe
         
         def run
           File.open(relocated, 'w') do |out|
-            dialect = template.wlang_dialect_for(entry.realpath)
+            dialect = entry.wlang_dialect
             variables.methodize!
             out << WLang::file_instantiate(entry.realpath, variables, dialect)
           end

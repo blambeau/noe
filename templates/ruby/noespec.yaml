@@ -11,6 +11,52 @@ template-info:
     Bernard Lambeau <blambeau@gmail.com>
   main-wlang-dialect: 
     wlang/ruby
+  manifest:
+    .gitignore:
+      description: Files to be ignored by git or another version control system
+      safe-override: false
+    __lower__.gemspec: 
+      description: Gem specification file
+      safe-override: true
+    CHANGELOG.md: 
+      description: Information about library changes
+      safe-override: false
+    Gemfile:
+      description: Information used by Bundler, the Ruby dependency manager
+      safe-override: true
+    lib/__lower__.rb:
+      description: Main file of the ruby library
+      safe-override: false
+    lib/__lower__/loader.rb:
+      description: Bundler loader for the ruby library
+      safe-override: true
+    LICENCE.md: 
+      description: Licensing information
+      safe-override: false
+    Rakefile:
+      description: Information for Ruby maker
+      safe-override: true
+    README.md: 
+      description: Starter documentation file
+      safe-override: false
+    spec/__lower__spec.rb:
+      description: Main test file of the ruby library
+      safe-override: false
+    spec/spec_helper.rb:
+      description: Helper for ruby spec tests
+      safe-override: true
+    tasks/gem.rake:
+      description: configuration file for 'rake package', 'rake gem' and associated tasks
+      safe-override: true
+    tasks/spec_test.rake:
+      description: configuration file for 'rake spec_test'
+      safe-override: true
+    tasks/unit_test.rake:
+      description: configuration file for 'rake unit_test'
+      safe-override: true
+    tasks/yard.rake:
+      description: configuration file for 'rake yard'
+      safe-override: true
 
 # The following entries are template-related variables. Update to match your 
 # own configuration.
@@ -62,4 +108,3 @@ variables:
     # See tasks/yard.rake 
     - {name: yard,      version: "~> 0.6.4", groups: [development]}
     - {name: bluecloth, version: "~> 2.0.9", groups: [development]}
-    

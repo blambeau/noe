@@ -43,9 +43,8 @@ module Noe
       spec['template-info']['version']
     end
     
-    # Returns template version
-    def wlang_dialect_for(file)
-      spec['template-info']['main-wlang-dialect'] || 'wlang/active-text'
+    def main_wlang_dialect
+      spec['template-info']['main-wlang-dialect']
     end
     
     # Returns path to the sources folder
@@ -61,6 +60,16 @@ module Noe
     # Returns an entry for a given relative path
     def entry(*paths)
       Entry.new(self, paths.join(File::PATH_SEPARATOR))
+    end
+    
+    # Returns manifest Hash for a given entry
+    def manifest_for(entry)
+      manifest = spec['template-info']['manifest'] || {}
+      manifest[entry.path] || {
+        'description'   => "No description for #{entry.path}",
+        'safe-override' => false,
+        'wlang-dialect' => "wlang/active-text"
+      } 
     end
     
     # Visit the template
@@ -141,6 +150,21 @@ module Noe
       # Builds an child entry for a given name
       def child_entry(name)
         template.entry(path.nil? ? name : File.join(path, name))
+      end
+      
+      # Returns the hash with the manifest for this entry
+      def manifest
+        template.manifest_for(self)
+      end
+      
+      # Returns wlang dialect to use
+      def wlang_dialect
+        manifest['wlang-dialect'] || template.main_wlang_dialect || 'wlang/active-text'
+      end
+      
+      # Is this entry safe to override
+      def safe_override?
+        manifest['safe-override']
       end
 
     end # class Entry
