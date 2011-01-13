@@ -12,7 +12,7 @@ begin
   YARD::Rake::YardocTask.new(:yard) do |t|
     # Array of options passed to the commandline utility
     # See 'yardoc --help' about this
-    t.options = %w{--output-dir doc/api - README.md CHANGELOG.md}
+    t.options = %w{--output-dir doc/api - README.md CHANGELOG.md LICENCE.md}
     
     # Array of ruby source files (and any extra documentation files 
     # separated by '-')
