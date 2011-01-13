@@ -49,9 +49,11 @@ module Noe
       
       # Force mode ?
       attr_reader :force
+      alias :force? :force
 
       # Only make additions ?
       attr_reader :adds_only
+      alias :adds_only? :adds_only
 
       # Install options
       options do |opt|
@@ -65,6 +67,17 @@ module Noe
                "Force overriding on all existing files"){ 
           @force = true
         }
+        @interactive = false
+        opt.on('--interactive', '-i',
+               "Request the user to take a decision on existing files"){ 
+          begin
+            require "highline"
+          rescue LoadError
+            raise Noe::Error, "Interactive mode requires highline, try 'gem install highline'"
+          end
+          @interactive = true
+          @highline = HighLine.new
+        }
         @adds_only = false
         opt.on('--add-only', '-a',
                "Only make additions, do not override any existing file"){ 
@@ -72,33 +85,118 @@ module Noe
         }
       end
       
-      def build_one(entry, variables)
+      # Checks if the interactive mode is enabled. If yes, highline is prepared
+      # as a side effect.
+      def interactive?
+        if @interactive and not(@highline)
+          begin
+            require "highline"
+            @highline = HighLine.new
+          rescue LoadError
+            raise Quickl::Exit.new(1), "Highline is required for interactive mode, try 'gem install highline'"
+          end
+        else
+          @interactive
+        end
+      end
+      
+      def say(what, color)
+        if @highline
+          @highline.say(@highline.color(what, color))
+        else
+          puts what
+        end
+      end
+      
+      def choose(&block)
+        @highline.choose(&block)
+      end
+      
+      # Checks if one is a file and the other a directory or the inverse
+      def kind_clash?(entry, relocated)
+        (entry.file? and File.directory?(relocated)) or
+        (entry.directory? and File.file?(relocated))
+      end
+      
+      def build_one_directory(entry, variables)
         relocated = entry.relocate(variables)
         todo = []
         
-        # The file already exists, we should maybe do something
-        if File.exists?(relocated)
-          if force
-            unless entry.directory? and File.directory?(relocated)
+        skipped = false
+        if File.exists?(relocated) 
+          # file exists already exists, check what can be done!
+          if kind_clash?(entry, relocated)
+            if interactive?
+              say("File #{relocated} conflicts with directory to create", :red)
+              choose do |menu|
+                menu.prompt = "What do we do?"
+                menu.index = :letter
+                menu.choice(:abord) { raise Quickl::Exit.new(1), "Noe aborted!" }
+                menu.choice(:remove){ todo << Rm.new(entry, variables)          }
+              end 
+            elsif force?
               todo << Rm.new(entry, variables)
+            else
+              raise Quickl::Exit.new(2), "Noe aborted: file #{relocated} already exists.\n"\
+                                         "Use --force to override or --interactive for more options."
             end
-          elsif adds_only
-            return todo
           else
-            raise Noe::Error, "Noe aborted: file #{relocated} already exists.\n"\
-                              "Use --force to override."
+            # file exists and is already a folder; we simply do nothing 
+            # because there is no dangerous action here
+            skipped = true
+          end
+        end 
+        
+        # Create the directory unless it has been explicitely skipped
+        unless skipped
+          todo << MkDir.new(entry, variables)
+        end
+        
+        todo
+      end
+
+      def build_one_file(entry, variables)
+        relocated = entry.relocate(variables)
+        todo = []
+        
+        skipped = false
+        if File.exists?(relocated)
+          # name clash, the file exists
+          if adds_only?
+            # file exists and we are only allowed to add new things
+            # we just do nothing
+            skipped = true
+          elsif interactive? and kind_clash?(entry, relocated)
+            say("Directory #{relocated} conflicts with file to create", :red)
+            choose do |menu|
+              menu.prompt = "What do we do?"
+              menu.index = :letter
+              menu.choice(:abord) { raise Quickl::Exit.new(1), "Noe aborted!" }
+              menu.choice(:remove){ todo << Rm.new(entry, variables)          }
+              menu.choice(:skip)  { skipped = true                            }
+            end 
+          elsif interactive?
+            say("File #{relocated} already exists", :red)
+            choose do |menu|
+              menu.prompt = "What do we do?"
+              menu.index = :letter
+              menu.choice(:abord)   { raise Quickl::Exit.new(1), "Noe aborted!" }
+              menu.choice(:override){ todo << Rm.new(entry, variables)          }
+              menu.choice(:skip)    { skipped = true                            }
+            end 
+          elsif force?
+            todo << Rm.new(entry, variables)
+          else
+            raise Quickl::Exit.new(2), "Noe aborted: file #{relocated} already exists.\n"\
+                                       "Use --force to override or --interactive for more options."
           end
         end
         
-        # Create directories
-        if entry.directory? and not(File.exists?(relocated))
-          todo << MkDir.new(entry, variables)
-          
-        # Create files  
-        elsif entry.file?
+        # Add file instantiation unless skipped
+        unless skipped
           todo << FileInstantiate.new(entry, variables)
-
         end
+        
         todo
       end
       
@@ -123,7 +221,11 @@ module Noe
         
         # Build what has to be done
         commands = template.collect{|entry|
-          build_one(entry, variables)
+          if entry.file?
+            build_one_file(entry, variables)
+          elsif entry.directory?
+            build_one_directory(entry, variables)
+          end
         }.flatten
         
         # let's go now
