@@ -1,15 +1,59 @@
-# Following entries are maintained by Noe itself. Do not touch unless you
-# known what each entry is about!
+#
+# This file provides a full specification for maintaining your ruby library using Noe.
+# It consists of two main sections: template-info and variables. The first one contains
+# meta-information about the skeleton itself while the second one provides information
+# about your library.
+# 
+# Please update the first part with care, as it immediately affects the way Noe will 
+# manage the files of your own project. The second part may be updated more freely.
+#
+# Remember that your project may use a shorter version of this file as it will be 
+# automatically completed with default options when invoking 'noe go'. In particular, 
+# the first section (under template-info) is only required to contain the name and 
+# version of the template to use. 
+#
+# See 'noe help prepare' and 'noe help show-spec' for more information.
+#
 template-info:
+
+  # Don't remove the name and version entries, which are ALWAYS required 
   name: "!{template_name}"
-  description: 
-    Noe spec for small ruby projects
-  version: 
-    1.0.1
-  author: 
-    Bernard Lambeau <blambeau@gmail.com>
-  main-wlang-dialect: 
-    wlang/ruby
+  version: 1.1.0
+
+  # The following entries are information about the template itself and can safely 
+  # be removed on your own project.
+  description: |
+    Thisis a [Noe](https://github.com/blambeau/noe) template for creating a ruby gem 
+    library. Generated project comes with rake tasks to support the lifecycle of the 
+    library (testing, releasing, and so on). Following Noe's philosophy this template 
+    also helps you understanding the ruby ecosystem by providing a fully documented 
+    project, rake tasks, and so on.
+  authors: 
+    - {name: Bernard Lambeau, email: blambeau@gmail.com}
+  links:
+    source: https://github.com/blambeau/noe/tree/master/templates/ruby
+    documentation: https://github.com/blambeau/noe
+    
+  # By default, this is the wlang dialect used to instantiate the template files. You can 
+  # safely remove it from your own project.
+  main-wlang-dialect: wlang/ruby
+    
+  #
+  # Below starts the template manifest. 
+  #
+  # Each entry is related to a template file and may contain the following keys:
+  #   - description: short explanation of the role the file plays in your project
+  #   - safe-override: may the file be safely overrided by 'noe go --safe-override'?
+  #   - wlang-dialect: what dialect must be used for wlang instantiation. When no 
+  #     dialect is specified, the dialect under main-wlang-dialect is used.
+  #
+  # You can safely remove the whole manifest or entries for which the default values
+  # are ok for your project. Otherwise, values defined below override the default ones
+  # provided by the template. 
+  #
+  # An typical example for keeping an entry here is to set safe-override to false for 
+  # specific project files you want to manage manually.
+  #
   manifest:
     .gitignore:
       description: Files to be ignored by git or another version control system
@@ -73,25 +117,25 @@ variables:
 
   # Project summary. The summary should be a short project description (5 lines)
   # and will be used to annotate your .gemspec file on rubygems.org.
-  summary: 
+  summary: |
     A simple "Hello World" example for Noe's skeleton for Ruby projects
 
   # Authors of the project. Each author entry is a Hash and MUST at least have 
   # 'name' and 'email' keys. This is used to add meta information to your .gemspec 
   # file.
   authors: 
-    - name:  Bernard Lambeau
-      email: blambeau@gmail.com
+    - name:  Bob
+      email: bob@gmail.com
 
   # Web links for the project. You should typically include links to the sources
   # (github), rubygems.org, documentation and so on. The first link will be used
   # to fill the .gemspec file.
   links:
-    - http://github.com/blambeau/noe
-    - http://rubygems.org/gems/noe
+    - http://github.com/bob/hello_world
+    - http://rubygems.org/gems/hello_world
 
-  # Gem dependencies. Each entry is a Hash that MUST at least have 
-  # 'name' and 'version' keys.
+  # Gem dependencies. Each entry is a Hash that MUST at least have 'name', 'version'
+  # and 'groups' keys.
   dependencies: 
     # Bundler dependency should never be removed as the template heavily makes use
     # of it. If you don't want bundler, you should at least update the way gem 
