@@ -15,12 +15,12 @@ rake tasks, and so on.
 In other words
 
     [sudo] gem install noe bundler
-    cp /this whole folder/ ~/.noe
+    cp {this whole folder} ~/.noe
 
 ### Creating a ruby project
 
     # Prepare generation
-    noe create --ruby foo
+    noe prepare --template=ruby foo
     cd foo
     
     # Edit specific information about your project

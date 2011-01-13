@@ -14,7 +14,7 @@ module Noe
     #   given as first argument. If no spec file is specified, Noe expects 
     #   one .noespec file to be present in the current directory and uses it.
     # 
-    #   This command is generally used immediately after invoking 'create',
+    #   This command is generally used immediately after invoking 'prepare',
     #   on an almost empty directory. By default it safely fails if any file
     #   or directory would be overriden by the instantiation process. This
     #   safe behavior can be bypassed through the --force and --add-only 
@@ -25,7 +25,7 @@ module Noe
     #   When a fresh new project is created, this command is typically used
     #   with the following scenario
     #
-    #     noe create --ruby hello_world
+    #     noe prepare --ruby hello_world
     #     cd hello_world
     #     edit hello_world.noespec
     #     noe go

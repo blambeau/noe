@@ -79,7 +79,7 @@ module Noe
         puts " * cat #{noerc_file}"
         puts " * ls -lA #{noe_folder}"
         puts " * noe list"
-        puts " * noe create hello_world"
+        puts " * noe prepare hello_world"
         puts
         puts "Thank you for using Noe (v#{Noe::VERSION}), enjoy!"
       end

@@ -36,6 +36,6 @@ require 'noe/commons'
 require 'noe/install'
 require 'noe/help'
 require 'noe/list'
-require 'noe/create'
+require 'noe/prepare'
 require 'noe/go'
 

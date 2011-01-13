@@ -21,7 +21,7 @@ Have a loot at ~/.noerc and ~/.noe for configuration and a default ruby template
 instantiate a ruby project simply execute the following commands in turn:
 
     # Given a template ruby under ~/.noe/ruby, install by default
-    noe create --template=ruby foo
+    noe prepare --template=ruby foo
     cd foo
   
     # Edit the template configuration foo/foo.noespec
@@ -30,7 +30,7 @@ instantiate a ruby project simply execute the following commands in turn:
     # Launch template instantiation
     noe go
   
-That's it! But also have a look at 'noe help create' and 'not help go' for additional
+That's it! But also have a look at 'noe help prepare' and 'not help go' for additional
 options.
 
 ## Philosophy
@@ -129,7 +129,7 @@ Under ~/.noe, a valid template folder (say xxx) has the following structure
 ### noespec.yaml
 
 The noespec.yaml file of a template is used to formally describe the template. When a 
-project (say foo) is created (see 'noe create') using a template (say ruby) the file 
+project (say foo) is created (see 'noe prepare') using a template (say ruby) the file 
 ~/.noe/ruby/noespec.yaml is used to generate foo/foo.noespec. The later is then used 
 by 'noe go' to instantiate the project.
 
