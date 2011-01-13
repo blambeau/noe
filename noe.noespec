@@ -1,0 +1,71 @@
+# Following entries are maintained by Noe itself. Do not touch unless you
+# known what each entry is about!
+template-info:
+  name:
+    ruby
+  description: 
+    Noe spec for small ruby projects
+  version: 
+    1.0.1
+  author: 
+    Bernard Lambeau <blambeau@gmail.com>
+  main-wlang-dialect: 
+    wlang/ruby
+
+# The following entries are template-related variables. Update to match your 
+# own configuration.
+variables:
+  # A ruby lower case project name. This will become the name of the generated
+  # gem of the main ruby .rb start file and so on.
+  lower: 
+    noe
+
+  # A ruby upper case project name. This is used to generate the main namespacing
+  # module of your project and shoul be the CamelCase equivalent of your lower 
+  # name.
+  upper:
+    Noe
+
+  # Project summary. The summary should be a short project description (5 lines)
+  # and will be used to annotate your .gemspec file on rubygems.org.
+  summary: 
+    Noe is a tool that generates projects from predefined skeletons (aka project/application 
+    templates). Skeletons are designed for building specific products (a ruby library, a static 
+    or dynamic web site, ...). Noe instantiates them and helps you maintaining your product 
+    via meta-information provided by a .noespec yaml file. 
+
+  # Authors of the project. Each author entry is a Hash and MUST at least have 
+  # 'name' and 'email' keys. This is used to add meta information to your .gemspec 
+  # file.
+  authors: 
+    - name:  Bernard Lambeau
+      email: blambeau@gmail.com
+
+  # Web links for the project. You should typically include links to the sources
+  # (github), rubygems.org, documentation and so on. The first link will be used
+  # to fill the .gemspec file.
+  links:
+    - http://github.com/blambeau/noe
+    - http://rubygems.org/gems/noe
+
+  # Gem dependencies. Each entry is a Hash that MUST at least have 
+  # 'name' and 'version' keys.
+  dependencies: 
+    # Bundler dependency should never be removed as the template heavily makes use
+    # of it. If you don't want bundler, you should at least update the way gem 
+    # dependencies gems are loaded in lib/lower/lower.rb as well as your .gemspec
+    # file!
+    - {name: bundler,   version: "~> 1.0",    groups: [default, development]}
+    # Don't remove rake dependency, simply!
+    - {name: rake,      version: "~> 0.8.7",  groups: [development]}
+    # The following dependency is needed to run 'rake spec'. 
+    # See tasks/spec.rake 
+    - {name: rspec,     version: "~> 2.4.0",  groups: [development]}
+    # The following dependencies are needed to run 'rake yard'. 
+    # See tasks/yard.rake 
+    - {name: yard,      version: "~> 0.6.4",  groups: [development]}
+    - {name: bluecloth, version: "~> 2.0.9",  groups: [development]}
+    # Other runtime dependencies
+    - {name: wlang,     version: "~> 0.10.0", groups: [default]}
+    - {name: quickl,    version: "~> 0.2.0",  groups: [default]}
+    

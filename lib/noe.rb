@@ -1,3 +1,9 @@
+# The following lines load your dependencies.
+require 'rubygems'
+gem "bundler", "~> 1.0"
+require "bundler"
+Bundler.require(:default)
+
 module Noe
   
   # Noe's version
@@ -23,8 +29,6 @@ module Noe
 
 end # module Noe
 
-Noe.require('quickl', ">= 0.2.0")
-Noe.require('wlang', "~> 0.10.0")
 require 'yaml'
 require 'fileutils'
 require 'noe/ext/array'

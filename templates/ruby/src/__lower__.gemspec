@@ -6,7 +6,8 @@ $bundler_gemfile = Bundler.definition
 
 # We require your library, mainly to have access to the VERSION number. 
 # Feel free to set $version manually.
-require File.expand_path('../lib/!{lower}', __FILE__)
+$LOAD_PATH.unshift File.expand_path('../lib', __FILE__)
+require +{lower}
 $version = !{upper}::VERSION.dup
 
 #
