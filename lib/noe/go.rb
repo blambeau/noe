@@ -25,7 +25,7 @@ module Noe
     #   When a fresh new project is created, this command is typically used
     #   with the following scenario
     #
-    #     noe prepare --ruby hello_world
+    #     noe prepare --template=ruby hello_world
     #     cd hello_world
     #     edit hello_world.noespec
     #     noe go
@@ -40,6 +40,11 @@ module Noe
     #
     #     rm README.md hello_world.gemspec
     #     noe go --add-only
+    #
+    #   If you want to regenerate some files by controlling what will be 
+    #   overriden and what won't be:
+    #
+    #     noe go --interactive
     #
     class Go < Quickl::Command(__FILE__, __LINE__)
       include Noe::Commons
