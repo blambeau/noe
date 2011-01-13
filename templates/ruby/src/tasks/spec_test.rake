@@ -7,7 +7,7 @@
 begin
   require "rspec/core/rake_task"
   desc "Run RSpec code examples"
-  RSpec::Core::RakeTask.new(:spec) do |t|
+  RSpec::Core::RakeTask.new(:spec_test) do |t|
     # Glob pattern to match files.
     t.pattern = 'spec/**/*_spec.rb'
 
@@ -52,9 +52,9 @@ begin
     t.rspec_opts = %w{--color --backtrace}
   end
 rescue LoadError => ex
-  task :spec do
+  task :spec_test do
     abort 'rspec is not available. In order to run spec, you must: gem install rspec'
   end
 ensure
-  task :test => [:spec]
+  task :test => [:spec_test]
 end

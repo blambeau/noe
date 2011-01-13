@@ -38,13 +38,19 @@ In other words
 The following rake tasks are provided to your Rakefile by this template. Have a look at the 
 _tasks_ folder for specific configuration additional information. 
 
-    % rake -T
-    rake clobber_package  # Remove package products
+    # Running tests
+    rake spec_test        # Run RSpec code examples
+    rake unit_test        # Run unit tests
+    rake test             # spec_test & unit_test
+    
+    # Generating documentation
+    rake yard             # Generate YARD Documentation
+    
+    # Releasing and packaging
     rake gem              # Build the gem file
     rake package          # Build all the packages
     rake repackage        # Force a rebuild of the package files
-    rake spec             # Run RSpec code examples
-    rake yard             # Generate YARD Documentation
+    rake clobber_package  # Remove package products
     
 ## External dependencies
 
