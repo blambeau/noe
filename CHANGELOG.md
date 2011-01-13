@@ -7,6 +7,7 @@
   * All hashes found in .noespec variables are methodized before being passed to template.
   * Introduced a main-wlang-dialect in .noespec, with fallback on wlang/active-text
   * Ruby skeleton largely enhanced
+  * Moved to wlang 0.10.0 to gain new ruby generation features provided by wlang/ruby
 
 * Minor enhancements
   
