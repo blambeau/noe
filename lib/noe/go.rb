@@ -4,7 +4,7 @@ module Noe
     # Instantiate a project template using a .noespec file
     #
     # SYNOPSIS
-    #   #{program_name} #{command_name} [options] [SPEC_FILE]
+    #   #{program_name} #{command_name} [--dry-run] [--force|--interactive|--add-only|--safe-override] [SPEC_FILE]
     #
     # OPTIONS
     # #{summarized_options}
@@ -23,7 +23,7 @@ module Noe
     # TYPICAL USAGE
     #
     #   When a fresh new project is created, this command is typically used
-    #   with the following scenario
+    #   within the following scenario
     #
     #     noe prepare --template=ruby hello_world
     #     cd hello_world
@@ -42,7 +42,7 @@ module Noe
     #     noe go --add-only
     #
     #   If you want to regenerate some files by controlling what will be 
-    #   overriden and what won't be:
+    #   overriden:
     #
     #     noe go --interactive
     #
@@ -72,6 +72,8 @@ module Noe
                "Say what would be done but don't do it"){ 
           @dry_run = true
         }
+        opt.separator ""
+        opt.separator "File overriding control: "
         @force = false
         opt.on('--force', '-f',
                "Force overriding on all existing files"){ 
@@ -79,7 +81,7 @@ module Noe
         }
         @interactive = false
         opt.on('--interactive', '-i',
-               "Request the user to take a decision on existing files"){ 
+               "Request the user to take a decision"){ 
           @interactive = true
           @highline = HighLine.new
         }
@@ -90,7 +92,7 @@ module Noe
         }
         @safe_override = false
         opt.on('--safe-override', '-s',
-               "Follow safe-override information provided by the template manifest for resolving conflicts."){ 
+               "Follow safe-override information provided by the manifest"){ 
           @safe_override = true
         }
       end
