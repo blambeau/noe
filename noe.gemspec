@@ -23,7 +23,7 @@ spec = Gem::Specification.new do |s|
     Dir['templates/**/*'] +
     %w{ noe.gemspec Rakefile README.md CHANGELOG.md LICENCE.txt}
     
-  s.add_dependency('wlang',  '>= 0.9.2')
+  s.add_dependency('wlang',  '~> 0.10.0')
   s.add_dependency('quickl', '>= 0.2.0')
 
   s.add_development_dependency('rake')
