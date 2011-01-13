@@ -1,6 +1,3 @@
 source 'http://rubygems.org'
 
-!{dependencies.collect{|dep| <<-EOF.strip
-  gem '#{dep['name']}', '#{dep['version']}', :group => [ :#{dep['groups'].join(', :')} ]
-EOF
-}.join("\n")}
+*{dependencies as dep}{gem +{dep.name}, +{dep.version}, :groups => +{dep.groups}}{!{"\n"}}

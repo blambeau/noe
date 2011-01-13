@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   ################################################################### ABOUT YOUR GEM
   
   # Gem name (required) 
-  s.name = %q{!{lower}}
+  s.name = +{lower}
   
   # Gem version (required)
   s.version = $version
@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   # A short summary of this gem
   #
   # This is displayed in `gem list -d`.
-  s.summary = %q{!{summary}} 
+  s.summary = +{summary}
 
   # A long description of this gem (required)
   #
@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
   s.description = File.read(File.expand_path('../README.md', __FILE__))
   
   # The URL of this gem's home page (optional)
-  s.homepage = %q{!{links.first}}
+  s.homepage = +{links.first}
 
   # Gem publication date (required but auto)
   #
@@ -60,7 +60,7 @@ Gem::Specification.new do |s|
   # If you are providing multiple authors and multiple emails they should be
   # in the same order.
   # 
-  s.authors = [ *{authors as a}{"!{a.name}"}{, } ]
+  s.authors = +{authors.collect{|a| a.name}}
   
   # Contact emails for this gem
   #
@@ -69,7 +69,7 @@ Gem::Specification.new do |s|
   #
   # NOTE: Somewhat strangly this attribute is always singular! 
   #       Don't replace by s.emails = ...
-  s.email  = [ *{authors as a}{"!{a.email}"}{, } ]
+  s.email  = +{authors.collect{|a| a.email}}
 
   ################################################################### PATHS, FILES, BINARIES
   

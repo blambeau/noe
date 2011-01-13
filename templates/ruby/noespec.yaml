@@ -9,7 +9,9 @@ template-info:
     1.0.0
   author: 
     Bernard Lambeau <blambeau@gmail.com>
-  
+  main-wlang-dialect: 
+    wlang/ruby
+
 # The following entries are template-related variables. Update to match your 
 # own configuration.
 variables:
@@ -27,7 +29,7 @@ variables:
   # Project summary. The summary should be a short project description (5 lines)
   # and will be used to annotate your .gemspec file on rubygems.org.
   summary: 
-    A simple HelloWorld example for Noe skeleton for Ruby projects
+    A simple "Hello World" example for Noe's skeleton for Ruby projects
 
   # Authors of the project. Each author entry is a Hash and MUST at least have 
   # 'name' and 'email' keys. This is used to add meta information to your .gemspec 
