@@ -234,7 +234,8 @@ module Noe
         # Load spec now
         spec = YAML::load(File.read(spec_file))
         template = template(spec['template-info']['name'])
-        variables = spec['variables']
+        template.merge_spec(spec)
+        variables = template.variables
         
         # Build what has to be done
         commands = template.collect{|entry|

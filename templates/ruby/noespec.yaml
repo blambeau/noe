@@ -1,8 +1,7 @@
 # Following entries are maintained by Noe itself. Do not touch unless you
 # known what each entry is about!
 template-info:
-  name:
-    !{template_name}
+  name: "!{template_name}"
   description: 
     Noe spec for small ruby projects
   version: 

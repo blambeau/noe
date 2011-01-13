@@ -28,6 +28,16 @@ module Noe
       File.join(folder, "noespec.yaml")
     end
     
+    # Merges another spec file inside this template
+    def merge_spec_file(file)
+      merge_spec YAML::load(File.read(spec_file))
+    end
+    
+    # Merges template's spec with another spec given from a Hash
+    def merge_spec(hash)
+      @spec.noe_merge(hash)
+    end
+    
     # Returns template name  
     def name
       File.basename(folder)
@@ -41,6 +51,11 @@ module Noe
     # Returns template version
     def version
       spec['template-info']['version']
+    end
+    
+    # Returns the template variables entry
+    def variables
+      spec['variables']
     end
     
     def main_wlang_dialect

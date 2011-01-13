@@ -15,6 +15,21 @@ class Hash
     end
   end
   
+  # Makes a fully recursive merge
+  def noe_merge(right)
+    self.merge(right) do |key,oldval,newval|
+      unless oldval.class == newval.class
+        raise Noe::Error, "Conflict on #{key} has to be resolved manually, sorry.\n"\
+                          "#{oldval} (#{oldval.class}) vs. #{newval} (#{newval.class})"
+      end
+      if oldval.respond_to?(:noe_merge)
+        oldval.noe_merge(newval)
+      else
+        newval
+      end
+    end
+  end
+  
   module Methodize
   
     # Allows using hash.key as a synonym for hash[:key] and
@@ -28,4 +43,5 @@ class Hash
     end
 
   end
+
 end
