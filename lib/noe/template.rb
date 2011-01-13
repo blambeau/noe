@@ -43,6 +43,11 @@ module Noe
       spec['template-info']['version']
     end
     
+    # Returns template version
+    def wlang_dialect_for(file)
+      spec['template-info']['main-wlang-dialect'] || 'wlang/active-text'
+    end
+    
     # Returns path to the sources folder
     def src_folder
       File.join(folder, "src")

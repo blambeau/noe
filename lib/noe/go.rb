@@ -144,6 +144,10 @@ module Noe
           @entry, @variables = entry, variables
         end
         
+        def template
+          entry.template
+        end
+        
         def relocated
           entry.relocate(variables)
         end
@@ -178,7 +182,7 @@ module Noe
         
         def run
           File.open(relocated, 'w') do |out|
-            dialect = "noe"
+            dialect = template.wlang_dialect_for(entry.realpath)
             variables.methodize!
             out << WLang::file_instantiate(entry.realpath, variables, dialect)
           end
