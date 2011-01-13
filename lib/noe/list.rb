@@ -1,7 +1,7 @@
 module Noe
   class Main
     #
-    # List available templates.
+    # List available templates
     #
     # SYNOPSIS
     #   #{program_name} #{command_name} 

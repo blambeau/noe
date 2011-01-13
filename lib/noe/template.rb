@@ -35,7 +35,7 @@ module Noe
     
     # Merges template's spec with another spec given from a Hash
     def merge_spec(hash)
-      @spec.noe_merge(hash)
+      @spec = @spec.noe_merge(hash)
     end
     
     # Returns template name  
@@ -105,6 +105,11 @@ module Noe
     end
     alias :each :visit
     
+    # Delegated to spec
+    def to_yaml(*args)
+      spec.to_yaml(*args)
+    end
+  
     private :__load
     
     # Entry inside a template structure

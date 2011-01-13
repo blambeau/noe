@@ -2,7 +2,7 @@ require 'fileutils'
 module Noe
   class Main
     #
-    # Install default configuration and template.
+    # Install default configuration and template
     #
     # SYNOPSIS
     #   #{program_name} #{command_name} [--force] [FOLDER]

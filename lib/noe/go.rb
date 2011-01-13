@@ -1,7 +1,7 @@
 module Noe
   class Main
     #
-    # Instantiate a project template using a .noespec file.
+    # Instantiate a project template using a .noespec file
     #
     # SYNOPSIS
     #   #{program_name} #{command_name} [options] [SPEC_FILE]
@@ -220,18 +220,8 @@ module Noe
       def execute(args)
         raise Quickl::Help if args.size > 1
         
-        # Find spec file
-        spec_file = if args.size == 1
-          valid_read_file!(args.first)
-        else
-          spec_files = Dir['*.noespec']
-          if spec_files.size > 1
-            raise Noe::Error, "Ambiguous request, multiple specs: #{spec_files.join(', ')}"
-          end
-          spec_files.first
-        end
-        
         # Load spec now
+        spec_file = find_noespec_file(args)
         spec = YAML::load(File.read(spec_file))
         template = template(spec['template-info']['name'])
         template.merge_spec(spec)
