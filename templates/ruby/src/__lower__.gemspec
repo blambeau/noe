@@ -60,7 +60,7 @@ Gem::Specification.new do |s|
   # If you are providing multiple authors and multiple emails they should be
   # in the same order.
   # 
-  s.authors = [ !{authors.collect{|a| "%q{#{a['name']}}"}.join(' ')} ]
+  s.authors = [ *{authors as a}{"!{a.name}"}{, } ]
   
   # Contact emails for this gem
   #
@@ -69,7 +69,7 @@ Gem::Specification.new do |s|
   #
   # NOTE: Somewhat strangly this attribute is always singular! 
   #       Don't replace by s.emails = ...
-  s.email  = [ !{authors.collect{|a| "%q{#{a['email']}}"}.join(' ')} ]
+  s.email  = [ *{authors as a}{"!{a.email}"}{, } ]
 
   ################################################################### PATHS, FILES, BINARIES
   

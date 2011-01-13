@@ -34,6 +34,3 @@ rescue LoadError
     abort 'yard is not available. In order to run yard, you must: gem install yard'
   end
 end
-
-
-

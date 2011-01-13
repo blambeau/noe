@@ -7,7 +7,7 @@ module Noe
     #   #{program_name} #{command_name} 
     #
     # DESCRIPTION
-    #   This command list project templates found in the templates folder. 
+    #   This command lists project templates found in the templates folder. 
     #   The later is checked as a side effect. 
     #
     # TIP

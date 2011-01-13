@@ -23,7 +23,7 @@ templates-dir:
 #
 # Name of the default template that you want to use. Commands
 # that need a template (see 'noe help create', for example) use this 
-# by default, and allow overriding this via a --template=NAME option.
+# by default, and allow overriding it via a --template=NAME option.
 #
 default:
   ruby

@@ -178,7 +178,8 @@ module Noe
         
         def run
           File.open(relocated, 'w') do |out|
-            dialect = "wlang/active-string"
+            dialect = "noe"
+            variables.methodize!
             out << WLang::file_instantiate(entry.realpath, variables, dialect)
           end
         end

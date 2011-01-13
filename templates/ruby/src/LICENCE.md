@@ -1,6 +1,6 @@
 # The MIT Licence
 
-    Copyright (c) !{Time.now.strftime('%Y')} - !{authors.collect{|a| a['name']}.join(' ')}
+    Copyright (c) !{Time.now.strftime('%Y')} - *{authors as a}{!{a.name}}{, }
 
     Permission is hereby granted, free of charge, to any person obtaining
     a copy of this software and associated documentation files (the
