@@ -5,4 +5,8 @@ describe Noe do
     Noe.const_defined?(:VERSION).should be_true
   end
   
+  it "should rely on Kernel.warn, that should exists" do
+    Kernel.respond_to?(:warn).should be_true
+  end
+  
 end
