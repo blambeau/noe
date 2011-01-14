@@ -1,16 +1,16 @@
-#
-# This file loads all gem dependencies of your library. It relies on the 
-# [bundler gem](http://gembundler.com/) and information included in Gemfile
-# to know which gems are required in which version.
-#
-# Note that changing the directory here is important because Bundler will
-# look for a Gemfile upstream of the current process directory. Not changing
-# this could lead to subtle bugs if executables depending on your library are
-# execute on another ruby projects!
-#
-Dir.chdir(File.dirname(__FILE__)) do
-  require 'rubygems'
-  gem "bundler", "~> 1.0"
-  require "bundler"
-  Bundler.require(:default)
-end
+module !{upper}
+  module Loader
+    
+    def require(name, version = nil)
+      require name
+    rescue LoadError
+      retried = true
+      require "rubygems"
+      gem name, version || ">= 0"
+      require name
+    end
+    module_function :require
+    
+  end # module Loader
+end # module !{upper}
+*{dependencies.select{|dep| dep.groups.include?(:runtime)} as dep}{!{upper}::Loader.require(+{dep.name}, +{dep.version})}{!"\n"}

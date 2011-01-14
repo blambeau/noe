@@ -1,9 +1,3 @@
-# We load Gemfile via Bundler in order to install gem dependencies
-# automatically from information written there.
-gem "bundler", "~> 1.0"
-require "bundler"
-$bundler_gemfile = Bundler.definition
-
 # We require your library, mainly to have access to the VERSION number. 
 # Feel free to set $version manually.
 $LOAD_PATH.unshift File.expand_path('../lib', __FILE__)
@@ -126,28 +120,13 @@ Gem::Specification.new do |s|
   #
 
   #
-  # One call to add_dependency('gem_name', 'gem version requirement')
-  # for each normal dependency. These gems will be installed with your
-  # gem. 
-  #
+  # One call to add_dependency('gem_name', 'gem version requirement') for each
+  # runtime dependency. These gems will be installed with your gem. 
   # One call to add_development_dependency('gem_name', 'gem version requirement')
-  # for each development dependency.
+  # for each development dependency. These gems are required for developers
   #
-  # s.add_dependency('','~> x.y.z')
-  # s.add_development_dependency('','~> x.y.z')
-  #
-  # In order to avoid having to maintain dependencies at two places, we use what has
-  # been written in the Gemfile via the bundler gem.
-  #
-  $bundler_gemfile.dependencies.each do |dep|
-    name, req = dep.name.to_s, dep.requirement.to_s
-    unless dep.groups == [:development]
-      s.add_dependency(name, req)
-    end
-    if dep.groups.include? :development
-      s.add_development_dependency(name, req)
-    end
-  end
+  *{dependencies.select{|dep| dep.groups.include?('development')} as dep}{s.add_development_dependency(+{dep.name}, +{dep.version})}{!{"\n  "}}
+  *{dependencies.select{|dep| dep.groups.include?('runtime')} as dep}{s.add_dependency(+{dep.name}, +{dep.version})}{!{"\n  "}}
 
   # The version of ruby required by this gem
   #

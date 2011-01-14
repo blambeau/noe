@@ -1,3 +1,2 @@
 source 'http://rubygems.org'
-
-*{dependencies as dep}{gem +{dep.name}, +{dep.version}, :groups => +{dep.groups}}{!{"\n"}}
+gemspec :name => +{lower}

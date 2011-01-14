@@ -71,7 +71,7 @@ template-info:
       description: Main file of the ruby library
       safe-override: false
     lib/__lower__/loader.rb:
-      description: Bundler loader for the ruby library
+      description: Dependency loader for the ruby library
       safe-override: true
     LICENCE.md: 
       description: Licensing information
@@ -135,19 +135,25 @@ variables:
     - http://rubygems.org/gems/hello_world
 
   # Gem dependencies. Each entry is a Hash that MUST at least have 'name', 'version'
-  # and 'groups' keys.
+  # and 'groups' keys. The later is an array of dependency groups and are used to 
+  # generate Gemfile and .gemspec files. For now, only 'development' and 'runtime'
+  # values are supported.
+  #
+  # Example
+  #   # Rake is required for development only
+  #   - {name: rake, version: "~> 0.8.7", groups: [development]}
+  #   # HighLine is required at runtime
+  #   - {name: highline, version: ">= 0", groups: [runtime]}
+  #   # WLang is required for both development and runtime
+  #   - {name: wlang, version: ">= 0", groups: [runtime, development]}
+  #
   dependencies: 
-    # Bundler dependency should never be removed as the template heavily makes use
-    # of it. If you don't want bundler, you should at least update the way gem 
-    # dependencies gems are loaded in lib/lower/lower.rb as well as your .gemspec
-    # file!
-    - {name: bundler,   version: "~> 1.0",   groups: [default, development]}
-    # Don't remove rake dependency, simply!
+    # Rake is required for developers, as usual
     - {name: rake,      version: "~> 0.8.7", groups: [development]}
-    # The following dependency is needed to run 'rake spec'. 
-    # See tasks/spec.rake 
+    # Bundler is required for developers and is used by the Rakefile
+    - {name: bundler,   version: "~> 1.0",   groups: [development]}
+    # RSpec is required to run 'rake spec'. See tasks/spec.rake 
     - {name: rspec,     version: "~> 2.4.0", groups: [development]}
-    # The following dependencies are needed to run 'rake yard'. 
-    # See tasks/yard.rake 
+    # YARD and BlueCloth are required to run 'rake yard'. See tasks/yard.rake 
     - {name: yard,      version: "~> 0.6.4", groups: [development]}
     - {name: bluecloth, version: "~> 2.0.9", groups: [development]}
