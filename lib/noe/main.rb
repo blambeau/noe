@@ -12,8 +12,11 @@ module Noe
   # #{summarized_subcommands}
   #
   # DESCRIPTION
-  #   Noe helps development via support for well-designed templates. See
-  #   https://github.com/blambeau/noe for more information.
+  #   Noe is a tool that generates projects from predefined skeletons (aka project 
+  #   templates). Skeletons are designed for building specific products (a ruby 
+  #   library, a static or dynamic web site, ...). Noe instantiates them and helps 
+  #   you maintaining your product via meta-information provided by a .noespec yaml 
+  #   file. See https://github.com/blambeau/noe for more information.
   #
   # See '#{program_name} help COMMAND' for more information on a specific command.
   #
