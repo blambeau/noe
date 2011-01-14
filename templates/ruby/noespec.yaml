@@ -22,8 +22,10 @@ template-info:
 
   # The following entries are information about the template itself and can safely 
   # be removed on your own project.
+  summary: |
+    Template for creating a ruby gem following best ruby practices
   description: |
-    Thisis a [Noe](https://github.com/blambeau/noe) template for creating a ruby gem 
+    This is a [Noe](https://github.com/blambeau/noe) template for creating a ruby gem 
     library. Generated project comes with rake tasks to support the lifecycle of the 
     library (testing, releasing, and so on). Following Noe's philosophy this template 
     also helps you understanding the ruby ecosystem by providing a fully documented 

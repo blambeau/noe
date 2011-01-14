@@ -29,7 +29,7 @@ module Noe
         Dir[File.join(templates_dir, '**')].collect do |tpl_dir|
           begin
             tpl = Template.new(tpl_dir)
-            puts "  * %-#{25}s    %s" % [ "#{tpl.name} (v#{tpl.version})" , tpl.description ]
+            puts "  * %-#{25}s    %s" % [ "#{tpl.name} (v#{tpl.version})" , tpl.summary ]
             tpl
           rescue => ex
             puts "  * %-#{25}s    %s" % [File.basename(tpl_dir), ex.message]

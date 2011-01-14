@@ -23,10 +23,15 @@ module Noe
       end
     end
     
-    # Returns path to the spec file
-    def spec_file
-      File.join(folder, "noespec.yaml")
+    def spec_layout_file(layout = 'noespec')
+      file = File.join(folder, "#{layout}.yaml")
+      if File.exists?(file)
+        file
+      else
+        raise Noe::Error, "Unknown specification layout: #{layout}, try 'noe list'"
+      end
     end
+    alias :spec_file :spec_layout_file
     
     # Merges another spec file inside this template
     def merge_spec_file(file)
@@ -41,6 +46,11 @@ module Noe
     # Returns template name  
     def name
       File.basename(folder)
+    end
+    
+    # Returns template summary
+    def summary
+      spec['template-info']['summary'] || description
     end
     
     # Returns template description
