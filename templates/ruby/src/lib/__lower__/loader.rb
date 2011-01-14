@@ -13,4 +13,4 @@ module !{upper}
     
   end # module Loader
 end # module !{upper}
-*{dependencies.select{|dep| dep.groups.include?(:runtime)} as dep}{!{upper}::Loader.require(+{dep.name}, +{dep.version})}{!"\n"}
+*{dependencies.select{|dep| dep.groups.include?('runtime')} as dep}{!{upper}::Loader.require(+{dep.name}, +{dep.version})}{!"\n"}
