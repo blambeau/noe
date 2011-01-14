@@ -29,7 +29,7 @@ Gem::Specification.new do |s|
   # you might wish to copy the entire README into the description.
   s.description = File.read(File.expand_path('../README.md', __FILE__))
   
-  # The URL of this gem's home page (optional)
+  # The URL of this gem home page (optional)
   s.homepage = +{links.first}
 
   # Gem publication date (required but auto)

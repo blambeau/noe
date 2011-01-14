@@ -33,7 +33,7 @@ module Noe
       merge_spec YAML::load(File.read(spec_file))
     end
     
-    # Merges template's spec with another spec given from a Hash
+    # Merges template spec with another spec given from a Hash
     def merge_spec(hash)
       @spec = @spec.noe_merge(hash)
     end
