@@ -122,17 +122,23 @@ variables:
 
   # Authors of the project. Each author entry is a Hash and MUST at least have 
   # 'name' and 'email' keys. This is used to add meta information to your .gemspec 
-  # file.
-  authors: 
-    - name:  Bob
-      email: bob@gmail.com
+  # file. Example:
+  #
+  # authors: 
+  #  - name:  Bob
+  #    email: bob@gmail.com
+  #
+  authors: []
 
   # Web links for the project. You should typically include links to the sources
   # (github), rubygems.org, documentation and so on. The first link will be used
-  # to fill the .gemspec file.
-  links:
-    - http://github.com/bob/hello_world
-    - http://rubygems.org/gems/hello_world
+  # to fill the .gemspec file. Example:
+  #
+  # links:
+  #   - http://github.com/bob/hello_world
+  #   - http://rubygems.org/gems/hello_world
+  #
+  links: []
 
   # Gem dependencies. Each entry is a Hash that MUST at least have 'name', 'version'
   # and 'groups' keys. The later is an array of dependency groups and are used to 
