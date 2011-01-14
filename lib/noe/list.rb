@@ -16,6 +16,10 @@ module Noe
     class List < Quickl::Command(__FILE__, __LINE__)
       include Noe::Commons
       
+      options do |opt|
+        Commons.add_common_options(opt)
+      end
+      
       def execute(args)
         unless args.empty?
           raise Quickl::InvalidArgument, "Needless argument: #{args.join(', ')}"

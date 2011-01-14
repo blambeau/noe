@@ -71,6 +71,7 @@ module Noe
                "Force overriding of existing .noespec file"){ 
           @force = true
         }
+        Commons.add_common_options(opt)
       end
       
       def generate_noespec_file(where)

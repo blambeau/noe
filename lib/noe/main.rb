@@ -49,16 +49,7 @@ module Noe
                   "Show backtrace on error") do
         @backtrace = true
       end
-      # Show the help and exit
-      opt.on_tail("--help", 
-                  "Show help") do
-        raise Quickl::Help
-      end
-      # Show version and exit
-      opt.on_tail("--version", 
-                  "Show version") do
-        raise Quickl::Exit, "#{program_name} #{Noe::VERSION} (c) 2011, Bernard Lambeau"
-      end
+      Commons.add_common_options(opt)
     end
     
     # Runs the command

@@ -31,6 +31,7 @@ module Noe
                "Force overriding on all existing files"){ 
           @force = true
         }
+        Commons.add_common_options(opt)
       end
 
       def execute(args)

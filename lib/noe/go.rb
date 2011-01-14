@@ -95,6 +95,7 @@ module Noe
                "Follow safe-override information provided by the manifest"){ 
           @safe_override = true
         }
+        Commons.add_common_options(opt)
       end
       
       # Checks if the interactive mode is enabled. If yes, highline is prepared

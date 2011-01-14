@@ -13,7 +13,10 @@
 
   * Removed 'noe create', which is replaced by an extended version named 'noe prepare'
   * 'noe go' now supports --interactive and --safe-override additional options to control conflict strategy
-  * A wlang backtrace is now displayed when an instantation error occurs
+  * Added a 'noe show-spec' command that shows the complete specification used by 'noe go'
+    See 'noe help show-spec' for details
+  * 'noe COMMAND --help' is now an alias for 'noe help COMMAND'  
+  * A wlang backtrace is now displayed when an instantation error occurs on 'noe go'
 
 * Other changes
 

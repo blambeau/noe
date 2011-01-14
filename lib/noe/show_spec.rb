@@ -6,6 +6,9 @@ module Noe
     # SYNOPSIS
     #   #{program_name} #{command_name} [SPEC_FILE]
     #
+    # OPTIONS
+    # #{summarized_options}
+    #
     # DESCRIPTION
     #   This command merges the .noespec file given as first parameter (or found in 
     #   the current folder) with the noespec.yaml file of the template and prints 
@@ -23,6 +26,10 @@ module Noe
     #
     class ShowSpec < Quickl::Command(__FILE__, __LINE__)
       include Noe::Commons
+      
+      options do |opt|
+        Commons.add_common_options(opt)
+      end
       
       def execute(args)
         raise Quickl::Help if args.size > 1
