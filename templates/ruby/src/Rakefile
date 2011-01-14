@@ -1,5 +1,4 @@
 begin
-  require "rubygems"
   gem "bundler", "~> 1.0"
   require "bundler/setup"
 rescue LoadError
