@@ -66,7 +66,8 @@ module Noe
       super
     rescue WLang::Error => ex
       puts "#{ex.class}: #{ex.message}"
-      puts (ex.wlang_backtrace || ex.backtrace).join("\n")
+      back = ex.wlang_backtrace || ex.backtrace
+      puts back.join("\n")
     rescue Quickl::Error => ex
       raise
     rescue Noe::Error => ex
