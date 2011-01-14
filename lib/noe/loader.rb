@@ -30,12 +30,26 @@ module Noe
     #   $LOAD_PATH.unshift ...   # or ruby -I...
     #   Noe::Loader.require('highline', "~> 1.6")
     #
+    # Learn more about this:
+    # - http://weblog.rubyonrails.org/2009/9/1/gem-packaging-best-practices
+    # - https://gist.github.com/54177
+    #
     def require(name, version = nil)
       Kernel.require name.to_s
     rescue LoadError
-      require "rubygems"
-      gem name.to_s, version || ">= 0"
-      Kernel.require name.to_s
+      begin
+        gem name.to_s, version || ">= 0"
+        Kernel.require name.to_s
+      rescue NameError
+        if $VERBOSE
+          Kernel.warn "#{__FILE__}:#{__LINE__}: warning: requiring rubygems myself, "\
+                      " you should use 'ruby -rubygems' instead. "\
+                      "See https://gist.github.com/54177"
+        end
+        require "rubygems"
+        gem name.to_s, version || ">= 0"
+        Kernel.require name.to_s
+      end
     end
     module_function :require
     

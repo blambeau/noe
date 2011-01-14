@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env ruby -rubygems
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'noe'
 Noe::Main.run(ARGV)
