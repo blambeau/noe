@@ -1,0 +1,31 @@
+# Noe's template for ruby gem libraries (https://github.com/blambeau/noe)
+# Run 'noe prepare --template=!{template_name} hello_world' for a full commented 
+# version of this file.
+
+# Don't remove this entry!
+template-info:
+  name: "!{template_name}"
+  version: 1.1.0
+
+# Update to match your own configuration.
+variables:
+  # A ruby lower case project name.
+  lower: 
+    hello_world
+
+  # A ruby upper case project name. 
+  upper:
+    HelloWorld
+
+  # Project summary (~= 5 lines).
+  summary: |
+    A simple "Hello World" example for Noe's skeleton for Ruby projects
+
+  # Authors of the project (- {name: Bob, email: bob@gmail.com}, ...) 
+  authors: []
+
+  # Web links for the project (- http://..., - http://...). 
+  links: []
+
+  # Gem dependencies. (- {name: ..., version: ..., groups: [...]}, ...)
+  dependencies: []

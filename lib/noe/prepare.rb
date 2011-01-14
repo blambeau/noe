@@ -29,11 +29,11 @@ module Noe
     #
     # TYPICAL USAGE
     #
-    #   To create a fresh new project for a given template, play the following
-    #   scenario
+    #   To create a fresh new project for a given template (ruby here), play the 
+    #   following scenario:
     #
     #     # start creation of a fresh new ruby project
-    #     noe prepare --template=ruby foo
+    #     noe prepare [--template=ruby] [--layout=short] foo
     #     cd foo
     #  
     #     # edit the configuration
@@ -42,11 +42,11 @@ module Noe
     #     # launch template generation
     #     noe go
     #
-    #   To upgrade an existing project to follow a template, the following scenario
-    #   is worth considering:
+    #   To upgrade an existing project to follow a template (ruby here), the following 
+    #   scenario is worth considering:
     #
     #     # generate a .noespec file in the current folder (let assume 'foo')
-    #     noe prepare --template=ruby
+    #     noe prepare [--template=ruby] [--layout=short]
     #  
     #     # edit the configuration
     #     edit foo.noespec
@@ -66,6 +66,11 @@ module Noe
                "Set the template to use (try 'noe list' to see what exists)") do |name|
           config.default = name
         end
+        @layout = "noespec"
+        opt.on('--layout=LAYOUT',
+               "Set the specification layout to use (idem)") do |l|
+          @layout = l
+        end
         @force = false
         opt.on('--force', '-f',
                "Force overriding of existing .noespec file"){ 
@@ -81,7 +86,7 @@ module Noe
           tpl = template
           File.open(where, 'w') do |out|
             context = {'template_name' => tpl.name}
-            out << WLang::file_instantiate(tpl.spec_file, context, "wlang/active-text")
+            out << WLang::file_instantiate(tpl.spec_layout_file(@layout), context, "wlang/active-text")
           end 
         end
         where

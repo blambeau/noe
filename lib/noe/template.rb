@@ -33,6 +33,11 @@ module Noe
     end
     alias :spec_file :spec_layout_file
     
+    # Returns an array with available layout names
+    def layouts
+      Dir[File.join(folder, '*.yaml')].collect{|f| File.basename(f, '.yaml')}
+    end
+    
     # Merges another spec file inside this template
     def merge_spec_file(file)
       merge_spec YAML::load(File.read(spec_file))

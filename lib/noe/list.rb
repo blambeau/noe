@@ -20,20 +20,39 @@ module Noe
         Commons.add_common_options(opt)
       end
       
+      def max(i,j)
+        i > j ? i : j
+      end
+      
       def execute(args)
         unless args.empty?
           raise Quickl::InvalidArgument, "Needless argument: #{args.join(', ')}"
         end
 
-        puts "Templates located in: #{templates_dir}"
-        Dir[File.join(templates_dir, '**')].collect do |tpl_dir|
+        tpls = Dir[File.join(templates_dir, '**')].collect{|tpldir| Template.new(tpldir)}
+        columns = [:name, :version, :layouts, :summary]
+        data = [ columns ] + tpls.collect{|tpl|
           begin
-            tpl = Template.new(tpl_dir)
-            puts "  * %-#{25}s    %s" % [ "#{tpl.name} (v#{tpl.version})" , tpl.summary ]
-            tpl
-          rescue => ex
-            puts "  * %-#{25}s    %s" % [File.basename(tpl_dir), ex.message]
-            nil
+            columns.collect{|col| 
+              if col == :layouts
+                (tpl.send(col) - ["noespec"]).to_a.join(',')
+              else
+                tpl.send(col).to_s
+              end
+            }
+          rescue Error => ex
+            [ tpl.name, "", [], ex.getmessage ]
+          end
+        }
+        lengths = data.inject([0,0,0,0]){|memo,columns|
+          (0..3).collect{|i| max(memo[i], columns[i].to_s.length)}
+        }
+        data.each_with_index do |line,i|
+          current = (config.default == line[0])
+          puts (current ? " -> " : "    ") +
+               "%-#{lengths[0]}s   %-#{lengths[1]}s   %-#{lengths[2]}s   %-#{lengths[3]}s" % line
+          if i==0
+            puts "-"*lengths.inject(0){|memo,i| memo+i+3}
           end
         end
       end
