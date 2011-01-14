@@ -1,3 +1,11 @@
+PATH
+  remote: .
+  specs:
+    noe (1.1.0)
+      highline (~> 1.6.0)
+      quickl (~> 0.2.0)
+      wlang (~> 0.10.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -24,6 +32,7 @@ DEPENDENCIES
   bluecloth (~> 2.0.9)
   bundler (~> 1.0)
   highline (~> 1.6.0)
+  noe!
   quickl (~> 0.2.0)
   rake (~> 0.8.7)
   rspec (~> 2.4.0)

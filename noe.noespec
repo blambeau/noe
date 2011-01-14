@@ -16,7 +16,7 @@ variables:
     - http://github.com/blambeau/noe
     - http://rubygems.org/gems/noe
   dependencies: 
-    - {name: wlang,     version: "~> 0.10.0", groups: [default]}
-    - {name: quickl,    version: "~> 0.2.0",  groups: [default]}
-    - {name: highline,  version: "~> 1.6.0",  groups: [default]}
+    - {name: wlang,     version: "~> 0.10.0", groups: [runtime]}
+    - {name: quickl,    version: "~> 0.2.0",  groups: [runtime]}
+    - {name: highline,  version: "~> 1.6.0",  groups: [runtime]}
     
