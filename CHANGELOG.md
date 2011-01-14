@@ -13,7 +13,7 @@
 
   * Removed 'noe create', which is replaced by an extended version named 'noe prepare'
   * 'noe go' now supports --interactive and --safe-override additional options to control conflict strategy
-  * A wlang backtrace is not displayed when an instantation error occurs
+  * A wlang backtrace is now displayed when an instantation error occurs
 
 * Other changes
 
