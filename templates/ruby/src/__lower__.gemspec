@@ -90,14 +90,11 @@ Gem::Specification.new do |s|
 
   # The path in the gem for executable scripts (optional)
   #
-  # Uncomment and set this as well as the following option if your gem 
-  # has executables
-  #
-  # s.bindir = 'bin'
+  s.bindir = +{bindir}
 
   # Executables included in the gem.
   #
-  # s.executables = %w{}
+  s.executables = +{executables}
 
   ################################################################### REQUIREMENTS & INSTALL
   # Remember the gem version requirements operators and schemes:

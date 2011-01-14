@@ -29,7 +29,7 @@ Gem::Specification.new do |s|
   # you might wish to copy the entire README into the description.
   s.description = File.read(File.expand_path('../README.md', __FILE__))
   
-  # The URL of this gem's home page (optional)
+  # The URL of this gem home page (optional)
   s.homepage = "http://github.com/blambeau/noe"
 
   # Gem publication date (required but auto)
@@ -90,14 +90,11 @@ Gem::Specification.new do |s|
 
   # The path in the gem for executable scripts (optional)
   #
-  # Uncomment and set this as well as the following option if your gem 
-  # has executables
-  #
-  # s.bindir = 'bin'
+  s.bindir = "bin"
 
   # Executables included in the gem.
   #
-  # s.executables = %w{}
+  s.executables = ["noe"]
 
   ################################################################### REQUIREMENTS & INSTALL
   # Remember the gem version requirements operators and schemes:
