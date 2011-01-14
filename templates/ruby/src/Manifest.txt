@@ -1,0 +1,11 @@
+!{lower}.gemspec
+CHANGELOG.md
+Gemfile
+bin/**/*
+lib/**/*
+LICENCE.md
+Rakefile
+README.md
+spec/**/*
+tasks/**/*
+test/**/*

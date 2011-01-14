@@ -76,13 +76,15 @@ Gem::Specification.new do |s|
   
   # Files included in this gem.
   #
-  # By default, we take all in lib, tasks + all non hidden files in the 
-  # root folder. You don't have to include test files and binaries which 
-  # are automatically included in packages
+  # By default, we take all files included in the Manifest.txt file on root
+  # of the project. Entries of the manifest are interpreted as Dir[...] 
+  # patterns so that lazy people may use wilcards like lib/**/*
   #
-  s.files = Dir['lib/**/*'] + 
-            Dir['tasks/**/*'] +
-            Dir['*'].select{|f| File.file?(f)}
+  here = File.dirname(__FILE__)
+  s.files = File.readlines(File.join(here, 'Manifest.txt')).
+                 inject([]){|files, pattern| 
+    files + Dir[File.join(here, pattern.strip)]
+  }
 
   # Test files included in this gem.
   #

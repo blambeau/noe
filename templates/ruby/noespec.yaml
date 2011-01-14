@@ -78,6 +78,9 @@ template-info:
     LICENCE.md: 
       description: Licensing information
       safe-override: false
+    Manifest.txt:
+      description: Information about the files that compose the package
+      safe-override: false
     Rakefile:
       description: Information for Ruby maker
       safe-override: true
