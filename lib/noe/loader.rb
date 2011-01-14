@@ -7,12 +7,20 @@ module Noe
     #
     # This method allows requiring dependencies with some flexibility.
     #
-    # If ALWAYS attempt a simple <code>Kernel.require(name)</code> before 
-    # anything else. If this require fails with a LoadError then it falls
-    # back requiring the gem with specified version (defaults to >= 0) then
-    # retrying the require. Making so allows you to twist the load path 
-    # during development, therefore bypassing version requirement to test 
-    # your lib under new versions of some gems.
+    # Implemented algorithm makes greedy choices about the environment:
+    # 1. It first attempts a simple <code>Kernel.require(name)</code> before 
+    #    anything else (even bypassing version requirement)
+    # 2. If step 1 fails with a LoadError then it falls back requiring the 
+    #    gem with specified version (defaults to >= 0) and retries step 1.
+    # 3. If step 2 fails with a NameError, 'rubygems' are required and step 
+    #    2 is retried.
+    # 4. If step 3. fails, the initial LoadError is reraised.
+    #
+    # Doing so ensures flexibility for the users of the library by not making
+    # wrong assumptions about their environment. Testing the library is also
+    # made easier, as illustrated in the examples below. Please note that this
+    # method is useful to load external dependencies of your code only, not 
+    # .rb files of your own library.
     #
     # Examples:
     #
@@ -23,14 +31,14 @@ module Noe
     #   Noe::Loader.require('highline')
     #
     #   # Require a gem, specifing a particular version
-    #   Noe::Loader.require('highline', "~> 1.6")
+    #   Noe::Loader.require('foo', "~> 1.6")
     #
-    #   # Twist the load path to use version of highline you've recently 
-    #   # forked (this bypass the version requirement)
+    #   # Twist the load path to use version of foo you've recently 
+    #   # forked (bypass the version requirement)
     #   $LOAD_PATH.unshift ...   # or ruby -I...
     #   Noe::Loader.require('highline', "~> 1.6")
     #
-    # Learn more about this:
+    # Learn more about this pattern:
     # - http://weblog.rubyonrails.org/2009/9/1/gem-packaging-best-practices
     # - https://gist.github.com/54177
     #
@@ -39,7 +47,6 @@ module Noe
     rescue LoadError
       begin
         gem name.to_s, version || ">= 0"
-        Kernel.require name.to_s
       rescue NameError
         if $VERBOSE
           Kernel.warn "#{__FILE__}:#{__LINE__}: warning: requiring rubygems myself, "\
@@ -48,8 +55,8 @@ module Noe
         end
         require "rubygems"
         gem name.to_s, version || ">= 0"
-        Kernel.require name.to_s
       end
+      Kernel.require name.to_s
     end
     module_function :require
     
