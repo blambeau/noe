@@ -19,5 +19,3 @@ variables:
     - {name: wlang,     version: "~> 0.10.0", groups: [runtime]}
     - {name: quickl,    version: "~> 0.2.0",  groups: [runtime]}
     - {name: highline,  version: "~> 1.6.0",  groups: [runtime]}
-  bindir: bin
-  executables: [ noe ]    

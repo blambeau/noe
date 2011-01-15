@@ -32,9 +32,3 @@ variables:
 
   # Gem dependencies. (- {name: ..., version: ..., groups: [...]}, ...)
   dependencies: []
-
-  # The path in the gem for executable scripts
-  bindir: 'bin'
-  
-  # Array containing the names of executables included in the gem, if any. 
-  executables: []

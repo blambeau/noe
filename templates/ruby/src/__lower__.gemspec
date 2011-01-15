@@ -72,7 +72,7 @@ Gem::Specification.new do |s|
   # activated (required).
   #
   # The default 'lib' is typically sufficient.
-  s.require_paths = %w{ lib }
+  s.require_paths = +{gemspec.require_paths}
   
   # Files included in this gem.
   #
@@ -88,15 +88,15 @@ Gem::Specification.new do |s|
 
   # Test files included in this gem.
   #
-  s.test_files = Dir['test/**/*'] + Dir['spec/**/*']
+  s.test_files = *{gemspec.test_files as t}{Dir[+{t}]}{ + }
 
   # The path in the gem for executable scripts (optional)
   #
-  s.bindir = +{bindir}
+  s.bindir = +{gemspec.bindir}
 
   # Executables included in the gem.
   #
-  s.executables = +{executables}
+  s.executables = (*{gemspec.executables as t}{Dir[+{t}]}{ + }).collect{|f| File.basename(f)}
 
   ################################################################### REQUIREMENTS & INSTALL
   # Remember the gem version requirements operators and schemes:
@@ -146,19 +146,19 @@ Gem::Specification.new do |s|
   # Valid types of extensions are extconf.rb files, configure scripts 
   # and rakefiles or mkrf_conf files.
   #
-  # s.extensions = %w{}
+  s.extensions = +{gemspec.extensions}
   
   # External (to RubyGems) requirements that must be met for this gem to work. 
   # It’s simply information for the user.
   #
-  # s.requirements = %w{}
+  s.requirements = +{gemspec.requirements}
   
   # A message that gets displayed after the gem is installed
   #
   # Uncomment and set this if you want to say something to the user
   # after gem installation
   #
-  # s.post_install_message = nil
+  s.post_install_message = +{gemspec.post_install_message}
 
   ################################################################### SECURITY
 
@@ -177,10 +177,10 @@ Gem::Specification.new do |s|
   #
   # See 'rdoc --help' about this
   #
-  s.rdoc_options = %w{}
+  s.rdoc_options = +{gemspec.rdoc_options}
 
   # Extra files to add to RDoc such as README
   #
-  s.extra_rdoc_files = Dir['*.md'] + Dir['*.txt']
+  s.extra_rdoc_files = *{gemspec.extra_rdoc_files as t}{Dir[+{t}]}{ + }
 
 end
