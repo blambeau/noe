@@ -19,3 +19,13 @@ variables:
     - {name: wlang,     version: "~> 0.10.0", groups: [runtime]}
     - {name: quickl,    version: "~> 0.2.0",  groups: [runtime]}
     - {name: highline,  version: "~> 1.6.0",  groups: [runtime]}
+  gemspec: 
+    post_install_message: |
+      Noe successfully installed!
+      
+      What's next?
+        - 'noe help install' for configuration and default templates
+        - 'noe prepare --template=ruby hello_world'
+      
+      Thank you for using Noe, enjoy!
+      
