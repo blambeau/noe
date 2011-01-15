@@ -31,7 +31,8 @@ instantiate a ruby project simply execute the following commands in turn:
     noe go
   
 That's it! But also have a look at 'noe help prepare' and 'not help go' for additional
-options.
+options. Also have a look at [http://revision-zero.org/noe](http://revision-zero.org/noe) 
+for a blog post about basic usage.
 
 ## Philosophy
 
