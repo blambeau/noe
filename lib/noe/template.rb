@@ -28,6 +28,7 @@ module Noe
       if File.exists?(file)
         file
       else
+        puts "On #{file}"
         raise Noe::Error, "Unknown specification layout: #{layout}, try 'noe list'"
       end
     end
@@ -97,8 +98,7 @@ module Noe
       manifest = spec['template-info']['manifest'] || {}
       manifest[entry.path] || {
         'description'   => "No description for #{entry.path}",
-        'safe-override' => false,
-        'wlang-dialect' => "wlang/active-text"
+        'safe-override' => false
       } 
     end
     
@@ -153,7 +153,7 @@ module Noe
       end
       
       # Relocate the path according to variables
-      def relocate(variables)
+      def relocate(variables = template.variables)
         path.split(File::PATH_SEPARATOR).
              collect{|v| rename_one(variables, v)}.
              join(File::PATH_SEPARATOR)
@@ -194,7 +194,23 @@ module Noe
       
       # Returns wlang dialect to use
       def wlang_dialect
-        manifest['wlang-dialect'] || template.main_wlang_dialect || 'wlang/active-text'
+        @wlang_dialect ||= begin
+          default = template.main_wlang_dialect
+          manifest['wlang-dialect'] || self.class.infer_wlang_dialect(relocate, default)
+        end
+      end
+      
+      # Infers the wlang dialect to use for the entry
+      def self.infer_wlang_dialect(uri, default = nil)
+        res = case d = WLang::infer_dialect(uri)
+          when nil
+            nil
+          when /^wlang/
+            d
+          else
+            WLang::dialect("wlang/#{d}").qualified_name
+        end
+        res ? res : (default || 'wlang/active-text')
       end
       
       # Is this entry safe to override

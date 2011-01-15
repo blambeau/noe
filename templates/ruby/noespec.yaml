@@ -39,10 +39,6 @@ template-info:
     source: https://github.com/blambeau/noe/tree/master/templates/ruby
     documentation: https://github.com/blambeau/noe/blob/master/templates/ruby/README.md
     
-  # By default, this is the wlang dialect used to instantiate the template files. You can 
-  # safely remove it from your own project.
-  main-wlang-dialect: wlang/ruby
-    
   #
   # Below starts the template manifest. 
   #
@@ -66,12 +62,14 @@ template-info:
     __lower__.gemspec: 
       description: Gem specification file
       safe-override: true
+      wlang-dialect: wlang/ruby
     CHANGELOG.md: 
       description: Information about library changes
       safe-override: false
     Gemfile:
       description: Information used by Bundler, the Ruby dependency manager
       safe-override: true
+      wlang-dialect: wlang/ruby
     lib/__lower__.rb:
       description: Main file of the ruby library
       safe-override: false
@@ -87,6 +85,7 @@ template-info:
     Rakefile:
       description: Information for Ruby maker
       safe-override: true
+      wlang-dialect: wlang/ruby
     README.md: 
       description: Starter documentation file
       safe-override: false
@@ -99,15 +98,19 @@ template-info:
     tasks/gem.rake:
       description: configuration file for 'rake package', 'rake gem' and associated tasks
       safe-override: true
+      wlang-dialect: wlang/ruby
     tasks/spec_test.rake:
       description: configuration file for 'rake spec_test'
       safe-override: true
+      wlang-dialect: wlang/ruby
     tasks/unit_test.rake:
       description: configuration file for 'rake unit_test'
       safe-override: true
+      wlang-dialect: wlang/ruby
     tasks/yard.rake:
       description: configuration file for 'rake yard'
       safe-override: true
+      wlang-dialect: wlang/ruby
 
 # The following entries are template-related variables. Update to match your 
 # own configuration.
