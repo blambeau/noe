@@ -2,7 +2,7 @@ begin
   gem "bundler", "~> 1.0"
   require "bundler/setup"
 rescue LoadError
-  abord "This project requires bundler, try 'gem install bundler'"
+  abort "This project requires bundler, try 'gem install bundler'"
 end
 
 # Dynamically load the gem spec
