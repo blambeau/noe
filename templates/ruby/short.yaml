@@ -1,6 +1,5 @@
 # Noe template for ruby gem libraries (https://github.com/blambeau/noe) - short version
-# Use 'noe prepare --template=!{template_name} --layout=noespec' to generate a full 
-# version of this file.
+# Run 'noe show-spec' and 'noe help show-spec' for additional details.
 
 # Don't remove this entry!
 template-info:

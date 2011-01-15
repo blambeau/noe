@@ -40,8 +40,8 @@ module Noe
                 tpl.send(col).to_s.strip
               end
             }
-          rescue Error => ex
-            [ tpl.name, "", [], ex.getmessage ]
+          rescue Exception => ex
+            [ tpl.name, "", "", "Template error: #{ex.message}" ]
           end
         }
         lengths = data.inject([0,0,0,0]){|memo,columns|
