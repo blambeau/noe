@@ -3,8 +3,9 @@
 * Template specification/instantiation enhancements
 
   * Introduced a manifest entry in template-info 
-  * Introduced the ability to control wlang dialect on a file basis thanks to manifest
-  * Introduced a main-wlang-dialect in .noespec, with fallback on wlang/active-text
+  * Introduced an auto detection of the wlang dialect to use based on file extensions. 
+    The dialect may also be specified under template-info/manifest/a_file_name/wlang-dialect 
+    entry
   * All hashes found in .noespec variables are methodized before being passed to template
   * Templates are now instantiated on a specification being the result of YAML merging 
     between the user's .noespec file and the template noespec.yaml file.
@@ -20,7 +21,7 @@
 
 * Other changes
 
-  * Bumped wlang version to 0.10.0 to gain ruby generation features provided by wlang/ruby
+  * Bumped wlang version to 0.10.0 to gain inclusion features on wlang/ruby and wlang/yaml
   * Ruby skeleton largely enhanced (see it's own CHANGELOG.md)
   * Noe code is now managed by Noe itself
 
