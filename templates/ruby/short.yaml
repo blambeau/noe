@@ -1,11 +1,14 @@
-# Noe's template for ruby gem libraries (https://github.com/blambeau/noe)
-# Run 'noe prepare --template=!{template_name} hello_world' for a full commented 
+# Noe template for ruby gem libraries (https://github.com/blambeau/noe) - short version
+# Use 'noe prepare --template=!{template_name} --layout=noespec' to generate a full 
 # version of this file.
 
 # Don't remove this entry!
 template-info:
   name: "!{template_name}"
   version: 1.1.0
+  links:
+    source: https://github.com/blambeau/noe/tree/master/templates/ruby
+    documentation: https://github.com/blambeau/noe/blob/master/templates/ruby/README.md
 
 # Update to match your own configuration.
 variables:
@@ -29,3 +32,9 @@ variables:
 
   # Gem dependencies. (- {name: ..., version: ..., groups: [...]}, ...)
   dependencies: []
+
+  # The path in the gem for executable scripts
+  bindir: 'bin'
+  
+  # Array containing the names of executables included in the gem, if any. 
+  executables: []

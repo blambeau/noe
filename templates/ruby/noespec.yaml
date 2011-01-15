@@ -12,6 +12,9 @@
 # the first section (under template-info) is only required to contain the name and 
 # version of the template to use. 
 #
+# Use 'noe prepare --template=!{template_name} --layout=short' to generate a shorter
+# version of this file.
+#
 # See 'noe help prepare' and 'noe help show-spec' for more information.
 #
 template-info:
@@ -34,7 +37,7 @@ template-info:
     - {name: Bernard Lambeau, email: blambeau@gmail.com}
   links:
     source: https://github.com/blambeau/noe/tree/master/templates/ruby
-    documentation: https://github.com/blambeau/noe
+    documentation: https://github.com/blambeau/noe/blob/master/templates/ruby/README.md
     
   # By default, this is the wlang dialect used to instantiate the template files. You can 
   # safely remove it from your own project.
