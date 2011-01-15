@@ -1,4 +1,6 @@
-# 1.1.0 / FIX ME
+# 1.1.1 / FIX ME
+
+# 1.1.0 / 2011-01-11
 
 * Template specification/instantiation enhancements
 

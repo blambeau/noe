@@ -15,6 +15,7 @@ variables:
   links:
     - http://github.com/blambeau/noe
     - http://rubygems.org/gems/noe
+    - http://revision-zero.org/noe
   dependencies: 
     - {name: wlang,     version: "~> 0.10.0", groups: [runtime]}
     - {name: quickl,    version: "~> 0.2.0",  groups: [runtime]}
