@@ -30,8 +30,10 @@ module Noe
     
     # Returns Noe's configuration, loading it if required
     def config
-      @config_file ||= find_config_file
-      Config.new(@config_file)
+      @config ||= begin
+        @config_file ||= find_config_file
+        Config.new(@config_file)
+      end
     end
 
     # Finds the configuration file and loads automatically
