@@ -37,7 +37,7 @@ module Noe
               if col == :layouts
                 (tpl.send(col) - ["noespec"]).to_a.join(',')
               else
-                tpl.send(col).to_s
+                tpl.send(col).to_s.strip
               end
             }
           rescue Error => ex
