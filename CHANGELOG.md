@@ -1,5 +1,10 @@
 # 1.2.0 / FIX ME
 
+* Default ruby skeleton
+
+  * Project :description is introduced in .noespec and made mandatory to avoid weird results 
+    on rubygems.org when using the whole README.md file.
+
 # 1.1.0 / 2011-01-11
 
 * Template specification/instantiation enhancements
