@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
   #
   # The description should be more detailed than the summary.  For example,
   # you might wish to copy the entire README into the description.
-  s.description = File.read(File.expand_path('../README.md', __FILE__))
+  s.description = +{description}
   
   # The URL of this gem home page (optional)
   s.homepage = +{links.first}

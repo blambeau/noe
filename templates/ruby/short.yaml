@@ -20,9 +20,15 @@ variables:
     HelloWorld
 
   # Project summary (~= 5 lines).
-  summary: |
-    A simple "Hello World" example for Noe's skeleton for Ruby projects
+  summary: |-
+    A simple "Hello World" example
 
+  # Project description (~ 5 lines). Project description should be more complete
+  # than the summary and will be used to describe your gem on rubygems.org
+  description: |-
+    This hello_world example provides you all you need to build a ruby gem library
+    while applying skeleton-driven coding with Noe (see http://revision-zero.org/noe)
+      
   # Authors of the project (- {name: Bob, email: bob@gmail.com}, ...) 
   authors: []
 

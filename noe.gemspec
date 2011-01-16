@@ -21,13 +21,13 @@ Gem::Specification.new do |s|
   # A short summary of this gem
   #
   # This is displayed in `gem list -d`.
-  s.summary = "Noe is a tool that generates projects from predefined skeletons (aka project/application templates). Skeletons are designed for building specific products (a ruby library, a static or dynamic web site, ...). Noe instantiates them and helps you maintaining your product via meta-information provided by a .noespec yaml file."
+  s.summary = "Noe is a simple, general-purpose and extensible skeleton generator from project templates"
 
   # A long description of this gem (required)
   #
   # The description should be more detailed than the summary.  For example,
   # you might wish to copy the entire README into the description.
-  s.description = File.read(File.expand_path('../README.md', __FILE__))
+  s.description = "Noe is a tool that generates project skeletons from predefined templates. A template is designed for a specific product (a ruby library, a static or dynamic web site, ...). Noe instantiates templates and helps you maintaining your product via meta-information provided by a .noespec yaml file. In contrast to other tools, Noe is not specific to certain kinds of products. Writing your own template is possible and even simple!"
   
   # The URL of this gem home page (optional)
   s.homepage = "http://github.com/blambeau/noe"

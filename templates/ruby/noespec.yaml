@@ -126,9 +126,15 @@ variables:
   upper:
     HelloWorld
 
-  # Project summary. The summary should be a short project description (5 lines)
-  # and will be used to annotate your .gemspec file on rubygems.org.
-  summary: A simple "Hello World" example for Noe's skeleton for Ruby projects
+  # Project summary (~ 1 lines)
+  summary: 
+    A simple "Hello World" example
+  
+  # Project description (~ 5 lines). Project description should be more complete
+  # than the summary and will be used to describe your gem on rubygems.org
+  description: |-
+    This hello_world example provides you all you need to build a ruby gem library
+    while applying skeleton-driven coding with Noe (see http://revision-zero.org/noe)
     
   # Authors of the project. Each author entry is a Hash and MUST at least have 
   # 'name' and 'email' keys. This is used to add meta information to your .gemspec 
