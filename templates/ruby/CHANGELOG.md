@@ -1,7 +1,8 @@
-# 1.2.0 / FIX ME
+# 1.2.0 / 2011-01-17
 
   * A 'description' variable is introduced in .noespec and made mandatory to avoid weird results 
     on rubygems.org when using the whole README.md file for project description.
+  * A 'version' variable is introduced in .noespec and made mandatory.
   * Enhanced 'rake package/gem' to be configurable from .noespec under variables/rake_tasks/gem
   * Enhanced 'rake unit_test' to be configurable from .noespec under variables/rake_tasks/unit_test
   * Enhanced 'rake spec_test' to be configurable from .noespec under variables/rake_tasks/unit_test

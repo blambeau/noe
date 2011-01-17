@@ -1,11 +1,11 @@
 template-info:
   name: ruby
-  version: 1.0.1
+  version: 1.2.0
   author: Bernard Lambeau <blambeau@gmail.com>
 variables:
   lower: noe
   upper: Noe
-  version: 1.1.0
+  version: 1.2.0
   summary: 
     Noe is a simple, general-purpose and extensible skeleton generator from project templates
   description:

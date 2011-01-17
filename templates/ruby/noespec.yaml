@@ -133,6 +133,10 @@ variables:
   # name.
   upper:
     HelloWorld
+    
+  # Version of your library
+  version:
+    1.0.0
 
   # Project summary (~ 1 lines)
   summary: 
