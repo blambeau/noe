@@ -11,8 +11,4 @@ class Array
     end
   end
   
-  def noe_merge(right)
-    (self + right).uniq
-  end
-  
 end # class Array

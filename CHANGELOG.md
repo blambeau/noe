@@ -1,9 +1,16 @@
 # 1.2.0 / 2011-01-11
 
-* Minor enhancements
+* Broken things
 
+  * Arrays are not union-merged anymore during YAML merging between .noespec and template's noespec.yaml. 
+    This may introduce small problems on existing projects that use the default ruby skeleton while 
+    specifying additional dependencies. Users have to copy default dependencies in their own .noespec 
+    file.
   * Noe does not contain its loader anymore. As a side effect, it does not require rubygems anymore
     and 'noe' binary relies on the gem installer to meet its dependencies.
+
+* Minor enhancements
+
   * Fixed 'noe --backtrace go', which didn't print the ruby backtrace.
 
 * Default ruby skeleton
@@ -17,7 +24,7 @@
   * Added 'rake debug_mail' which is configurable from .noespec under variables/rake_tasks/debug_mail
   * lib/__lower__/loader.rb only use plain requires instead of a more complex algorithm. This follows
     the discussion with Luis Lavena on ruby-talk (http://bit.ly/gqukPw)
-  * Added a default wlang ~> 0.10.1 dependency required by the debug_mail task
+  * Added a proposal dependency (wlang ~> 0.10.1) required by the debug_mail task
 
 # 1.1.0 / 2011-01-11
 
