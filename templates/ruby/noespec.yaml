@@ -191,6 +191,8 @@ variables:
     # YARD and BlueCloth are required to run 'rake yard'. See tasks/yard.rake 
     - {name: yard,      version: "~> 0.6.4", groups: [development]}
     - {name: bluecloth, version: "~> 2.0.9", groups: [development]}
+    # wlang is required to run 'rake debug_mail'. See tasks/debug_mail.rake
+    - {name: wlang, version: "~> 0.10.1", groups: [development]}
   
   # Below are defined a certain number of specific variables for the .gemspec file
   # of your library. We'll include it here to keep .gemspec under Noe's control for
