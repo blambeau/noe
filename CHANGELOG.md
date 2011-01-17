@@ -24,7 +24,7 @@
     on rubygems.org when using the whole README.md file for project description.
   * Enhanced 'rake package/gem' to be configurable from .noespec under variables/rake_tasks/gem
   * Enhanced 'rake unit_test' to be configurable from .noespec under variables/rake_tasks/unit_test
-  * Enhanced 'rake spec_test' to be configurable from .noespec under variables/rake_tasks/unit_test
+  * Enhanced 'rake spec_test' to be configurable from .noespec under variables/rake_tasks/spec_test
   * Enhanced 'rake yard' to be configurable from .noespec under variables/rake_tasks/yard
   * Added 'rake debug_mail' which is configurable from .noespec under variables/rake_tasks/debug_mail
   * lib/__lower__/loader.rb only use plain requires instead of a more complex algorithm. This follows
