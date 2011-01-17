@@ -64,6 +64,7 @@ module Noe
       puts "#{ex.class}: #{ex.message}"
       back = ex.wlang_backtrace || ex.backtrace
       puts back.join("\n")
+      puts ex.backtrace.join("\n") if @backtrace
     rescue Quickl::Error => ex
       raise
     rescue Noe::Error => ex

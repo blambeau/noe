@@ -4,6 +4,7 @@
 
   * Noe does not contain its loader anymore. As a side effect, it does not require rubygems anymore
     and 'noe' binary relies on the gem installer to meet its dependencies.
+  * Fixed 'noe --backtrace go', which didn't print the ruby backtrace.
 
 * Default ruby skeleton
 
