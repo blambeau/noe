@@ -1,5 +1,10 @@
 # 1.2.0 / FIX ME
 
+* Minor enhancements
+
+  * Noe does not contain its loader anymore. As a side effect, it does not require rubygems anymore
+    and 'noe' binary relies on the gem installer to meet its dependencies.
+
 * Default ruby skeleton
 
   * A 'description' variable is introduced in .noespec and made mandatory to avoid weird results 
@@ -9,6 +14,8 @@
   * Enhanced 'rake spec_test' to be configurable from .noespec under variables/rake_tasks/unit_test
   * Enhanced 'rake yard' to be configurable from .noespec under variables/rake_tasks/yard
   * Added 'rake debug_mail' which is configurable from .noespec under variables/rake_tasks/debug_mail
+  * lib/__lower__/loader.rb only use plain requires instead of a more complex algorithm. This follows
+    the discussion with Luis Lavena on ruby-talk (http://bit.ly/gqukPw)
 
 # 1.1.0 / 2011-01-11
 
