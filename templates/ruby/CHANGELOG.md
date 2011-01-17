@@ -10,7 +10,7 @@
   * Added 'rake debug_mail' which is configurable from .noespec under variables/rake_tasks/debug_mail
   * lib/__lower__/loader.rb only use plain requires instead of a more complex algorithm. This follows
     the discussion with Luis Lavena on ruby-talk (http://bit.ly/gqukPw)
-  * Added a default wlang ~> 0.10.1 dependency required by the debug_mail task
+  * Added a proposal dependency (wlang ~> 0.10.1) required by the debug_mail task
 
 # 1.1.0 / 2011-01-11
 
