@@ -30,6 +30,8 @@
   * lib/__lower__/loader.rb only use plain requires instead of a more complex algorithm. This follows
     the discussion with Luis Lavena on ruby-talk (http://bit.ly/gqukPw)
   * Added a proposal dependency (wlang ~> 0.10.1) required by the debug_mail task
+  * Fixed tasks/unit_test.rake under 1.9.2 (raised 'no such file to load -- []' with options=[] instead 
+    of nil)
 
 # 1.1.0 / 2011-01-11
 
