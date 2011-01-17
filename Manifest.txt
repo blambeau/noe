@@ -1,9 +1,12 @@
-noe.gemspec
+bin/**/*
 CHANGELOG.md
 Gemfile
-bin/**/*
+Gemfile.lock
 lib/**/*
 LICENCE.md
+Manifest.txt
+noe.gemspec
+noe.noespec
 Rakefile
 README.md
 spec/**/*

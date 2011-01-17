@@ -38,7 +38,7 @@ begin
 
     # Test options passed to the test suite.  An explicit TESTOPTS=opts 
     # on the command line will override this. (default is NONE)
-    t.options = []
+    t.options = nil
 
     # Request that the tests be run with the warning flag set.
     # E.g. warning=true implies "ruby -w" used to run the tests.
