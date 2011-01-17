@@ -1,10 +1,20 @@
-# 1.1.0 / FIX ME
+# 1.2.0 / FIX ME
+
+  * A 'description' variable is introduced in .noespec and made mandatory to avoid weird results 
+    on rubygems.org when using the whole README.md file for project description.
+  * Enhanced 'rake package/gem' to be configurable from .noespec under variables/rake_tasks/gem
+  * Enhanced 'rake unit_test' to be configurable from .noespec under variables/rake_tasks/unit_test
+  * Enhanced 'rake spec_test' to be configurable from .noespec under variables/rake_tasks/unit_test
+  * Enhanced 'rake yard' to be configurable from .noespec under variables/rake_tasks/yard
+  * Added 'rake debug_mail' which is configurable from .noespec under variables/rake_tasks/debug_mail
+
+# 1.1.0 / 2011-01-11
 
   * Added the tasks folder with well documented rake tasks
   * Added a dependency loader in __lower__/loader.rb that helps requiring gems the good way
   * Added Bundler support to easy developer's job trough Gemfile and "require 'bundle/setup'" in Rakefile
   * LICENCE.txt -> LICENCE.md
-  * Follows a lot of changes in from Noe 1.0.0 -> 1.1.0
+  * Follows a lot of changes from Noe 1.0.0 -> 1.1.0
 
 # 1.0.0 / 2011-01-11
 
