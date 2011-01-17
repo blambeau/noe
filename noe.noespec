@@ -12,8 +12,9 @@ variables:
     Noe is a tool that generates project skeletons from predefined templates. A template is designed 
     for a specific product (a ruby library, a static or dynamic web site, ...). Noe instantiates 
     templates and helps you maintaining your product via meta-information provided by a .noespec yaml 
-    file. In contrast to other tools, Noe is not specific to certain kinds of products. Writing your
-    own template is possible and even simple!
+    file. In contrast to other tools, Noe is not specific to certain kinds of products. Even if Noe 
+    comes bundled with a default template to develop gem libraries, writing your own template is 
+    possible and even simple!
   authors: 
     - {name: Bernard Lambeau, email: blambeau@gmail.com}
   links:
