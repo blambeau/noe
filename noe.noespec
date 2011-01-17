@@ -21,7 +21,7 @@ variables:
     - http://rubygems.org/gems/noe
     - http://revision-zero.org/noe
   dependencies: 
-    - {name: wlang,     version: "~> 0.10.0", groups: [runtime]}
+    - {name: wlang,     version: "~> 0.10.1", groups: [runtime]}
     - {name: quickl,    version: "~> 0.2.0",  groups: [runtime]}
     - {name: highline,  version: "~> 1.6.0",  groups: [runtime]}
   gemspec: 
@@ -33,4 +33,6 @@ variables:
         - 'noe prepare --template=ruby hello_world'
       
       Thank you for using Noe, enjoy!
-      
+  rake_tasks:
+    debug_mail: 
+      nb_changelog_sections: 2

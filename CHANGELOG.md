@@ -2,8 +2,13 @@
 
 * Default ruby skeleton
 
-  * Project :description is introduced in .noespec and made mandatory to avoid weird results 
-    on rubygems.org when using the whole README.md file.
+  * A 'description' variable is introduced in .noespec and made mandatory to avoid weird results 
+    on rubygems.org when using the whole README.md file for project description.
+  * Enhanced 'rake package/gem' to be configurable from .noespec under variables/rake_tasks/gem
+  * Enhanced 'rake unit_test' to be configurable from .noespec under variables/rake_tasks/unit_test
+  * Enhanced 'rake spec_test' to be configurable from .noespec under variables/rake_tasks/unit_test
+  * Enhanced 'rake yard' to be configurable from .noespec under variables/rake_tasks/yard
+  * Added 'rake debug_mail' which is configurable from .noespec under variables/rake_tasks/debug_mail
 
 # 1.1.0 / 2011-01-11
 

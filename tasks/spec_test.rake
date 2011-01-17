@@ -1,15 +1,36 @@
+# Installs a rake task for for running examples written using rspec.
 #
-# Install a rake task for running examples written using rspec.
+# This file installs the 'rake spec_test' (aliased as 'rake spec') as well as
+# extends 'rake test' to run spec tests, if any. It is automatically generated 
+# by Noe from your .noespec file, and should therefore be configured there, 
+# under the variables/rake_tasks/spec_test entry, as illustrated below:
 #
-# More information about rspec: http://relishapp.com/rspec
-# This file has been written to conform to RSpec v2.4.0
+# variables:
+#   rake_tasks:
+#     spec_test:
+#       pattern: spec/**/*_spec.rb
+#       verbose: true
+#       rspec_opts: [--color, --backtrace]
+#       ...
+#
+# If you have specific needs requiring manual intervention on this file, 
+# don't forget to set safe-override to false in your noe specification:
+# 
+# template-info:
+#   manifest:
+#     tasks/spec_test.rake:
+#       safe-override: false
+#
+# This file has been written to conform to RSpec v2.4.0. More information about 
+# rspec and options of the rake task defined below can be found on 
+# http://relishapp.com/rspec
 #
 begin
   require "rspec/core/rake_task"
   desc "Run RSpec code examples"
   RSpec::Core::RakeTask.new(:spec_test) do |t|
     # Glob pattern to match files.
-    t.pattern = 'spec/**/*_spec.rb'
+    t.pattern = "spec/**/*_spec.rb"
 
     # By default, if there is a Gemfile, the generated command will include
     # 'bundle exec'. Set this to true to ignore the presence of a Gemfile, 
@@ -17,7 +38,7 @@ begin
     t.skip_bundler = false
 
     # Name of Gemfile to use
-    t.gemfile = 'Gemfile'
+    t.gemfile = "Gemfile"
 
     # Whether or not to fail Rake when an error occurs (typically when 
     # examples fail).
@@ -34,22 +55,19 @@ begin
     t.rcov = false
 
     # Path to rcov.
-    t.rcov_path = 'rcov'
+    t.rcov_path = "rcov"
 
-    # Command line options to pass to rcov.
-    # See 'rcov --help' about this
-    t.rcov_opts = %w{}
+    # Command line options to pass to rcov. See 'rcov --help' about this
+    t.rcov_opts = []
 
-    # Command line options to pass to ruby.
-    # See 'ruby --help' about this 
-    t.ruby_opts = %w{}
+    # Command line options to pass to ruby. See 'ruby --help' about this 
+    t.ruby_opts = []
 
     # Path to rspec
-    t.rspec_path = 'rspec'
+    t.rspec_path = "rspec"
 
-    # Command line options to pass to rspec.
-    # See 'rspec --help' about this
-    t.rspec_opts = %w{--color --backtrace}
+    # Command line options to pass to rspec. See 'rspec --help' about this
+    t.rspec_opts = ["--color", "--backtrace"]
   end
 rescue LoadError => ex
   task :spec_test do

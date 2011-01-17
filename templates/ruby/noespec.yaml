@@ -30,7 +30,7 @@ template-info:
   description: |
     This is a [Noe](https://github.com/blambeau/noe) template for creating a ruby gem 
     library. Generated project comes with rake tasks to support the lifecycle of the 
-    library (testing, releasing, and so on). Following Noe's philosophy this template 
+    library (testing, releasing, and so on). Following Noe philosophy this template 
     also helps you understanding the ruby ecosystem by providing a fully documented 
     project, rake tasks, and so on.
   authors: 
@@ -95,6 +95,14 @@ template-info:
     spec/spec_helper.rb:
       description: Helper for ruby spec tests
       safe-override: true
+    tasks/debug_mail.rake:
+      description: configuration file for 'rake debug_mail'
+      safe-override: true
+      wlang-dialect: wlang/ruby
+    tasks/debug_mail.txt:
+      description: mail template used by 'rake debug_mail'
+      safe-override: true
+      wlang-dialect: wlang/dummy
     tasks/gem.rake:
       description: configuration file for 'rake package', 'rake gem' and associated tasks
       safe-override: true
@@ -205,3 +213,89 @@ variables:
     requirements:
     # A friendly message you would like to display when the user installs your gem
     post_install_message:
+    
+  # Below are defined a certain number of specific variables for each rake task.
+  # Have a look at tasks/*.rake for additional details on each one.
+  rake_tasks:
+    gem:
+      # Folder in which the packages are generated
+      package_dir: pkg
+      # Do you need a .tar package?
+      need_tar: false
+      # Do you need a .tar.gz package?
+      need_tar_gz: false
+      # Do you need a .tar.bz2 package?
+      need_tar_bz2: false
+      # Do you need a .zip package?
+      need_zip: false
+      # The shell command executed to build a .tar
+      tar_command: tar
+      # The shell command executed to build a .zip
+      zip_command: zip
+    debug_mail:
+      # Regular expression to detect change sections in
+      # the CHANGELOG file
+      rx_changelog_sections: '/^#/'
+      # Number of change sections to show in the mail
+      nb_changelog_sections: 1
+    spec_test:
+      # Pattern to find spec tests
+      pattern: spec/**/*_spec.rb
+      # By default, if there is a Gemfile, the generated command will include
+      # 'bundle exec'. Set this to true to ignore the presence of a Gemfile, 
+      # and not add 'bundle exec' to the command.
+      skip_bundler: false
+      # Name of Gemfile to use
+      gemfile: Gemfile
+      # Whether or not to fail Rake when an error occurs (typically when 
+      # examples fail).
+      fail_on_error: true
+      # A message to print to stderr when there are failures.
+      failure_message:
+      # Use verbose output. If this is set to true, the task will print the
+      # executed spec command to stdout.
+      verbose: true
+      # Use rcov for code coverage?
+      rcov: false
+      # Path to rcov.
+      rcov_path: rcov
+      # Command line options to pass to rcov. See 'rcov --help' about this
+      rcov_opts: []
+      # Command line options to pass to ruby. See 'ruby --help' about this 
+      ruby_opts: []
+      # Path to rspec
+      rspec_path: rspec
+      # Command line options to pass to rspec. See 'rspec --help' about this
+      rspec_opts: [--color, --backtrace]
+    unit_test:
+      # Glob pattern to match test files. (default is 'test/test*.rb')
+      pattern: test/test*.rb
+      # Array of directories to added to $LOAD_PATH before running the tests.
+      libs: [ lib ]
+      # True if verbose test output desired.
+      verbose: false
+      # Test options passed to the test suite. An explicit TESTOPTS=opts 
+      # on the command line will override this.
+      options: []
+      # Request that the tests be run with the warning flag set.
+      # E.g. warning=true implies "ruby -w" used to run the tests.
+      warning: false
+      # Style of test loader to use. Options are:
+      #
+      # * :rake -- Rake provided test loading script (default).
+      # * :testrb -- Ruby provided test loading script.
+      # * :direct -- Load tests using command line loader.
+      # 
+      loader: :rake
+      # Array of commandline options to pass to ruby when running test loader.
+      ruby_opts: []
+      # Explicitly define the list of test files to be included in a
+      # test.  +list+ is expected to be an array of file names (a
+      # FileList is acceptable).  If both +pattern+ and +test_files+ are
+      # used, then the list of test files is the union of the two.
+      test_files:
+    yard:
+      # Array of ruby source files
+      files: ['lib/**/*.rb']
+      # Array of options passed to yard commandline. See 'yardoc --help' about this
+      options: ['--output-dir', 'doc/api', '-', 'README.md', 'CHANGELOG.md', 'LICENCE.md']
