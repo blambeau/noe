@@ -129,6 +129,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency("rspec", "~> 2.4.0")
   s.add_development_dependency("yard", "~> 0.6.4")
   s.add_development_dependency("bluecloth", "~> 2.0.9")
+  s.add_development_dependency("wlang", "~> 0.10.1")
   s.add_dependency("wlang", "~> 0.10.1")
   s.add_dependency("quickl", "~> 0.2.0")
   s.add_dependency("highline", "~> 1.6.0")
