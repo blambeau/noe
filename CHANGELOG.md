@@ -13,6 +13,11 @@
 
   * Fixed 'noe --backtrace go', which didn't print the ruby backtrace.
 
+* Bug fixes
+
+  * A nil value on right of YAML merging (.noespec) correctly overrides the value specified on left
+    (typically template's noespec.yaml)
+
 * Default ruby skeleton
 
   * A 'description' variable is introduced in .noespec and made mandatory to avoid weird results 
