@@ -1,4 +1,4 @@
-# 1.2.0 / 2011-01-11
+# 1.2.0 / 2011-01-17
 
 * Broken things
 
@@ -33,7 +33,7 @@
   * Fixed tasks/unit_test.rake under 1.9.2 (raised 'no such file to load -- []' with options=[] instead 
     of nil)
 
-# 1.1.0 / 2011-01-11
+# 1.1.0 / 2011-01-16
 
 * Template specification/instantiation enhancements
 
