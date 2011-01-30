@@ -1,11 +1,9 @@
 module Noe
   
-  # Noe's version
-  VERSION = "1.3.0".freeze
-  
   class Error < StandardError; end
 
 end # module Noe
+require 'noe/version'
 require 'noe/loader'
 require 'yaml'
 require 'fileutils'

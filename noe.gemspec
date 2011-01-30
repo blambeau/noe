@@ -1,8 +1,8 @@
 # We require your library, mainly to have access to the VERSION number. 
 # Feel free to set $version manually.
 $LOAD_PATH.unshift File.expand_path('../lib', __FILE__)
-require "noe"
-$version = Noe::VERSION.dup
+require "noe/version"
+$version = Noe::Version.to_s
 
 #
 # This is your Gem specification. Default values are provided so that your library
@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
   #
   # The description should be more detailed than the summary.  For example,
   # you might wish to copy the entire README into the description.
-  s.description = "Noe is a tool that generates project skeletons from predefined templates. A template is designed for a specific product (a ruby library, a static or dynamic web site, ...). Noe instantiates templates and helps you maintaining your product via meta-information provided by a .noespec yaml file. In contrast to other tools, Noe is not specific to certain kinds of products. Writing your own template is possible and even simple!"
+  s.description = "Noe is a tool that generates project skeletons from predefined templates. A template is designed for a specific product (a ruby library, a static or dynamic web site, ...). Noe instantiates templates and helps you maintaining your product via meta-information provided by a .noespec yaml file. In contrast to other tools, Noe is not specific to certain kinds of products. Even if Noe comes bundled with a default template to develop gem libraries, writing your own template is possible and even simple!"
   
   # The URL of this gem home page (optional)
   s.homepage = "http://github.com/blambeau/noe"
