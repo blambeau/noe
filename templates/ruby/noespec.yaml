@@ -73,6 +73,9 @@ template-info:
     lib/__lower__.rb:
       description: Main file of the ruby library
       safe-override: false
+    lib/__lower__/version.rb:
+      description: Handler for the version number for the library
+      safe-override: true
     lib/__lower__/loader.rb:
       description: Dependency loader for the ruby library
       safe-override: true

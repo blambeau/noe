@@ -1,8 +1,8 @@
 # We require your library, mainly to have access to the VERSION number. 
 # Feel free to set $version manually.
 $LOAD_PATH.unshift File.expand_path('../lib', __FILE__)
-require +{lower}
-$version = !{upper}::VERSION.dup
+require "!{lower}/version"
+$version = !{upper}::Version.to_s
 
 #
 # This is your Gem specification. Default values are provided so that your library

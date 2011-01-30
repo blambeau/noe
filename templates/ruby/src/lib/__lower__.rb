@@ -3,7 +3,6 @@
 #
 module !{upper}
   
-  VERSION = "!{version}".freeze
-  
 end # module !{upper}
+require "!{lower}/version"
 require "!{lower}/loader"

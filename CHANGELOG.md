@@ -3,6 +3,13 @@
 * Bug fixes
 
   * Fixed a bug in Hash merging when overriding boolean values
+  
+* Default ruby skeleton
+
+  * Enhanced the way library version is handled. A !{upper}::Version module is now generated from
+    the noespec (and is kept safe-overridable by default). !{upper}::VERSION is kept and is set by 
+    that module to the correct value. As a side effect, the .gemspec can now be built even if 
+    dependencies are not met.
 
 # 1.2.0 / 2011-01-17
 
