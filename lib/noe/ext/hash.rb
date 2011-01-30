@@ -16,15 +16,18 @@ class Hash
   end
   
   # Makes a fully recursive merge
-  def noe_merge(right)
+  def noe_merge(right, stack = "")
     self.merge(right) do |key,oldval,newval|
       if oldval.nil? or newval.nil?
         newval
+      elsif [true, false].include?(oldval) &&
+            [true, false].include?(newval)
+        newval
       elsif oldval.class != newval.class
-        raise Noe::Error, "Conflict on #{key} has to be resolved manually, sorry.\n"\
+        raise Noe::Error, "Conflict on #{stack} has to be resolved manually, sorry.\n"\
                           "#{oldval} (#{oldval.class}) vs. #{newval} (#{newval.class})"
       elsif oldval.respond_to?(:noe_merge)
-        oldval.noe_merge(newval)
+        oldval.noe_merge(newval, "#{stack}/#{key}")
       else
         newval
       end
