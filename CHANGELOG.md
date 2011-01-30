@@ -1,3 +1,9 @@
+# 1.3.0 / FIX ME
+
+* Bug fixes
+
+  * Fixed a bug in Hash merging when overriding boolean values
+
 # 1.2.0 / 2011-01-17
 
 * Broken things
