@@ -80,11 +80,10 @@ Gem::Specification.new do |s|
   # of the project. Entries of the manifest are interpreted as Dir[...] 
   # patterns so that lazy people may use wilcards like lib/**/*
   #
-  here = File.dirname(__FILE__)
+  here = File.expand_path(File.dirname(__FILE__))
   s.files = File.readlines(File.join(here, 'Manifest.txt')).
-                 inject([]){|files, pattern| 
-    files + Dir[File.join(here, pattern.strip)]
-  }
+                 inject([]){|files, pattern| files + Dir[File.join(here, pattern.strip)]}.
+                 collect{|x| x[(1+here.size)..-1]}
 
   # Test files included in this gem.
   #
