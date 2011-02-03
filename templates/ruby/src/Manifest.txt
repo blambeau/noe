@@ -1,5 +1,6 @@
 !{lower}.gemspec
 !{lower}.noespec
+.gemtest
 CHANGELOG.md
 Gemfile
 Gemfile.lock
