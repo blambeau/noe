@@ -3,6 +3,8 @@
 * Bug fixes
 
   * Fixed a bug in Hash merging when overriding boolean values
+  * Fixed .gitignore of default ruby template not bundled with noe's gem, leading to incomplete templates
+    instantiations
   
 * Default ruby skeleton
 
