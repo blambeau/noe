@@ -12,6 +12,7 @@
     dependencies are not met.
   * Added the ability of the template to be tested with rubygems-test
   * spec/spec_helper.rb is not safe-override by default anymore
+  * Fixed a bug that led 'rake -T' to ignore debug_mail
 
 # 1.2.0 / 2011-01-17
 
