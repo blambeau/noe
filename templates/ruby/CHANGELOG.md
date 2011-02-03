@@ -5,6 +5,7 @@
     that module to the correct value. As a side effect, the .gemspec can now be built even if 
     dependencies are not met.
   * Added the ability of the template to be tested with rubygems-test
+  * spec/spec_helper.rb is not safe-override by default anymore
 
 # 1.2.0 / 2011-01-17
 

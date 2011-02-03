@@ -100,7 +100,7 @@ template-info:
       safe-override: false
     spec/spec_helper.rb:
       description: Helper for ruby spec tests
-      safe-override: true
+      safe-override: false
     tasks/debug_mail.rake:
       description: configuration file for 'rake debug_mail'
       safe-override: true
