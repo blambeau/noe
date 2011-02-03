@@ -70,6 +70,9 @@ template-info:
       description: Information used by Bundler, the Ruby dependency manager
       safe-override: true
       wlang-dialect: wlang/ruby
+    lib/.gemtest:
+      description: Marker for rubygems-test
+      safe-override: true
     lib/__lower__.rb:
       description: Main file of the ruby library
       safe-override: false

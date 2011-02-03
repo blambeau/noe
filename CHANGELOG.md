@@ -10,6 +10,7 @@
     the noespec (and is kept safe-overridable by default). !{upper}::VERSION is kept and is set by 
     that module to the correct value. As a side effect, the .gemspec can now be built even if 
     dependencies are not met.
+  * Added the ability of the template to be tested with rubygems-test
 
 # 1.2.0 / 2011-01-17
 
