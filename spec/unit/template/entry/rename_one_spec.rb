@@ -3,7 +3,7 @@ module Noe
   describe "Template::Entry#rename_one" do
     
     let(:template){ 
-      Template.new(File.expand_path('../../../../templates/ruby', __FILE__)) 
+      Template.new(File.expand_path('../../../../../templates/ruby', __FILE__)) 
     }
     let(:vars){ 
       {"lower" => "project"} 
