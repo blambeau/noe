@@ -1,0 +1,29 @@
+#
+# .noerc - Configuration of Noe, a simple project generator.
+#
+# This file provides Noe's configuration. More information can be 
+# found at https://github.com/blambeau/noe. 
+#
+# If you want to regenerate a fresh new file, simply run:
+#
+#   noe install
+#
+
+# This is Noe's version, change only if you known what you 
+# are doing!
+#version:
+#  !{Noe::VERSION}
+
+#
+# Absolute path to the folder containing Noe's templates.
+#
+templates-dir:
+  ../../templates
+
+#
+# Name of the default template that you want to use. Commands
+# that need a template (see 'noe help prepare', for example) use this 
+# by default, and allow overriding it via a --template=NAME option.
+#
+default:
+  ruby

@@ -1,12 +1,11 @@
 module Noe
   class Config
     
+    # Path to the default configuration file
+    DEFAULT_CONFIG_FILE = File.expand_path('../default.yaml', __FILE__)
+    
     # Default configuration hash
-    DEFAULT_CONFIG = {
-      'version'       => Noe::VERSION,
-      'templates-dir' => File.expand_path('../../../templates', __FILE__),
-      'default'       => 'ruby'
-    }
+    DEFAULT_CONFIG = YAML::load(File.read(DEFAULT_CONFIG_FILE)).merge('version' => Noe::VERSION)
     
     # Path to the configuration file
     attr_reader :file
@@ -15,9 +14,9 @@ module Noe
     attr_reader :config
     
     # Creates a config instance from some .noerc file
-    def initialize(file = nil)
+    def initialize(file = DEFAULT_CONFIG_FILE)
       @config = DEFAULT_CONFIG
-      @file = file
+      @file = File.expand_path(file)
       __load unless file.nil?
     end
     

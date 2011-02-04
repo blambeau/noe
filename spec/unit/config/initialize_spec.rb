@@ -8,6 +8,7 @@ module Noe
       it 'should create a default configuration' do
         subject.should be_kind_of(Config)
         subject.noe_version.should == Noe::VERSION
+        subject.file.should_not be_nil
       end
       
     end # without argument
@@ -22,11 +23,13 @@ module Noe
     end
     
     context 'with an valid file' do
-      subject{ Config.new(File.expand_path("../config1.yaml", __FILE__)) }
+      let(:file){ File.expand_path("../config1.yaml", __FILE__) }
+      subject{ Config.new(file) }
       
       it 'should create a valid configuration' do
         subject.should be_kind_of(Config)
         subject.noe_version.should == "1.0.0"
+        subject.file.should == file
       end
       
     end # with an valid file
