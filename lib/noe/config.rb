@@ -45,6 +45,11 @@ module Noe
       end
     end
     
+    # Returns expected noe's version
+    def noe_version
+      config['version']
+    end
+    
     # Returns the name of the default template to use
     def default
       config['default']

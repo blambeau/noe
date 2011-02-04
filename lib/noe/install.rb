@@ -54,7 +54,7 @@ module Noe
         end
         File.open(noerc_file, 'w') do |out|
           def_config = File.join(File.dirname(__FILE__), 'config.yaml')
-          context = { :templates_dir => noe_folder}
+          context = { :templates_dir => noe_folder }
           out << WLang::file_instantiate(def_config, context, 'wlang/active-string')
         end
         

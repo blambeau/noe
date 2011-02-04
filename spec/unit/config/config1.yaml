@@ -1,0 +1,3 @@
+version: 1.0.0
+templates-dir: templates
+default: empty
