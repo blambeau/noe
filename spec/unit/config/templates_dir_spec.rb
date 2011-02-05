@@ -8,7 +8,7 @@ module Noe
       let(:config){ Config.new }
       
       it "should be Noe's template dir" do
-        pending { subject.should == File.join($noe_root, "templates") }
+        subject.should == File.join($noe_root, "templates")
       end
       
     end # on default config

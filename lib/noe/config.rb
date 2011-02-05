@@ -37,6 +37,7 @@ module Noe
     # Returns folder where templates are located
     def templates_dir
       dir = config['templates-dir']
+      dir = File.expand_path(dir, File.dirname(file))
       if File.directory?(dir) and File.readable?(dir)
         dir
       else
