@@ -18,7 +18,7 @@ module Noe
       thehash.subarray[0].entry.should == 12
     end
     
-    it "should noe recursive if explicitely said" do
+    it "should not be recursive if explicitely said" do
       thehash.methodize!(false)
       thehash.name.should == "Noe"
       thehash.version.should == Noe::VERSION
