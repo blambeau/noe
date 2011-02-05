@@ -1,0 +1,1 @@
+This is a typical readme, about !{lower}, aka !{upper}

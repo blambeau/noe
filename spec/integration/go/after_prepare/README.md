@@ -1,0 +1,1 @@
+This is a typical readme, about after_prepare, aka AfterPrepare
