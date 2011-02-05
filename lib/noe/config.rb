@@ -22,27 +22,25 @@ module Noe
     
     # Loads configuration from YAML file
     def __load
-      if File.file?(file) and File.readable?(file)
-        loaded = YAML::load(File.read(file))
-        if loaded.is_a?(Hash)
-          @config.merge!(loaded)
-        else
-          raise Noe::Error, "Corrupted or invalid config file: #{file}"
-        end
-      else
+      unless File.file?(file) and File.readable?(file)
         raise Noe::Error, "Not a file or not readable: #{file}"
+      end
+
+      loaded = YAML::load(File.read(file))
+      unless loaded.is_a?(Hash)
+        raise Noe::Error, "Corrupted or invalid config file: #{file}"
+      end
+
+      @config.merge!(loaded)
+      unless File.directory?(templates_dir) and File.readable?(templates_dir)
+        raise Noe::Error, "Invalid noe config, not a directory or unreadable: #{templates_dir}"
       end
     end
     
-    # Returns folder where templates are located
+    # Returns folder where templates are located. Always returns an 
+    # absolute path.
     def templates_dir
-      dir = config['templates-dir']
-      dir = File.expand_path(dir, File.dirname(file))
-      if File.directory?(dir) and File.readable?(dir)
-        dir
-      else
-        raise Noe::Error, "Invalid noe config, not a directory or unreadable: #{dir}"
-      end
+      @templates_dir ||= File.expand_path(config['templates-dir'], File.dirname(file))
     end
     
     # Returns expected noe's version
