@@ -14,11 +14,23 @@ module Noe
     end # on default config
     
     context 'when a relative path is used' do
-      let(:file){ File.expand_path("../config1.yaml", __FILE__) }
-      let(:config){ Config.new(file) }
+      let(:file)  { File.expand_path("../config1.yaml", __FILE__) }
+      let(:config){ Config.new(file)                              }
       
       it "should be an absolute path" do
         subject.should == File.expand_path("../templates", __FILE__)
+      end
+      
+    end # relative path
+    
+    context 'when an absolute path is used' do
+      let(:file) { File.expand_path("../config1.yaml", __FILE__) }
+      let(:tdir) { File.expand_path("../templates", __FILE__)    }
+      let(:hash) { { "config_file" => file, "templates-dir" => tdir } }
+      let(:config){ Config.new(hash) }
+      
+      it "should stay an absolute path" do
+        subject.should == tdir
       end
       
     end
