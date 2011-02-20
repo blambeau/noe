@@ -1,4 +1,8 @@
-# 1.3.0 / FIX ME
+# 1.3.1 / FIXME
+
+  * Fixed some error messages
+
+# 1.3.0 / 2011-02-03
 
   * Enhanced the way library version is handled. A !{upper}::Version module is now generated from
     the noespec (and is kept safe-overridable by default). !{upper}::VERSION is kept and is set by 

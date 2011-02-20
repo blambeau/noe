@@ -1,3 +1,9 @@
+# 1.3.1 / FIXME
+
+* Default ruby skeleton
+
+  * Fixed some error messages
+
 # 1.3.0 / 2011-02-03
 
 * Bug fixes
