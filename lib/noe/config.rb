@@ -27,6 +27,8 @@ module Noe
         super
       when String
         __load_from_file(arg)
+      when NilClass
+        super(DEFAULT_CONFIG)
       else
         raise ArgumentError, "Unable to load config from #{arg}"
       end
