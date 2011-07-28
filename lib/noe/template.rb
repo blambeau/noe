@@ -213,9 +213,14 @@ module Noe
         res ? res : (default || 'wlang/active-text')
       end
       
-      # Is this entry safe to override
+      # Is this entry safe to override?
       def safe_override?
         manifest['safe-override']
+      end
+      
+      # Is this entry marked as to be ignored?
+      def ignore?
+        manifest['ignore']
       end
 
     end # class Entry

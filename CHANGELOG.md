@@ -1,4 +1,9 @@
-# 1.3.1 / FIXME
+# 1.4.0 / FIX ME
+
+* Enhancements
+
+  * Added an ignore entry in manifest that allows completely ignoring a file or 
+    directory.
 
 * Default ruby skeleton
 

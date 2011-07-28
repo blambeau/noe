@@ -132,6 +132,7 @@ module Noe
       end
       
       def build_one_directory(entry, variables)
+        next if entry.ignore?
         relocated = entry.relocate(variables)
         todo = []
         
@@ -169,6 +170,7 @@ module Noe
       end
 
       def build_one_file(entry, variables)
+        next if entry.ignore?
         relocated = entry.relocate(variables)
         todo = []
         
