@@ -239,7 +239,7 @@ module Noe
           elsif entry.directory?
             build_one_directory(entry, variables)
           end
-        }.flatten
+        }.flatten.compact
         
         # let's go now
         if dry_run
