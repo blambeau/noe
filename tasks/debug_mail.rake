@@ -57,7 +57,7 @@ begin
     changes, end_found = [], 0
     File.readlines(logs.first).select{|line|
       if line =~ /^#/
-        break if end_found >= 2
+        break if end_found >= 1
         end_found += 1
       end
       changes << line

@@ -68,7 +68,7 @@ begin
   end
 rescue LoadError => ex
   task :unit_test do
-    abort "rake/testtask does not seem available...\n  #{ex.message}"
+    abort 'rspec is not available. In order to run spec, you must: gem install rspec'
   end
 ensure
   desc "Run all tests"
