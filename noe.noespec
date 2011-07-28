@@ -34,8 +34,11 @@ variables:
     - {name: bluecloth, version: "~> 2.1.0",  groups: [development]}
     #
     - {name: wlang,     version: "~> 0.10.1", groups: [development, runtime]}
-    - {name: quickl,    version: "~> 0.2.2",  groups: [runtime]}
+    - {name: quickl,    version: "~> 0.3.0",  groups: [runtime]}
     - {name: highline,  version: "~> 1.6.0",  groups: [runtime]}
+  rake_tasks: 
+    spec_test: 
+      pattern: spec/unit/**/*_spec.rb
   gemspec: 
     post_install_message: |
       Noe successfully installed!
