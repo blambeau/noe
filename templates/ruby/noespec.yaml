@@ -244,7 +244,7 @@ variables:
     debug_mail:
       # Regular expression to detect change sections in
       # the CHANGELOG file
-      rx_changelog_sections: '/^#/'
+      rx_changelog_sections: '/^# /'
       # Number of change sections to show in the mail
       nb_changelog_sections: 1
     spec_test:

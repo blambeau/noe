@@ -5,6 +5,7 @@
 * Removed .gemtest from the template
 * Changes the spec and test patterns to test_*.rb and updated default spec 
   generated
+* Changed the regular expression for changelog sections to /^# / instead of /^#/ 
 
 # 1.3.0 / 2011-02-03
 
