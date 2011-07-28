@@ -27,7 +27,7 @@ module Noe
     def find_noespec_file(args)
       # Find spec file
       spec_file = if args.size == 1
-        valid_read_file!(args.first)
+        Quickl.valid_read_file!(args.first)
       else
         spec_files = Dir['*.noespec']
         if spec_files.size > 1

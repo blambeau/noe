@@ -14,9 +14,9 @@ module Noe
       # Command execution
       def execute(args)
         if args.size != 1
-          puts super_command.help
+          puts self.class.super_command.help
         else
-          cmd = has_command!(args.first, super_command)
+          cmd = Quickl.has_subcommand!(self.class.super_command, args.first)
           puts cmd.help
         end
       end

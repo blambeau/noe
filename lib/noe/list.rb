@@ -44,16 +44,16 @@ module Noe
             [ tpl.name, "", "", "Template error: #{ex.message}" ]
           end
         }
-        lengths = data.inject([0,0,0,0]){|memo,columns|
-          (0..3).collect{|i| max(memo[i], columns[i].to_s.length)}
+        lengths = data.inject([0,0,0,0]){|memo,cols|
+          (0..3).collect{|i| max(memo[i], cols[i].to_s.length)}
         }
         puts "Templates available in #{templates_dir}"
         data.each_with_index do |line,i|
           current = (config.default == line[0])
-          puts (current ? " -> " : "    ") +
-               "%-#{lengths[0]}s   %-#{lengths[1]}s   %-#{lengths[2]}s   %-#{lengths[3]}s" % line
+          arrow = (current ? " -> " : "    ")
+          puts arrow + "%-#{lengths[0]}s   %-#{lengths[1]}s   %-#{lengths[2]}s   %-#{lengths[3]}s" % line
           if i==0
-            puts "-"*lengths.inject(0){|memo,i| memo+i+3}
+            puts "-"*lengths.inject(0){|memo,j| memo+j+3}
           end
         end
       end

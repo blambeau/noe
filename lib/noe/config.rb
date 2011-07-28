@@ -9,9 +9,6 @@ module Noe
       'config_file' => DEFAULT_CONFIG_FILE,
       'version'     => Noe::VERSION)
     
-    # Path to the configuration file
-    attr_reader :file
-    
     # Loaded configuration hash
     attr_reader :config
     

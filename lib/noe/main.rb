@@ -47,7 +47,7 @@ module Noe
       # Set a specific configuration file to use
       opt.on('--config=FILE',
              'Use a specific config file (defaults to ~/.noerc)') do |f|
-        @config_file = valid_read_file!(f)
+        @config_file = Quickl.valid_read_file!(f)
       end
       # Show backtrace on error
       opt.on_tail("--backtrace", 
