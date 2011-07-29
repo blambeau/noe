@@ -35,6 +35,14 @@ class Hash
   end
   
   module Methodize
+
+    def gem(*args, &block)
+      if args.empty? && block.nil? && (self[:gem] || self["gem"])
+        self[:gem] || self["gem"]
+      else
+        super
+      end
+    end
   
     # Allows using hash.key as a synonym for hash[:key] and
     # hash['key']
