@@ -1,6 +1,6 @@
 template-info:
   name: ruby
-  version: 1.4.0
+  version: 1.5.0
   author: Bernard Lambeau <blambeau@gmail.com>
   manifest:
     spec/spec_helper.rb:
@@ -10,7 +10,7 @@ template-info:
 variables:
   lower: noe
   upper: Noe
-  version: 1.4.0
+  version: 1.5.0
   summary: 
     Noe is a simple, general-purpose and extensible skeleton generator from project templates
   description:
@@ -27,15 +27,13 @@ variables:
     - http://rubygems.org/gems/noe
     - http://revision-zero.org/noe
   dependencies: 
-    - {name: rake,      version: "~> 0.9.2",  groups: [development]}
-    - {name: bundler,   version: "~> 1.0",    groups: [development]}
-    - {name: rspec,     version: "~> 2.6.0",  groups: [development]}
-    - {name: yard,      version: "~> 0.7.2",  groups: [development]}
-    - {name: bluecloth, version: "~> 2.1.0",  groups: [development]}
-    #
-    - {name: wlang,     version: "~> 0.10.1", groups: [development, runtime]}
-    - {name: quickl,    version: "~> 0.3.0",  groups: [runtime]}
-    - {name: highline,  version: "~> 1.6.0",  groups: [runtime]}
+    - {name: rake,         version: "~> 0.9.2",  groups: [test, release]}
+    - {name: rspec,        version: "~> 2.6.0",  groups: [test, release]}
+    - {name: yard,         version: "~> 0.7.2",  groups: [doc          ]}
+    - {name: bluecloth,    version: "~> 2.1.0",  groups: [doc          ]}
+    - {name: wlang,        version: "~> 0.10.2", groups: [runtime      ]}
+    - {name: quickl,       version: "~> 0.3.0",  groups: [runtime      ]}
+    - {name: highline,     version: "~> 1.6.0",  groups: [runtime      ]}
   rake_tasks: 
     spec_test: 
       pattern: spec/unit/**/*_spec.rb

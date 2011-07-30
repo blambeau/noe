@@ -1,3 +1,7 @@
+# 1.5.0 / FIX ME
+
+  * Most important changes are in default ruby skeleton, see its own CHANGELOG
+
 # 1.4.0 / 2011-07-29
 
 * Enhancements

@@ -2,7 +2,7 @@ module Noe
   module Version
   
     MAJOR = 1
-    MINOR = 4
+    MINOR = 5
     TINY  = 0
   
     def self.to_s
