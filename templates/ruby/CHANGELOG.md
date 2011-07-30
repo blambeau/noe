@@ -1,4 +1,4 @@
-# 1.4.1 / FIX ME
+# 1.5.0 / FIX ME
 
 * The Gemfile do not depend to the gemspec anymore and reflects fine-grained 
   groups from the .noespec file
