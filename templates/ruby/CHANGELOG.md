@@ -1,4 +1,9 @@
-# 1.4.0 / FIXME
+# 1.4.1 / FIX ME
+
+* The Gemfile do not depend to the gemspec anymore and reflects fine-grained 
+  groups from the .noespec file
+
+# 1.4.0 / 2011-07-29
 
 * Fixed some error messages
 * Bumped all default dependencies to most recent library versions

@@ -1,13 +1,11 @@
-# 1.4.0 / FIX ME
+# 1.4.0 / 2011-07-29
 
 * Enhancements
 
   * Added an ignore entry in manifest that allows completely ignoring a file or 
     directory.
-
-* Default ruby skeleton
-
-  * Fixed some error messages
+  * Moved to quickl 0.3.0
+  * Most important changes are in default ruby skeleton, see its own CHANGELOG
 
 # 1.3.0 / 2011-02-03
 

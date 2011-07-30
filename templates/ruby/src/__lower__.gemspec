@@ -123,7 +123,7 @@ Gem::Specification.new do |s|
   # One call to add_development_dependency('gem_name', 'gem version requirement')
   # for each development dependency. These gems are required for developers
   #
-  *{dependencies.select{|dep| dep.groups.include?('development')} as dep}{s.add_development_dependency(+{dep.name}, +{dep.version})}{!{"\n  "}}
+  *{dependencies.select{|dep| dep.groups != ['runtime']} as dep}{s.add_development_dependency(+{dep.name}, +{dep.version})}{!{"\n  "}}
   *{dependencies.select{|dep| dep.groups.include?('runtime')} as dep}{s.add_dependency(+{dep.name}, +{dep.version})}{!{"\n  "}}
 
   # The version of ruby required by this gem
