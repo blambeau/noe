@@ -36,7 +36,7 @@ variables:
     - {name: highline,     version: "~> 1.6.0",  groups: [runtime      ]}
   rake_tasks: 
     spec_test: 
-      pattern: spec/unit/**/*_spec.rb
+      pattern: spec/**/*_spec.rb
   gemspec: 
     post_install_message: |
       Noe successfully installed!
