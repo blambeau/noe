@@ -1,6 +1,8 @@
 # 1.5.1 / FIX ME
 
   * Most important changes are in default ruby skeleton, see its own CHANGELOG
+  * Added a --silent option to 'noe prepare' that removes the "what's next" 
+    message
 
 # 1.5.0 / 2011-08-20
 
