@@ -12,17 +12,17 @@ template-info:
 # Update to match your own configuration.
 variables:
   # A ruby lower case project name.
-  lower: 
+  lower:
     hello_world
 
-  # A ruby upper case project name. 
+  # A ruby upper case project name.
   upper:
     HelloWorld
 
   # Version of your library
   version:
     1.0.0
-    
+
   # Project summary (~ 1 line).
   summary: |-
     A simple "Hello World" example
@@ -32,22 +32,22 @@ variables:
   description: |-
     This hello_world example provides you all you need to build a ruby gem library
     while applying skeleton-driven coding with Noe (see http://revision-zero.org/noe)
-      
-  # Authors of the project (- {name: Bob, email: bob@gmail.com}, ...) 
+
+  # Authors of the project (- {name: Bob, email: bob@gmail.com}, ...)
   authors: []
 
-  # Web links for the project (- http://..., - http://...). 
+  # Web links for the project (- http://..., - http://...).
   links: []
 
   # Gem dependencies. (- {name: ..., version: ..., groups: [...]}, ...)
-  dependencies: 
+  dependencies:
     # Rake is required for developers, as usual
     - {name: rake,      version: "~> 0.9.2", groups: [development]}
     # Bundler is required for developers and is used by the Rakefile
     - {name: bundler,   version: "~> 1.0",   groups: [development]}
-    # RSpec is required to run 'rake spec'. See tasks/spec.rake 
+    # RSpec is required to run 'rake spec'. See tasks/spec.rake
     - {name: rspec,     version: "~> 2.6.0", groups: [development]}
-    # YARD and BlueCloth are required to run 'rake yard'. See tasks/yard.rake 
+    # YARD and BlueCloth are required to run 'rake yard'. See tasks/yard.rake
     - {name: yard,      version: "~> 0.7.2", groups: [development]}
     - {name: bluecloth, version: "~> 2.1.0", groups: [development]}
     # wlang is required to run 'rake debug_mail'. See tasks/debug_mail.rake

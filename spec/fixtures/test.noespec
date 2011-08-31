@@ -1,0 +1,19 @@
+template-info:
+  name: "ruby"
+  version: 1.5.0
+  links:
+    source: https://github.com/blambeau/noe/tree/master/templates/ruby
+    documentation: https://github.com/blambeau/noe/blob/master/templates/ruby/README.md
+
+variables:
+  lower:
+    test
+  upper:
+    Test
+  authors:
+    - name:  test
+      email: test@mail.com
+  links: ["https://github.com/blambeau/noe"]
+  dependencies:
+    - {name: rake, groups: [development]}
+    - {name: wlang, groups: [runtime]}
