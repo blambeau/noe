@@ -1,14 +1,14 @@
 module Noe
   module Version
-  
+
     MAJOR = 1
     MINOR = 5
-    TINY  = 0
-  
+    TINY  = 1
+
     def self.to_s
       [ MAJOR, MINOR, TINY ].join('.')
     end
-  
-  end 
+
+  end
   VERSION = Version.to_s
 end
