@@ -5,7 +5,7 @@ describe 'line endings and trailing spaces' do
       dir = File.expand_path('../../fixtures', __FILE__)
       project_dir = dir + '/test'
       Dir.chdir(dir) do
-        Noe::Main.run(['prepare', 'test'])
+        Noe::Main.run(%w{prepare --silent test})
       end
       Dir.chdir(project_dir) do
         FileUtils.cp dir+'/test.noespec', project_dir

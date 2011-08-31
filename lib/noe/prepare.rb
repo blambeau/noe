@@ -71,6 +71,11 @@ module Noe
                "Set the specification layout to use (idem)") do |l|
           @layout = l
         end
+        @silent = false
+        opt.on('--silent',
+               "Avoid unnecessary messages"){ 
+          @silent = true
+        }
         @force = false
         opt.on('--force', '-f',
                "Force overriding of existing .noespec file"){ 
@@ -107,13 +112,15 @@ module Noe
         end
 
         # what's next
-        puts "Project successfully started !"
-        puts 
-        puts "What's next?"
-        puts " * edit #{where}"
-        puts " * noe go"
-        puts
-        puts "Thank you for using Noe (v#{Noe::VERSION}), enjoy!"
+        unless @silent
+          puts "Project successfully started !"
+          puts 
+          puts "What's next?"
+          puts " * edit #{where}"
+          puts " * noe go"
+          puts
+          puts "Thank you for using Noe (v#{Noe::VERSION}), enjoy!"
+        end
       end
 
     end # class Create
