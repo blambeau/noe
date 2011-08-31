@@ -1,3 +1,8 @@
+# 1.5.1 / 2011-08-31
+
+* The whole template has been cleaned so as to have proper line endings and no 
+  trailing spaces (eregon)
+
 # 1.5.0 / 2011-08-20
 
 * The Gemfile do not depend to the gemspec anymore and reflects fine-grained 

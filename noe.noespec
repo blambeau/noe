@@ -10,7 +10,7 @@ template-info:
 variables:
   lower: noe
   upper: Noe
-  version: 1.5.0
+  version: 1.5.1
   summary: 
     Noe is a simple, general-purpose and extensible skeleton generator from project templates
   description:

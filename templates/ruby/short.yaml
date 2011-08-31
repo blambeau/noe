@@ -4,7 +4,7 @@
 # Don't remove this entry!
 template-info:
   name: "!{template_name}"
-  version: 1.5.0
+  version: 1.5.1
   links:
     source: https://github.com/blambeau/noe/tree/master/templates/ruby
     documentation: https://github.com/blambeau/noe/blob/master/templates/ruby/README.md
