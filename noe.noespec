@@ -32,7 +32,7 @@ variables:
     - {name: yard,         version: "~> 0.7.2",  groups: [doc          ]}
     - {name: bluecloth,    version: "~> 2.1.0",  groups: [doc          ]}
     - {name: wlang,        version: "~> 0.10.2", groups: [runtime      ]}
-    - {name: quickl,       version: "~> 0.3.0",  groups: [runtime      ]}
+    - {name: quickl,       version: "~> 0.4.1",  groups: [runtime      ]}
     - {name: highline,     version: "~> 1.6.0",  groups: [runtime      ]}
   rake_tasks: 
     spec_test: 

@@ -6,3 +6,4 @@ pkg
 doc/api
 doc/images.graffle
 .yardoc
+*.rbc

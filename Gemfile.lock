@@ -4,7 +4,7 @@ GEM
     bluecloth (2.1.0)
     diff-lcs (1.1.2)
     highline (1.6.2)
-    quickl (0.3.0)
+    quickl (0.4.1)
     rake (0.9.2)
     rspec (2.6.0)
       rspec-core (~> 2.6.0)
@@ -18,12 +18,13 @@ GEM
     yard (0.7.2)
 
 PLATFORMS
+  java
   ruby
 
 DEPENDENCIES
   bluecloth (~> 2.1.0)
   highline (~> 1.6.0)
-  quickl (~> 0.3.0)
+  quickl (~> 0.4.1)
   rake (~> 0.9.2)
   rspec (~> 2.6.0)
   wlang (~> 0.10.2)

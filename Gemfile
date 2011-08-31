@@ -17,6 +17,6 @@ end
 
 group :runtime do
   gem "wlang", "~> 0.10.2"
-  gem "quickl", "~> 0.3.0"
+  gem "quickl", "~> 0.4.1"
   gem "highline", "~> 1.6.0"
 end
