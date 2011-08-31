@@ -5,4 +5,3 @@
 ## Links
 
 !{links.join("\n")}
-
