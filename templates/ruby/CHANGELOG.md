@@ -1,3 +1,7 @@
+# 1.6.0
+
+* Moved to rspec 1.7.0
+
 # 1.5.1 / 2011-08-31
 
 * The whole template has been cleaned so as to have proper line endings and no 
