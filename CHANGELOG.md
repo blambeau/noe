@@ -1,4 +1,4 @@
-# 1.6.0 / FIX ME
+# 1.6.0 / 2011-12-09
 
   * Most important changes are in default ruby skeleton, see its own CHANGELOG
   * The project structure moved to ruby.noe 1.6.0 itself
