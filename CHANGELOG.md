@@ -1,4 +1,9 @@
-# 1.5.1 / FIX ME
+# 1.6.0 / FIX ME
+
+  * Most important changes are in default ruby skeleton, see its own CHANGELOG
+  * The project structure moved to ruby.noe 1.6.0 itself
+
+# 1.5.1 / 2011-08-31
 
   * Most important changes are in default ruby skeleton, see its own CHANGELOG
   * Added a --silent option to 'noe prepare' that removes the "what's next" 
