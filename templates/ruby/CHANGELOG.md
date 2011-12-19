@@ -1,3 +1,8 @@
+# 1.6.1 / FIX ME
+
+* Use the correct version number when generating CHANGELOG
+* Fix version number of the template itself
+
 # 1.6.0 / 2011-12-09
 
 * Moved to rspec 1.7.0

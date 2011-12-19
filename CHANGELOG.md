@@ -1,3 +1,7 @@
+# 1.6.1 / FIX ME
+
+  * Most important changes are in default ruby skeleton, see its own CHANGELOG
+
 # 1.6.0 / 2011-12-09
 
   * Most important changes are in default ruby skeleton, see its own CHANGELOG
