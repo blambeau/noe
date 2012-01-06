@@ -213,6 +213,11 @@ module Noe
         res ? res : (default || 'wlang/active-text')
       end
       
+      # Returns wlang braces
+      def wlang_braces
+        @wlang_braces ||= (manifest['wlang-braces'] || "braces").to_sym
+      end
+      
       # Is this entry safe to override?
       def safe_override?
         manifest['safe-override']

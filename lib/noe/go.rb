@@ -298,8 +298,9 @@ module Noe
         def run
           File.open(relocated, 'w') do |out|
             dialect = entry.wlang_dialect
+            braces = entry.wlang_braces
             variables.methodize!
-            out << WLang::file_instantiate(entry.realpath, variables, dialect)
+            out << WLang::file_instantiate(entry.realpath, variables, dialect, braces)
           end
         end
         
