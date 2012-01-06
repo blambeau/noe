@@ -1,5 +1,7 @@
-# 1.6.1 / FIX ME
+# 1.7.0 / FIX ME
 
+  * Added support for wlang-braces in manifest entries to generate wlang 
+    templates without brace collisions.
   * Most important changes are in default ruby skeleton, see its own CHANGELOG
 
 # 1.6.0 / 2011-12-09
