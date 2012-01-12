@@ -1,4 +1,4 @@
-# 1.7.0 / FIX ME
+# 1.7.0 / 2012-01-12
 
   * Added support for wlang-braces in manifest entries to generate wlang 
     templates without brace collisions.

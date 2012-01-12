@@ -1,4 +1,4 @@
-# 1.6.1 / FIX ME
+# 1.7.0 / 2012-01-12
 
 * Use the correct version number when generating CHANGELOG
 * Fix version number of the template itself
