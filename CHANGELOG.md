@@ -1,3 +1,7 @@
+# 1.7.3 / 2012-02-25
+
+  * Most important changes are in default ruby skeleton, see its own CHANGELOG
+
 # 1.7.2 / 2012-02-25
 
   * Fix the manifest to avoid forgetting .travis.yml from ruby.noe in the gem
