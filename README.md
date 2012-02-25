@@ -1,5 +1,8 @@
 # Noe - A simple and extensible project generator
 
+[![Build Status](https://secure.travis-ci.org/blambeau/noe.png)](http://travis-ci.org/blambeau/noe)
+[![Dependency Status](https://gemnasium.com/blambeau/noe.png)](https://gemnasium.com/blambeau/noe)
+
 Noe is a tool that generates project skeletons from predefined templates. A template is designed 
 for a specific product (a ruby library, a static or dynamic web site, ...). Noe instantiates 
 templates and helps you maintaining your product via meta-information provided by a .noespec yaml 
