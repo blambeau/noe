@@ -1,6 +1,7 @@
 # 1.7.1 / 2012-02-25
 
 * Do not hack on bundle in Rakefile
+* Add a default travis-ci build matrix for rubies 1.9
 
 # 1.7.0 / 2012-01-12
 

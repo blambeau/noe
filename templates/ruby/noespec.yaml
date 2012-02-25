@@ -59,6 +59,9 @@ template-info:
     .gitignore:
       description: Files to be ignored by git or another version control system
       safe-override: false
+    .travis.yml:
+      description: Build matrix for continuous integration on travis-ci.org
+      safe-override: false
     __lower__.gemspec:
       description: Gem specification file
       safe-override: true
