@@ -1,3 +1,7 @@
+# 1.7.1 / 2012-02-25
+
+* Do not hack on bundle in Rakefile
+
 # 1.7.0 / 2012-01-12
 
 * Use the correct version number when generating CHANGELOG
