@@ -1,3 +1,7 @@
+# 1.7.1 / 2012-02-25
+
+  * Most important changes are in default ruby skeleton, see its own CHANGELOG
+
 # 1.7.0 / 2012-01-12
 
   * Added support for wlang-braces in manifest entries to generate wlang 
