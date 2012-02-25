@@ -3,7 +3,7 @@ module Noe
 
     MAJOR = 1
     MINOR = 7
-    TINY  = 1
+    TINY  = 2
 
     def self.to_s
       [ MAJOR, MINOR, TINY ].join('.')
