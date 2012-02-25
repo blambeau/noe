@@ -14,5 +14,5 @@ spec/**/*
 tasks/**/*
 test/**/*
 templates/**/*
-templates/ruby/src/.gemtest
+templates/ruby/src/.travis.yml
 templates/ruby/src/.gitignore
