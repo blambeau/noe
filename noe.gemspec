@@ -130,6 +130,7 @@ Gem::Specification.new do |s|
   s.add_dependency("wlang", "~> 0.10.2")
   s.add_dependency("quickl", "~> 0.4.1")
   s.add_dependency("highline", "~> 1.6")
+  s.add_dependency("epath", "~> 0.1.0")
 
   # The version of ruby required by this gem
   #
