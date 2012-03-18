@@ -8,24 +8,24 @@ module Noe
       let(:config){ Config.new }
       
       it "should be Noe's template dir" do
-        subject.should == File.join($noe_root, "templates")
+        subject.should == $noe_root/"templates"
       end
       
     end # on default config
     
     context 'when a relative path is used' do
-      let(:file)  { File.expand_path("../config1.yaml", __FILE__) }
+      let(:file)  { Path.relative("config1.yaml") }
       let(:config){ Config.new(file)                              }
       
       it "should be an absolute path" do
-        subject.should == File.expand_path("../templates", __FILE__)
+        subject.should == Path.relative("templates")
       end
       
     end # relative path
     
     context 'when an absolute path is used' do
-      let(:file) { File.expand_path("../config1.yaml", __FILE__) }
-      let(:tdir) { File.expand_path("../templates", __FILE__)    }
+      let(:file) { Path.relative("config1.yaml") }
+      let(:tdir) { Path.relative("templates")    }
       let(:hash) { { "config_file" => file, "templates-dir" => tdir } }
       let(:config){ Config.new(hash) }
       

@@ -38,8 +38,8 @@ module Noe
 
     # Finds the configuration file and loads automatically
     def find_config_file
-      in_home = File.join(ENV['HOME'], '.noerc')
-      File.file?(in_home) ? in_home : nil
+      in_home = Path.home/'.noerc'
+      in_home if in_home.file?
     end
     
     # Install options
@@ -47,7 +47,7 @@ module Noe
       # Set a specific configuration file to use
       opt.on('--config=FILE',
              'Use a specific config file (defaults to ~/.noerc)') do |f|
-        @config_file = Quickl.valid_read_file!(f)
+        @config_file = Path(Quickl.valid_read_file!(f))
       end
       # Show backtrace on error
       opt.on_tail("--backtrace", 

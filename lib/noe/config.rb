@@ -2,10 +2,10 @@ module Noe
   class Config
     
     # Path to the default configuration file
-    DEFAULT_CONFIG_FILE = File.expand_path('../default.yaml', __FILE__)
+    DEFAULT_CONFIG_FILE = Path.relative('default.yaml')
     
     # Default configuration hash
-    DEFAULT_CONFIG = YAML::load(File.read(DEFAULT_CONFIG_FILE)).merge(
+    DEFAULT_CONFIG = DEFAULT_CONFIG_FILE.load.merge(
       'config_file' => DEFAULT_CONFIG_FILE,
       'version'     => Noe::VERSION)
     
@@ -22,7 +22,7 @@ module Noe
       case arg
       when Hash
         super
-      when String
+      when Path
         __load_from_file(arg)
       when NilClass
         super(DEFAULT_CONFIG)
@@ -34,13 +34,13 @@ module Noe
     # Loads configuration from YAML file
     def self.__load_from_file(file)
       # check loaded file
-      file = File.expand_path(file)
-      unless File.file?(file) and File.readable?(file)
+      file = file.expand
+      unless file.file? and file.readable?
         raise Noe::Error, "Not a file or not readable: #{file}"
       end
 
       # load YAML
-      loaded = YAML::load(File.read(file))
+      loaded = YAML::load(file.read)
       unless loaded.is_a?(Hash)
         raise Noe::Error, "Corrupted or invalid config file: #{file}"
       end
@@ -50,8 +50,8 @@ module Noe
       config = Config.new(config_hash)
       
       # Some sanity check
-      templates_dir = config.templates_dir
-      unless File.directory?(templates_dir) and File.readable?(templates_dir)
+      templates_dir = Path(config.templates_dir)
+      unless templates_dir.dir? and templates_dir.readable?
         raise Noe::Error, "Invalid noe config, not a directory or unreadable: #{templates_dir}"
       end
       
@@ -66,7 +66,7 @@ module Noe
     # Returns folder where templates are located. Always returns an 
     # absolute path.
     def templates_dir
-      @templates_dir ||= File.expand_path(config['templates-dir'], File.dirname(file))
+      @templates_dir ||= Path(config['templates-dir']).expand(file.dir)
     end
     
     # Returns expected noe's version
