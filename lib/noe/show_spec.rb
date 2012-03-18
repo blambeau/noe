@@ -34,7 +34,7 @@ module Noe
       def execute(args)
         raise Quickl::Help if args.size > 1
         spec_file = find_noespec_file(args)
-        spec = YAML::load(File.read(spec_file))
+        spec = YAML::load(spec_file.read)
         template = template(spec['template-info']['name'])
         template.merge_spec(spec)
         puts template.to_yaml

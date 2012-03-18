@@ -1,4 +1,3 @@
-require 'fileutils'
 module Noe
   class Main
     #
@@ -85,13 +84,13 @@ module Noe
       end
       
       def generate_noespec_file(where)
-        if File.exists?(where) and not(force)
+        if where.exists? and not(force)
           raise Noe::Error, "File #{where} already exists, remove it first or set --force."
         else
           tpl = template
-          File.open(where, 'w') do |out|
-            context = {'template_name' => tpl.name}
-            out << WLang::file_instantiate(tpl.spec_layout_file(@layout), context, "wlang/active-text")
+          where.open('w') do |out|
+            context = {'template_name' => tpl.name.to_s}
+            out << WLang::file_instantiate(tpl.spec_layout_file(@layout).to_s, context, "wlang/active-text")
           end 
         end
         where
@@ -101,12 +100,12 @@ module Noe
         pname, where = nil, nil
         case args.size
         when 0
-          pname = File.basename(File.expand_path('.'))
-          where = generate_noespec_file("#{pname}.noespec")
+          pname = Path.getwd.basename
+          where = generate_noespec_file(pname.add_ext(".noespec"))
         when 1
-          pname = args.first
-          FileUtils.mkdir(pname) unless File.exists?(pname)
-          where = generate_noespec_file(File.join(pname, "#{pname}.noespec"))
+          pname = Path(args.first)
+          pname.mkdir unless pname.exists?
+          where = generate_noespec_file(pname/pname.add_ext(".noespec"))
         else
           raise Quickl::Help unless args.size > 1
         end

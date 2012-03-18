@@ -3,7 +3,7 @@ module Noe
   describe "Template::Entry#relocate" do
     
     let(:template){ 
-      Template.new(File.expand_path('../../../../../templates/ruby', __FILE__)) 
+      Template.new(Path.relative('../../../../templates/ruby'))
     }
     let(:vars){ 
       {"lower" => "project"} 
@@ -14,27 +14,27 @@ module Noe
     
     describe "when nothing has to change" do
       let(:entry){ template.entry('.gitignore') }
-      it{ should == ".gitignore" }
+      it{ should == Path(".gitignore") }
     end
 
     describe "when exactly a replacement" do
       let(:entry){ template.entry("__lower__") }
-      it { should == "project" }
+      it { should == Path("project") }
     end
     
     describe "when a replacement inside something else" do
       let(:entry){ template.entry("__lower___spec.rb") }
-      it { should == "project_spec.rb" }
+      it { should == Path("project_spec.rb") }
     end
     
     describe "when no replace and sub file" do
       let(:entry){ template.entry("lib", "README.md") }
-      it { should == ["lib", "README.md"].join(File::PATH_SEPARATOR)  }
+      it { should == Path("lib/README.md")  }
     end
     
     describe "when no replace and sub file with replacement" do
       let(:entry){ template.entry("lib", "__lower__.rb") }
-      it { should == ["lib", "project.rb"].join(File::PATH_SEPARATOR)  }
+      it { should == Path("lib/project.rb")  }
     end
 
   end 

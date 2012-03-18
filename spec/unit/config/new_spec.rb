@@ -14,7 +14,7 @@ module Noe
     end # without argument
     
     context 'with a hash' do
-      let(:hash){ {'config_file' => File.expand_path("../config1.yaml", __FILE__)} }
+      let(:hash){ {'config_file' => Path.relative("config1.yaml")} }
       subject{ Config.new(hash) }
       
       it 'should create a configuration instance' do
@@ -30,14 +30,14 @@ module Noe
     context 'with an invalid file' do
       
       it 'should raise a Noe::Error' do
-        file = File.expand_path("../unexistsing.yaml", __FILE__)
+        file = Path.relative("unexistsing.yaml")
         lambda{ Config.new(file) }.should raise_error(Noe::Error)
       end
       
     end # with an invalid file
     
     context 'with an valid file' do
-      let(:file){ File.expand_path("../config1.yaml", __FILE__) }
+      let(:file){ Path.relative("config1.yaml") }
       subject{ Config.new(file) }
       
       it 'should create a valid configuration' do

@@ -1,4 +1,3 @@
-require 'fileutils'
 module Noe
   class Main
     #
@@ -43,39 +42,37 @@ module Noe
         if args.size > 1
           raise Quickl::InvalidArgument, "Needless arguments: #{args[1..-1].join(' ')}"
         end
-        folder = args.first || ENV['HOME']
+        folder = Path(args.first || Path.home)
         
-        noerc_file = File.join(folder, '.noerc')
-        noe_folder = File.join(folder, '.noe')
+        noerc_file = folder/'.noerc'
+        noe_folder = folder/'.noe'
 
         # generate .noerc
-        if File.exists?(noerc_file) and not(force)
+        if noerc_file.exists? and not(force)
           raise Noe::Error, "#{noerc_file} already exists, use --force to override"
         end
-        File.open(noerc_file, 'w') do |out|
-          def_config = File.join(File.dirname(__FILE__), 'config.yaml')
-          context = { :templates_dir => noe_folder }
+        noerc_file.open('w') do |out|
+          def_config = Path.relative('config.yaml').to_s
+          context = { :templates_dir => noe_folder.to_s }
           out << WLang::file_instantiate(def_config, context, 'wlang/active-string')
         end
         
         # generate .noe folder
-        unless File.exists?(noe_folder)
-          FileUtils.mkdir(noe_folder)
-        end
+        noe_folder.mkdir unless noe_folder.exists?
         
         # copy default templates
-        tdir = File.expand_path('../../../templates', __FILE__)
-        Dir[File.join(tdir, '*')].each do |tpl|
-          target = File.join(noe_folder, File.basename(tpl))
-          if File.exists?(target)
-            if force 
-              FileUtils.rm_rf target
+        tdir = Path.relative '../../templates'
+        tdir.each_child do |tpl|
+          target = noe_folder/tpl.basename
+          if target.exists?
+            if force
+              target.rm_rf
             else
               puts "#{target} already exists, use --force to override"
               next
             end
           end
-          FileUtils.cp_r tpl, noe_folder
+          tpl.cp_r(noe_folder)
         end
         
         # say something!

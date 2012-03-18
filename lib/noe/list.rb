@@ -29,7 +29,7 @@ module Noe
           raise Quickl::InvalidArgument, "Needless argument: #{args.join(', ')}"
         end
 
-        tpls = Dir[File.join(templates_dir, '**')].collect{|tpldir| Template.new(tpldir)}
+        tpls = templates_dir.glob('**').map { |tpldir| Template.new(tpldir) }
         columns = [:name, :version, :layouts, :summary]
         data = [ columns ] + tpls.collect{|tpl|
           begin
