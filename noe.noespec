@@ -34,7 +34,7 @@ variables:
     - {name: wlang,        version: "~> 0.10.2", groups: [runtime      ]}
     - {name: quickl,       version: "~> 0.4.1",  groups: [runtime      ]}
     - {name: highline,     version: "~> 1.6",    groups: [runtime      ]}
-    - {name: epath,        version: "~> 0.1.0",  groups: [runtime      ]}
+    - {name: epath,        version: "~> 0.1.1",  groups: [runtime      ]}
   rake_tasks: 
     spec_test: 
       pattern: spec/**/*_spec.rb
