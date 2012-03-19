@@ -6,7 +6,6 @@ end # module Noe
 require 'noe/version'
 require 'noe/loader'
 require 'yaml'
-require 'fileutils'
 require 'noe/ext/array'
 require 'noe/ext/hash'
 require 'noe/config'

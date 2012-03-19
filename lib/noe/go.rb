@@ -127,8 +127,8 @@ module Noe
       
       # Checks if one is a file and the other a directory or the inverse
       def kind_clash?(entry, relocated)
-        (entry.file? and File.directory?(relocated)) or
-        (entry.directory? and File.file?(relocated))
+        (entry.file? and relocated.directory?) or
+        (entry.directory? and relocated.file?)
       end
       
       def build_one_directory(entry, variables)
@@ -137,7 +137,7 @@ module Noe
         todo = []
         
         skipped = false
-        if File.exists?(relocated) 
+        if relocated.exists?
           # file exists already exists, check what can be done!
           if kind_clash?(entry, relocated)
             if interactive?
@@ -175,7 +175,7 @@ module Noe
         todo = []
         
         skipped = false
-        if File.exists?(relocated)
+        if relocated.exists?
           # name clash, the file exists
           if adds_only?
             # file exists and we are only allowed to add new things
@@ -227,7 +227,7 @@ module Noe
         
         # Load spec now
         spec_file = find_noespec_file(args)
-        spec = YAML::load(File.read(spec_file))
+        spec = YAML::load(spec_file.read)
         template = template(spec['template-info']['name'])
         template.merge_spec(spec)
         variables = template.variables
@@ -272,7 +272,7 @@ module Noe
       class MkDir < DoSomething
 
         def run
-          FileUtils.mkdir relocated
+          relocated.mkdir
         end
         
         def to_s
@@ -284,7 +284,7 @@ module Noe
       class Rm < DoSomething
 
         def run
-          FileUtils.rm_rf relocated
+          relocated.rm_rf
         end
         
         def to_s
@@ -296,11 +296,11 @@ module Noe
       class FileInstantiate < DoSomething
         
         def run
-          File.open(relocated, 'w') do |out|
+          relocated.open('w') do |out|
             dialect = entry.wlang_dialect
             braces = entry.wlang_braces
             variables.methodize!
-            out << WLang::file_instantiate(entry.realpath, variables, dialect, braces)
+            out << WLang::file_instantiate(entry.realpath.to_s, variables, dialect, braces)
           end
         end
         

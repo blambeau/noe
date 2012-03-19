@@ -19,4 +19,5 @@ group :runtime do
   gem "wlang", "~> 0.10.2"
   gem "quickl", "~> 0.4.1"
   gem "highline", "~> 1.6"
+  gem "epath", "~> 0.1.1"
 end

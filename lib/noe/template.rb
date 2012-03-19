@@ -16,16 +16,16 @@ module Noe
   
     # Loads the template from its folder
     def __load
-      if File.file?(spec_file) and File.readable?(spec_file)
-        @spec = YAML::load(File.read(spec_file))
+      if spec_file.file? and spec_file.readable?
+        @spec = YAML::load(spec_file.read)
       else
         raise Noe::Error, "Unable to find template: #{spec_file}"
       end
     end
     
     def spec_layout_file(layout = 'noespec')
-      file = File.join(folder, "#{layout}.yaml")
-      if File.exists?(file)
+      file = folder/"#{layout}.yaml"
+      if file.exists?
         file
       else
         puts "On #{file}"
@@ -36,12 +36,12 @@ module Noe
     
     # Returns an array with available layout names
     def layouts
-      Dir[File.join(folder, '*.yaml')].collect{|f| File.basename(f, '.yaml')}
+      folder.glob('*.yaml').map { |file| file.base.to_s }
     end
     
     # Merges another spec file inside this template
     def merge_spec_file(file)
-      merge_spec YAML::load(File.read(spec_file))
+      merge_spec YAML::load(spec_file.read)
     end
     
     # Merges template spec with another spec given from a Hash
@@ -51,7 +51,7 @@ module Noe
     
     # Returns template name  
     def name
-      File.basename(folder)
+      folder.basename
     end
     
     # Returns template summary
@@ -80,23 +80,18 @@ module Noe
     
     # Returns path to the sources folder
     def src_folder
-      File.join(folder, "src")
-    end
-    
-    # Ignore some file?
-    def ignore?(file)
-      ['.', '..'].include? File.basename(file)
+      folder/"src"
     end
     
     # Returns an entry for a given relative path
     def entry(*paths)
-      Entry.new(self, paths.join(File::PATH_SEPARATOR))
+      Entry.new(self, paths.join(File::SEPARATOR))
     end
     
     # Returns manifest Hash for a given entry
     def manifest_for(entry)
       manifest = spec['template-info']['manifest'] || {}
-      manifest[entry.path] || {
+      manifest[entry.path.to_s] || {
         'description'   => "No description for #{entry.path}",
         'safe-override' => false
       } 
@@ -110,11 +105,9 @@ module Noe
         entry = Entry.new(self, nil)
       end  
       if entry.directory?
-        Dir.foreach(entry.realpath) do |child|
+        entry.realpath.each_child(false) do |child|
           childentry = entry.child_entry(child)
-          unless ignore?(childentry.realpath)
-            visit(childentry, &block)
-          end
+          visit(childentry, &block)
         end
       end
     end
@@ -139,31 +132,30 @@ module Noe
       # Creates an entry instance
       def initialize(template, path)
         @template = template
-        @path = path
+        @path = Path(path)
       end
       
       # Returns real absolute path of the entry
       def realpath
-        path.nil? ? template.src_folder : File.join(template.src_folder, path)
+        template.src_folder/path
       end
       
       # Returns entry name
       def name
-        File.basename(realpath)
+        realpath.basename
       end
       
       # Relocate the path according to variables
       def relocate(variables = template.variables)
-        path.split(File::PATH_SEPARATOR).
-             collect{|v| rename_one(variables, v)}.
-             join(File::PATH_SEPARATOR)
+        # path must be relative (or the initial / might be lost)
+        Path(*path.each_filename.map { |v| rename_one(variables, v) })
       end
       
       # Returns the target name, according to some variables
       def rename_one(variables, name = self.name)
-        if name =~ /__([a-z]+)__/
+        if name.to_s =~ /__([a-z]+)__/
           if x = variables[$1]
-            name.gsub(/__([a-z]+)__/, x)
+            Path(name.to_s.gsub(/__([a-z]+)__/, x))
           else
             raise Noe::Error, "Missing variable #{$1}"
           end
@@ -174,17 +166,17 @@ module Noe
       
       # Is the entry a file?
       def file?
-        File.file?(realpath)
+        realpath.file?
       end
       
       # Is the entry a directory?
       def directory?
-        File.directory?(realpath)
+        realpath.directory?
       end
       
       # Builds an child entry for a given name
       def child_entry(name)
-        template.entry(path.nil? ? name : File.join(path, name))
+        template.entry(path/name)
       end
       
       # Returns the hash with the manifest for this entry
@@ -202,7 +194,7 @@ module Noe
       
       # Infers the wlang dialect to use for the entry
       def self.infer_wlang_dialect(uri, default = nil)
-        res = case d = WLang::infer_dialect(uri)
+        res = case d = WLang::infer_dialect(uri.to_s)
           when nil
             nil
           when /^wlang/
