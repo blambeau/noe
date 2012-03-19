@@ -1,3 +1,8 @@
+# 1.7.4 / FIX ME
+
+  * Noe uses the epath gem for easy file management. Noe's public API(s) should not be
+    affected at all by this change.
+
 # 1.7.3 / 2012-02-25
 
   * Most important changes are in default ruby skeleton, see its own CHANGELOG
