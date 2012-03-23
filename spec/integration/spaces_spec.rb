@@ -1,4 +1,4 @@
-require File.expand_path('../spec_helper', __FILE__)
+require 'spec_helper'
 describe 'line endings and trailing spaces' do
   it 'all files should end with a single \n and have no trailing spaces' do
     begin
