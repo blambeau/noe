@@ -1,5 +1,8 @@
-# 1.7.4 / FIX ME
+# 1.7.4 / 2012-02-26
 
+  * Avoid creating the project folder if 'noe prepare' is going to fail due to unknown
+    template or layout.
+  * Enhance an error message when unknown template or layout.
   * Noe uses the epath gem for easy file management. Noe's public API(s) should not be
     affected at all by this change.
 
