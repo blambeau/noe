@@ -5,6 +5,8 @@
     You'll need to clone that repository to ~/.noe in order to use it with noe 2.0
   * The --interactive option has been removed from 'noe go'. It added a lot of complexity
     to the go command for very little value in practice (mostly unused).
+  * The post-install message has been removed. Please refer to the official README that
+    explains how to get started with noe.
 
 # 1.7.4 / 2012-02-26
 

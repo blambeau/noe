@@ -163,7 +163,7 @@ Gem::Specification.new do |s|
   # Uncomment and set this if you want to say something to the user
   # after gem installation
   #
-  s.post_install_message = "Noe successfully installed!\n\nWhat's next?\n  - 'noe help install' for configuration and default templates\n  - 'noe prepare --template=ruby hello_world'\n\nThank you for using Noe, enjoy!\n"
+  s.post_install_message = nil
 
   ################################################################### SECURITY
 

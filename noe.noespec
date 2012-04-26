@@ -37,12 +37,3 @@ variables:
   rake_tasks: 
     spec_test: 
       pattern: spec/**/*_spec.rb
-  gemspec: 
-    post_install_message: |
-      Noe successfully installed!
-      
-      What's next?
-        - 'noe help install' for configuration and default templates
-        - 'noe prepare --template=ruby hello_world'
-      
-      Thank you for using Noe, enjoy!
