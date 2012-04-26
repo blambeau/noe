@@ -28,8 +28,8 @@ module Noe
       if file.exists?
         file
       else
-        puts "On #{file}"
-        raise Noe::Error, "Unknown specification layout: #{layout}, try 'noe list'"
+        $stderr.puts "Config file: #{file}"
+        raise Noe::Error, "No such file or directory: #{file}, try 'noe list'"
       end
     end
     alias :spec_file :spec_layout_file
