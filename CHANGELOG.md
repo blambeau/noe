@@ -1,5 +1,8 @@
 # 2.0.0 / FIX ME
 
+  * Noe does not come with default templates anymore. The default ruby template has been
+    extracted as a separate project that you can find at https://github.com/blambeau/rubygem.noe.
+    You'll need to clone that repository to ~/.noe in order to use it with noe 2.0
   * The --interactive option has been removed from 'noe go'. It added a lot of complexity
     to the go command for very little value in practice (mostly unused).
 

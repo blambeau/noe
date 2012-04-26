@@ -1,5 +1,0 @@
-source 'http://rubygems.org'
-*{dependencies.collect{|d| d.groups}.flatten.uniq as g}{
-group +{g.to_sym} do
-  *{dependencies.select{|d| d.groups.include?(g)} as d}{gem +{d.name}, +{d.version}}{!{"\n  "}}
-end}{!{"\n"}}
