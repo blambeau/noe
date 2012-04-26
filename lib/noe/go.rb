@@ -162,7 +162,14 @@ module Noe
         # Load spec now
         spec_file = find_noespec_file(args)
         spec = YAML::load(spec_file.read)
+        spec_version = spec['template-info']['version']
+
+        # Find and check template version
         template = template(spec['template-info']['name'])
+        template_version = template.version
+        versions_compatible!(spec_version, template_version)
+
+        # Merge them now and take variables
         template.merge_spec(spec)
         variables = template.variables
         
@@ -182,6 +189,12 @@ module Noe
           commands.each{|c| c.run}
         end
         
+      end
+
+      def versions_compatible!(spec_version, template_version)
+        return true if spec_version == template_version
+        raise Noe::Error, "Incompatible versions: #{spec_version} != #{template_version}"\
+                          " (here vs. ~/.noe/)"
       end
       
       class DoSomething
