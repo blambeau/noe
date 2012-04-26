@@ -4,7 +4,7 @@ module Noe
     # Install options
     def self.add_common_options(opt)
       opt.on_tail("--version", "Show version") do
-        raise Quickl::Exit, "#{File.basename($0 || 'noe')} #{Noe::VERSION} (c) 2011, Bernard Lambeau"
+        raise Quickl::Exit, "noe #{Noe::VERSION} (c) 2011, Bernard Lambeau"
       end
       opt.on_tail('--help', "Show detailed help") do 
         raise Quickl::Help
