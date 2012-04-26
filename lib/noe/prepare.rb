@@ -88,6 +88,9 @@ module Noe
           raise Noe::Error, "File #{where} already exists, remove it first or set --force."
         else
           tpl = template
+          unless (parent = where.parent).exists?
+            parent.mkdir_p
+          end
           where.open('w') do |out|
             context = {'template_name' => tpl.name.to_s}
             out << WLang::file_instantiate(tpl.spec_layout_file(@layout).to_s, context, "wlang/active-text")
@@ -104,7 +107,6 @@ module Noe
           where = generate_noespec_file(pname.add_ext(".noespec"))
         when 1
           pname = Path(args.first)
-          pname.mkdir unless pname.exists?
           where = generate_noespec_file(pname/pname.add_ext(".noespec"))
         else
           raise Quickl::Help unless args.size > 1
