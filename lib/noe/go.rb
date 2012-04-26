@@ -4,7 +4,7 @@ module Noe
     # Instantiate a project template using a .noespec file
     #
     # SYNOPSIS
-    #   #{program_name} #{command_name} [--dry-run] [--force|--interactive|--add-only|--safe-override] [SPEC_FILE]
+    #   #{program_name} #{command_name} [--dry-run] [--force|--add-only|--safe-override] [SPEC_FILE]
     #
     # OPTIONS
     # #{summarized_options}
@@ -17,8 +17,7 @@ module Noe
     #   This command is generally used immediately after invoking 'prepare',
     #   on an almost empty directory. By default it safely fails if any file
     #   would be overriden by the instantiation process. This safe behavior 
-    #   can be bypassed through the --force, --add-only, --interactive and
-    #   --safe-override options.
+    #   can be bypassed through the --force, --add-only and --safe-override options.
     #
     # TYPICAL USAGE
     #
@@ -40,11 +39,6 @@ module Noe
     #
     #     rm README.md hello_world.gemspec
     #     noe go --add-only
-    #
-    #   If you want to regenerate some files by controlling what will be 
-    #   overriden:
-    #
-    #     noe go --interactive
     #
     #   If you want to regenerate some files according to the template 
     #   manifest:
@@ -79,12 +73,6 @@ module Noe
                "Force overriding on all existing files"){ 
           @force = true
         }
-        @interactive = false
-        opt.on('--interactive', '-i',
-               "Request the user to take a decision"){ 
-          @interactive = true
-          @highline = HighLine.new
-        }
         @adds_only = false
         opt.on('--add-only', '-a',
                "Only make additions, do not override any existing file"){ 
@@ -96,33 +84,6 @@ module Noe
           @safe_override = true
         }
         Commons.add_common_options(opt)
-      end
-      
-      # Checks if the interactive mode is enabled. If yes, highline is prepared
-      # as a side effect.
-      def interactive?
-        if @interactive and not(@highline)
-          begin
-            require "highline"
-            @highline = HighLine.new
-          rescue LoadError
-            raise Quickl::Exit.new(1), "Highline is required for interactive mode, try 'gem install highline'"
-          end
-        else
-          @interactive
-        end
-      end
-      
-      def say(what, color)
-        if @highline
-          @highline.say(@highline.color(what, color))
-        else
-          puts what
-        end
-      end
-      
-      def choose(&block)
-        @highline.choose(&block)
       end
       
       # Checks if one is a file and the other a directory or the inverse
@@ -140,19 +101,11 @@ module Noe
         if relocated.exists?
           # file exists already exists, check what can be done!
           if kind_clash?(entry, relocated)
-            if interactive?
-              say("File #{relocated} conflicts with directory to create", :red)
-              choose do |menu|
-                menu.prompt = "What do we do?"
-                menu.index = :letter
-                menu.choice(:abord) { raise Quickl::Exit.new(1), "Noe aborted!" }
-                menu.choice(:remove){ todo << Rm.new(entry, variables)          }
-              end 
-            elsif force?
+            if force?
               todo << Rm.new(entry, variables)
             else
               raise Quickl::Exit.new(2), "Noe aborted: file #{relocated} already exists.\n"\
-                                         "Use --force to override or --interactive for more options."
+                                         "Use --force to override."
             end
           else
             # file exists and is already a folder; we simply do nothing 
@@ -181,25 +134,6 @@ module Noe
             # file exists and we are only allowed to add new things
             # we just do nothing
             skipped = true
-          elsif interactive? and kind_clash?(entry, relocated)
-            say("Directory #{relocated} conflicts with file to create", :red)
-            choose do |menu|
-              menu.prompt = "What do we do?"
-              menu.index = :letter
-              menu.choice(:abord) { raise Quickl::Exit.new(1), "Noe aborted!" }
-              menu.choice(:remove){ todo << Rm.new(entry, variables)          }
-              menu.choice(:skip)  { skipped = true                            }
-            end 
-          elsif interactive?
-            say("File #{relocated} already exists", :red)
-            choose do |menu|
-              would = entry.safe_override? ? :override : :skip
-              menu.prompt = "What do we do? (safe-override would #{would})"
-              menu.index = :letter
-              menu.choice(:abord)   { raise Quickl::Exit.new(1), "Noe aborted!" }
-              menu.choice(:override){ todo << Rm.new(entry, variables)          }
-              menu.choice(:skip)    { skipped = true                            }
-            end
           elsif safe_override?
             if entry.safe_override?
               todo << Rm.new(entry, variables)
@@ -210,7 +144,7 @@ module Noe
             todo << Rm.new(entry, variables)
           else
             raise Quickl::Exit.new(2), "Noe aborted: file #{relocated} already exists.\n"\
-                                       "Use --force to override or --interactive for more options."
+                                       "Use --force to override."
           end
         end
         

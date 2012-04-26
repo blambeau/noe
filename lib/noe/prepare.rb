@@ -50,8 +50,8 @@ module Noe
     #     # edit the configuration
     #     edit foo.noespec
     #
-    #     # launch template generation in interactive mode
-    #     noe go --interactive
+    #     # launch template generation in safe mode
+    #     noe go --safe
     #
     class Prepare < Quickl::Command(__FILE__, __LINE__)
       include Noe::Commons

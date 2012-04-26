@@ -1,3 +1,8 @@
+# 2.0.0 / FIX ME
+
+  * The --interactive option has been removed from 'noe go'. It added a lot of complexity
+    to the go command for very little value in practice (mostly unused).
+
 # 1.7.4 / 2012-02-26
 
   * Avoid creating the project folder if 'noe prepare' is going to fail due to unknown
