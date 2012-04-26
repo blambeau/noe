@@ -2,12 +2,12 @@ source 'http://rubygems.org'
 
 group :test do
   gem "rake", "~> 0.9.2"
-  gem "rspec", "~> 2.8"
+  gem "rspec", "~> 2.9"
 end
 
 group :release do
   gem "rake", "~> 0.9.2"
-  gem "rspec", "~> 2.8"
+  gem "rspec", "~> 2.9"
 end
 
 group :doc do
