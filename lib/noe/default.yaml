@@ -25,5 +25,4 @@ templates-dir:
 # that need a template (see 'noe help prepare', for example) use this 
 # by default, and allow overriding it via a --template=NAME option.
 #
-default:
-  ruby
+default: ~

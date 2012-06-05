@@ -1,7 +1,7 @@
 module Noe
   class Main
     #
-    # Install default configuration and template (not required).
+    # Install default configuration.
     #
     # SYNOPSIS
     #   #{program_name} #{command_name} [--force] [FOLDER]
@@ -10,17 +10,11 @@ module Noe
     # #{summarized_options}
     #
     # DESCRIPTION
-    #   This command will install Noe's default configuration under FOLDER/.noerc 
-    #   and a default ruby template under FOLDER/.noe. Unless stated otherwise, 
-    #   FOLDER is user's home.
+    #   This command will install Noe's default configuration under FOLDER/.noerc
+    #   Unless stated otherwise, FOLDER is user's home.
     #
-    #   If FOLDER/.noerc already exists, the comand safely fails. Use --force to 
+    #   If FOLDER/.noerc already exists, the comand safely fails. Use --force to
     #   override existing configuration. 
-    #
-    # TIP
-    #   Installing default templates and configuration is NOT required. Noe uses
-    #   their internal representation by default. Use 'noe install' only if you
-    #   plan to create your own templates or want to tune default ones.
     #
     class Install < Quickl::Command(__FILE__, __LINE__)
       include Noe::Commons
@@ -60,29 +54,12 @@ module Noe
         # generate .noe folder
         noe_folder.mkdir unless noe_folder.exists?
         
-        # copy default templates
-        tdir = Path.relative '../../templates'
-        tdir.each_child do |tpl|
-          target = noe_folder/tpl.basename
-          if target.exists?
-            if force
-              target.rm_rf
-            else
-              puts "#{target} already exists, use --force to override"
-              next
-            end
-          end
-          tpl.cp_r(noe_folder)
-        end
-        
         # say something!
         puts "Noe successfully installed !"
         puts 
         puts "What's next?"
-        puts " * cat #{noerc_file}"
-        puts " * ls -lA #{noe_folder}"
-        puts " * noe list"
-        puts " * noe prepare hello_world"
+        puts " * Add templates in #{noe_folder} (look on github)"
+        puts " * edit #{noerc_file}, especially the default template name"
         puts
         puts "Thank you for using Noe (v#{Noe::VERSION}), enjoy!"
       end
