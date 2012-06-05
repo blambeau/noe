@@ -3,7 +3,7 @@ module Noe
   describe "Template::Entry#relocate" do
     
     let(:template){ 
-      Template.new(Path.relative('../../../../templates/ruby'))
+      Template.new(fixtures_path/'typitpl')
     }
     let(:vars){ 
       {"lower" => "project"} 

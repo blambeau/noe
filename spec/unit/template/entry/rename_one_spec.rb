@@ -3,7 +3,7 @@ module Noe
   describe "Template::Entry#rename_one" do
     
     let(:template){ 
-      Template.new(Path.relative('../../../../templates/ruby'))
+      Template.new(fixtures_path/'typitpl')
     }
     let(:vars){ 
       {"lower" => "project"} 
@@ -13,8 +13,8 @@ module Noe
     }
     
     describe "when nothing has to change" do
-      let(:entry){ template.entry("project") }
-      it { should == Path("project") }
+      let(:entry){ template.entry("src") }
+      it { should == Path("src") }
     end
     
     describe "when exactly a replacement" do
