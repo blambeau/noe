@@ -8,6 +8,10 @@
   * The post-install message has been removed. Please refer to the official README that
     explains how to get started with noe.
 
+# 1.7.6 / 2012-06-16
+
+  * Ensure that file modes are kept on generated files (+x in particular).
+
 # 1.7.5 / 2012-06-16
 
   * Raise an error at noe go if a manifest entry is missing.

@@ -255,6 +255,7 @@ module Noe
           else
             FileUtils.cp(source, target)
           end
+          Path(target).chmod(Path(source).stat.mode)
         end
         
         def to_s
