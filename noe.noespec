@@ -1,6 +1,6 @@
 template-info:
-  name: ruby
-  version: 1.7.3
+  name: rubygem.noe
+  version: 1.7.5
   author: Bernard Lambeau <blambeau@gmail.com>
   manifest:
     spec/spec_helper.rb:
@@ -10,7 +10,7 @@ template-info:
 variables:
   lower: noe
   upper: Noe
-  version: 1.7.4
+  version: 1.7.5
   summary: 
     Noe is a simple, general-purpose and extensible skeleton generator from project templates
   description:
