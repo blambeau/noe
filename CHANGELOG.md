@@ -1,3 +1,7 @@
+# 1.7.6 / 2012-06-16
+
+  * Ensure that file modes are kept on generated files (+x in particular).
+
 # 1.7.5 / 2012-06-16
 
   * Raise an error at noe go if a manifest entry is missing.
