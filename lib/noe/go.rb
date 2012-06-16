@@ -1,3 +1,4 @@
+require 'fileutils'
 module Noe
   class Main
     #
@@ -296,11 +297,16 @@ module Noe
       class FileInstantiate < DoSomething
         
         def run
-          relocated.open('w') do |out|
-            dialect = entry.wlang_dialect
-            braces = entry.wlang_braces
-            variables.methodize!
-            out << WLang::file_instantiate(entry.realpath.to_s, variables, dialect, braces)
+          source = entry.realpath.to_s
+          target = relocated
+          if dialect = entry.wlang_dialect
+            target.open('w') do |out|
+              braces = entry.wlang_braces
+              variables.methodize!
+              out << WLang::file_instantiate(source, variables, dialect, braces)
+            end
+          else
+            FileUtils.cp(source, target)
           end
         end
         
