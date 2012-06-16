@@ -90,11 +90,16 @@ module Noe
     
     # Returns manifest Hash for a given entry
     def manifest_for(entry)
-      manifest = spec['template-info']['manifest'] || {}
-      manifest[entry.path.to_s] || {
+      path = entry.path.to_s
+      manifest = spec['template-info']['manifest']
+      manifest = manifest[path]
+      if manifest.nil? and Path(path).file?
+        raise "Missing manifest for #{entry.path}"
+      end
+      {
         'description'   => "No description for #{entry.path}",
         'safe-override' => false
-      } 
+      }.merge(manifest || {})
     end
     
     # Visit the template
@@ -186,9 +191,11 @@ module Noe
       
       # Returns wlang dialect to use
       def wlang_dialect
-        @wlang_dialect ||= begin
-          default = template.main_wlang_dialect
-          manifest['wlang-dialect'] || self.class.infer_wlang_dialect(relocate, default)
+        told = manifest['wlang-dialect']
+        if told.nil? && manifest.has_key?('wlang-dialect')
+          nil
+        else
+          told || self.class.infer_wlang_dialect(relocate, template.main_wlang_dialect)
         end
       end
       

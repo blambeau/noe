@@ -8,6 +8,12 @@
   * The post-install message has been removed. Please refer to the official README that
     explains how to get started with noe.
 
+# 1.7.5 / 2012-06-16
+
+  * Raise an error at noe go if a manifest entry is missing.
+  * Allow wlang-dialect to be explicitely set to nil (yaml ~) to prevent wlang for
+    being used on specific entries.
+
 # 1.7.4 / 2012-02-26
 
   * Avoid creating the project folder if 'noe prepare' is going to fail due to unknown
